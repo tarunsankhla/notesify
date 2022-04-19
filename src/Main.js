@@ -2,7 +2,7 @@ import React from 'react'
 import {Outlet} from 'react-router'
 // import {Footer} from './components/Footer/Footer'
 // import {Navbar} from './components/Navbar/Navbar'
-import { VAR_ENCODE_TOKEN, VAR_USER_ID } from './utils/Routes';
+import { VAR_ENCODE_TOKEN, VAR_USER_ID } from './utils/Route';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import "./ArchivePage.scss";
+import "./ArchivePage.css";
 
 const ArchivePage = () => {
   return (

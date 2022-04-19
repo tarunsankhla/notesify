@@ -1,5 +1,5 @@
 import React from 'react';
-import "./TrashPage.scss";
+import "./TrashPage.css";
 
 const TrashPage = () => {
   return (
