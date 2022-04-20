@@ -3,7 +3,26 @@ import "./HomePage.css";
 
 const HomePage = () => {
   return (
-    <div>HomePage</div>
+    <div>HomePage
+      <div>HomePage</div>
+      <div>HomePage</div>
+      <div>HomePage</div>
+      <div>HomePage</div>
+      <div>HomePage</div>
+      <div>HomePage</div>
+      <div>HomePage</div>
+      <div>HomePage</div>
+      <div>HomePage</div>
+      <div>HomePage</div>
+      <div>HomePage</div>
+      <div>HomePage</div>
+      <div>HomePage</div>
+      <div>HomePage</div>
+      <div>HomePage</div>
+      <div>HomePage</div>
+      <div>HomePage</div>
+      
+    </div>
   )
 }
 
