@@ -1,0 +1,13 @@
+@import url(https://cdn.quilljs.com/1.3.6/quill.snow.css);
+
+@import url(https://cdn.quilljs.com/1.3.6/quill.bubble.css);
+@import url(https://cdn.quilljs.com/1.3.6/quill.core.css);
+
+.note-editor-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 1em;
+    background-color: aliceblue;
+}

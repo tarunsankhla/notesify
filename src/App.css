@@ -55,7 +55,7 @@
 
 .main-body {
 	display: flex;
-	background-color: rgba(0, 0, 0, 0.1);
+	/* background-color: rgba(0, 0, 0, 0.1); */
 	width: 100%;
 	min-height: 100vh;
 }
@@ -70,33 +70,6 @@
 	font-size: 1.2em;
 }
 
-.AsideNav {
-	display: flex;
-    /* flex-basis: 15%; */
-    min-width: -moz-fit-content;
-    min-width: fit-content;
-    background-color: rgba(0, 0, 0, 0.1);
-    height: 80vh;
-    flex-direction: column;
-    padding-top: 1em;
-    padding: 0.5em;
-    justify-content: space-between;
-	position: sticky;
-    top: 0;
-}
-
-.AsideNav li{
-	list-style: none;
-	padding: 0.5em;
-	font-weight: 700;
-	font-size: 1em;
-	cursor: pointer;
-}
-
-.AsideNav li:hover{
-	font-size: 1.01em;
-	transform: scale(1.01);
-}
 
 .sm-txt {
 	font-size: 0.4em;

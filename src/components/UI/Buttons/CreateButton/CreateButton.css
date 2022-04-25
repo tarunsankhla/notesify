@@ -1,0 +1,20 @@
+.create-btn{
+    font-weight: 500;
+    background-color: red;
+    color: white;
+    font-size: 1.1em;
+    width: fit-content;
+    padding: 0.5em;
+    border-radius: 0.5rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    word-spacing: 0.1em;
+    margin: 0.5em;
+}
+
+
+.create-btn:hover{
+    transition: scale(1.05);
+}
