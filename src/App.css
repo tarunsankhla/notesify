@@ -49,6 +49,8 @@
 	display: flex;
 	background-color: var(--nav-color);
 	flex-direction: column;
+	position: relative;
+
 }
 
 .main-body {
@@ -79,6 +81,8 @@
     padding-top: 1em;
     padding: 0.5em;
     justify-content: space-between;
+	position: sticky;
+    top: 0;
 }
 
 .AsideNav li{
