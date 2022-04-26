@@ -16,7 +16,10 @@ function Main() {
                 <Navbar />
                 <div className='main-body'>
                     <AsideNavbar />
-                    <Outlet />   
+                    <span  className='outlet-body'>
+                        <Outlet />
+                    </span>
+                     
                     <ToastContainer style={{ fontSize: "1.5em" }} />
                 </div>
                 <Footer />

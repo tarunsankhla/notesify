@@ -20,6 +20,11 @@
   box-sizing: border-box;
 }
 
+
+:root{
+	--floatbtn-bg : #9675b4 ;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -50,7 +55,6 @@
 	background-color: var(--nav-color);
 	flex-direction: column;
 	position: relative;
-
 }
 
 .main-body {
@@ -60,15 +64,6 @@
 	min-height: 100vh;
 }
 
-.Navbar {
-	display: flex;
-	width: 100%;
-	justify-content: space-evenly;
-	align-items: center;
-	padding: 0.2em;
-	font-weight: 700;
-	font-size: 1.2em;
-}
 
 
 .sm-txt {
@@ -137,4 +132,9 @@ span:hover {
 
 .pd-btm{
 	padding-bottom: 2px;
+}
+
+
+.outlet-body{
+	padding-left: 7em;
 }

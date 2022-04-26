@@ -1,32 +1,34 @@
 
 .AsideNav {
-	display: flex;
-    /* flex-basis: 15%; */
+    display: flex;
     min-width: -moz-fit-content;
-    min-width: fit-content;
-    background-color: rgba(0, 0, 0, 0.05);
+    min-width: 15em;
     height: 80vh;
+    background-color: rgba(0, 0, 0, 0.05);
+    justify-content: space-between;
     flex-direction: column;
     padding-top: 1em;
     padding: 0.5em;
-    justify-content: space-between;
-	position: sticky;
+    position: sticky;
     top: 0;
+    font-size: 1.2em;
+    font-weight: 600;
 }
 
 .AsideNav li{
-	list-style: none;
-	font-weight: 700;
-	font-size: 1em;
-	cursor: pointer;
+    list-style: none;
+    font-weight: 700;
+    font-size: 1.2em;
+    cursor: pointer;
     display: flex;
     justify-content: flex-start;
-    gap: 2em;
-    padding: 0.5em 1.5em;
+    gap: 1.5em;
+    padding: 0.7em 1.5em;
+    align-items: center;
 }
 
 .AsideNav li:hover{
-    border-bottom: 2px solid rgb(207, 255, 207);
+    border-bottom: 2px solid cadetblue;
 }
 
 .AsideNav li:hover{
@@ -38,4 +40,11 @@
     height: 100vh;
     padding-bottom: 3em;
     width: 13em;
+}
+
+.aside-nav-logout{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
 }

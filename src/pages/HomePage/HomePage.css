@@ -3,11 +3,90 @@
 @import url(https://cdn.quilljs.com/1.3.6/quill.bubble.css);
 @import url(https://cdn.quilljs.com/1.3.6/quill.core.css);
 
+
+.home-page{
+    /* width: 80em; */
+    height: 100%;
+    display: flex;
+    align-items: center;    
+    flex-direction: column;
+    padding-top: 3em;
+}
+
 .note-editor-container{
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
     padding: 1em;
-    background-color: aliceblue;
+    background-color: #e5e3e3;
+    border-radius: 1em;
+}
+
+/* .quill{
+    display: flex;
+    flex-direction: column;
+} */
+
+/* quil editor start */
+.ql-toolbar:first-child{
+    display: none;
+    /* background-color: rgb(215, 215, 215); */
+}
+
+.ql-editor{
+    height:10em;
+}
+
+.ql-toolbar{
+    background-color: #cab3de;
+}
+
+/* quil editor close */
+
+.note-title-input{
+    width: 100%;
+    padding: 0.7em;
+    border: none;
+    margin: 1em 0.2em;
+}
+
+.latest-notes-container{
+    padding-top: 2em;
+}
+
+input[type="color"]{
+    /* width: 100%; */
+    padding: 0;
+    border-radius: 50% 0 50% 50%;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+input[type="color" i]::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+input[type="color" i]::-webkit-color-swatch {
+    border: none;
+}
+.note-editor-action{
+    display: flex;
+    gap: 1em;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+}
+
+.color-pallete{
+    height: 1.5em;
+    width: 1.5em;
+    border: none;
+    border-radius: 50% ;
+}
+.close-note{
+    width: fit-content;
+    cursor: pointer;
+    margin-left: auto;
+    font-size: 2em;
 }
