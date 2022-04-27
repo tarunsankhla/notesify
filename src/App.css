@@ -20,6 +20,11 @@
   box-sizing: border-box;
 }
 
+
+:root{
+	--floatbtn-bg : #9675b4 ;
+}
+
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -42,4 +47,94 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+/* MAin */
+.main-container {
+	display: flex;
+	background-color: var(--nav-color);
+	flex-direction: column;
+	position: relative;
+}
+
+.main-body {
+	display: flex;
+	/* background-color: rgba(0, 0, 0, 0.1); */
+	width: 100%;
+	min-height: 100vh;
+}
+
+
+
+.sm-txt {
+	font-size: 0.4em;
+}
+
+.md-txt {
+	font-size: 0.6em;
+}
+
+.lg-txt {
+	font-size: 0.8em;
+}
+
+.xlg-txt {
+	font-size: 1em;
+}
+
+input {
+	margin: 0.2em;
+}
+
+span {
+	font-size: 0.8em;
+}
+
+span:hover {
+	color: #539987;
+}
+
+
+.stretch{
+	width: 100%;
+}
+
+.title-name{
+	color: red;
+}
+
+.page-title{
+	font-size: 1.5em;
+	color: var(--hover-color);
+	font-weight: 800;
+}
+
+.nocontent{
+	display: flex;
+	flex-wrap: wrap;
+	padding: 1em;
+	flex-direction: column;
+	width: 100%;
+}
+
+.channel-img{
+	height: 1.5em;
+	width: 1.5em;
+	border-radius: 50%;
+}
+
+.card-body-channel{
+	display: flex;
+    justify-content: flex-start;
+    font-size: 1.2em;
+	align-items: center;
+}
+
+.pd-btm{
+	padding-bottom: 2px;
+}
+
+
+.outlet-body{
+	padding-left: 7em;
 }

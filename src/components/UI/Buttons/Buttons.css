@@ -1,0 +1,48 @@
+ /* float button  start*/
+ .float-add-btn{
+    height: 4rem;
+    width: 4rem;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 2rem;
+    right: 3rem;
+    background-color: var(--floatbtn-bg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: burlywood;
+    font-size: 2rem;
+    aspect-ratio: 1;
+    cursor: pointer;
+}
+
+.float-add-btn:hover{
+    transform: scale(1.1);
+    background-color: rgba(--floatbtn-bg, 0.01);
+    color: white;
+}
+/* float button end */
+
+/* Create Button Start */
+.create-btn{
+    color: white;
+    width: fit-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    word-spacing: 0.1em;
+    margin: 0.5em;
+    padding: 0.5em;
+    border-radius: 0.5rem;
+    gap: 1rem;
+    font-size: 1.5em;
+    font-weight: 700;
+    background-color: red;
+    cursor: pointer;
+}
+
+
+.create-btn:hover{
+    transition: scale(1.05);
+}
+/* Create Button End */
