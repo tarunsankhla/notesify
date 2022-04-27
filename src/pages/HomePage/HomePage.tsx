@@ -1,11 +1,11 @@
 /* eslint-disable no-lone-blocks */
-import "./HomePage.css";
+import "src/pages/HomePage/HomePage.css";
 import ReactQuill from 'react-quill';
-import { useReducer, useRef, useState } from "react";
-import { debounce } from "../../utils/Debounce";
+import { useMemo, useReducer, useRef, useState } from "react";
+import { debounce } from "src/utils/Debounce";
 import DOMPurify from 'dompurify';
-import { FloatAddButton, CreateButton } from "../../components/UI/Buttons/Buttons";
-import { BiXCircle } from "../../components/UI/Icons/Icons";
+import { FloatAddButton, CreateButton } from "src/components/UI/Buttons/Buttons";
+import { BiXCircle } from "src/components/UI/Icons/Icons";
 
 const ContentDetail = (state, action) => {
   switch (action.type) {
@@ -28,7 +28,6 @@ const ContentDetail = (state, action) => {
 
 export default function HomePage() {
   const [showNote, setShowNote] = useState(true);
-  const noteRef = useRef("");
   const [noteState, noteDispatch] = useReducer(ContentDetail,
     {
       title: "",
@@ -36,18 +35,20 @@ export default function HomePage() {
       createdOn: "",
       color: "",
     });
+  var modules = useRef({});
 
 
-
-  var modules = {
-    toolbar: [
-      [{ 'header': [1, 2, false] }],
-      ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-      [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }],
-      ['link', 'image'],
-      ['clean']
-    ],
-  };
+  useMemo(() => {
+    modules.current = {
+      toolbar: [
+        [{ 'header': [1, 2, false] }],
+        ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+        [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }],
+        ['link', 'image'],
+        ['clean']
+      ],
+    };
+  }, []);
 
   // var formats = [
   //   'header',
@@ -76,7 +77,7 @@ export default function HomePage() {
               onChange={(e) => debounce(() => noteDispatch({ type: "title", data: e.target.value }), 500)} />
             <ReactQuill
               theme="snow"
-              modules={modules}
+              modules={modules.current}
               // formats={formats}
               placeholder={"Write Something....."}
               // value={noteState.htmlbody}

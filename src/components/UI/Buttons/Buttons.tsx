@@ -1,4 +1,5 @@
-import {BiJournalPlus, BiPatchPlus} from '../Icons/Icons';
+
+import {BiJournalPlus, BiPatchPlus} from 'src/components/UI/Icons/Icons';
 import "./Buttons.css";
 
 function FloatAddButton() {

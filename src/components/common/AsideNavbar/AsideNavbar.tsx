@@ -1,4 +1,4 @@
-import { BiTrash, BiPersonHearts, BiHouseHeart, BiBoxArrowRight, BiArchive } from '../../UI/Icons/Icons';
+import { BiTrash, BiPersonHearts, BiHouseHeart, BiBoxArrowRight, BiArchive } from 'src/components/UI/Icons/Icons';
 import "./AsideNavbar.css";
 
 function AsideNavbar() {

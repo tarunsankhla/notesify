@@ -20,8 +20,12 @@
       "noEmit": true,
       "jsx": "react-jsx",
       "noImplicitAny": false,
+      "baseUrl": ".",
+      "paths": {
+        "client/*": ["./client/*"]
+      },
     },
     "include": [
-      "src"
+      "src, ./**/*.ts", "./**/*.tsx"
     ]
   }
