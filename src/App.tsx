@@ -10,6 +10,7 @@ import Main from './Main';
 import React, { Suspense } from 'react';
 // const {Mockman} = require("mockman-js");
 import Mockman from 'mockman-js';
+import RequiredAuth from './components/common/PrivateRoutes/RequiredAuth';
 
 const HomePage = React.lazy(() => import('./pages/HomePage/HomePage'));
 const TrashPage = React.lazy(() => import('./pages/TrashPage/TrashPage'));
@@ -24,17 +25,24 @@ function App() {
         <Route element={<Main />}>
           {/* <Route path='/' element={<HomePage />}></Route> */}
           <Route path={ROUTE_PATH_LandingPage} element={
-                <Suspense fallback={<h1>Loading Home...</h1>}>
-                  <HomePage />
-                </Suspense>} />
+                                                <Suspense fallback={<h1>Loading Home...</h1>}>
+                                                  <HomePage />
+                                                </Suspense>}
+          />
           <Route path={ROUTE_PATH_TrashPage} element={
-                <Suspense fallback={<h1>Loading Trash...</h1>}>
-                  <TrashPage />
-                </Suspense>}/>
+                                                <RequiredAuth>
+                                                    <Suspense fallback={<h1>Loading Trash...</h1>}>
+                                                      <TrashPage />
+                                                  </Suspense>
+                                                </RequiredAuth>}
+          />
           <Route path={ROUTE_PATH_ArchivePage} element={
-                <Suspense fallback={<h1>Loading Archive...</h1>}>
-                  <ArchivePage />
-                </Suspense>} />
+                                                <RequiredAuth>
+                                                  <Suspense fallback={<h1>Loading Archive...</h1>}>
+                                                    <ArchivePage />
+                                                  </Suspense>
+                                                </RequiredAuth>}
+          />
         </Route>
         <Route path={ROUTE_PATH_Mockman} element={<div className='MockAPI'><Mockman /></div>} />
         </Routes>

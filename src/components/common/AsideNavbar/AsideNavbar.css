@@ -18,12 +18,12 @@
 .AsideNav li{
     list-style: none;
     font-weight: 700;
-    font-size: 1.2em;
+    font-size: 1.1em;
     cursor: pointer;
     display: flex;
     justify-content: flex-start;
     gap: 1.5em;
-    padding: 0.7em 1.5em;
+    padding: 0.7em 1.5em 0.7em 2em;
     align-items: center;
 }
 
@@ -47,4 +47,15 @@
     justify-content: center;
     align-items: center;
     gap: 1em;
+    font-size: 1.1em;
+}
+
+
+.logout-btn{
+    cursor: pointer;
+    font-size: 1.3em;
+}
+
+.logout-btn:hover{
+    transform: scale(1.1);
 }
