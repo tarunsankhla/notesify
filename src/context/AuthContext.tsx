@@ -4,13 +4,15 @@ import { AuthProvider } from "src/utils/Auth";
 interface AuthContextInterface {
     user: any,
     loginUser: (user: any, callback: VoidFunction) => void,
-    logoutUser: (callback: VoidFunction) => void
+    logoutUser: (callback: VoidFunction) => void,
+    // showState: any
 }
 
 const AuthenticationContext = createContext<AuthContextInterface>(null!);
 
 function AuthenticationProvider({ children }: { children: React.ReactNode }) {
     let [user, setuser] = useState<any>(null);
+    // const [s]
 
     let loginUser = (newUser: any, callback: VoidFunction) => {
         return AuthProvider.loginAuthProvider(() => {

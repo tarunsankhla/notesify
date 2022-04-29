@@ -6,6 +6,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { makeServer } from "./server";
 import { AuthenticationProvider } from "./context/AuthContext";
+import { ModalProvider } from "./context/ModalProvider";
 
 makeServer();
 
@@ -15,7 +16,9 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <AuthenticationProvider>
-        <App />
+        <ModalProvider>
+          <App />
+        </ModalProvider>
       </AuthenticationProvider>
     </BrowserRouter>
   </React.StrictMode>

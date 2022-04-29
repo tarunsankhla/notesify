@@ -1,9 +1,15 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
-function useDocumentationTitle() {
-  return (
-    <div>useDocumentationTitle</div>
-  )
+function useDocumentationTitle(title) {
+  const [documentTitle, setDocumentTitle] = useState(title);
+
+  useEffect(() =>
+  {
+    document.title = documentTitle
+  }, [documentTitle]);
+
+  return [documentTitle,setDocumentTitle]
 }
 
-export default useDocumentationTitle
+export default useDocumentationTitle;
+// useDocumentTitle("tiel");
