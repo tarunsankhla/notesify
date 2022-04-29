@@ -15,13 +15,13 @@
 
 .modal-view-container{
     background-color: white;
-    height: 20em;
-    width: 20em;
+    /* height: 20em;
+    width: 20em; */
     z-index: 999;
 }
 
 
 .modal-view-container > div {
-    height: 100%;
-    width: 100%;
+    /* height: 100%;
+    width: 100%; */
 }

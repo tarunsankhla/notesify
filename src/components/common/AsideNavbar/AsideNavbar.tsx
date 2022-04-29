@@ -9,7 +9,7 @@ function AsideNavbar() {
     let auth = useAuth();
     let navigate = useNavigate();
     const { modalToggle, setmodalToggle } = useModal();
-    console.log(useModal());
+    
     return (
         <div className='AsideNav'>
             <div>

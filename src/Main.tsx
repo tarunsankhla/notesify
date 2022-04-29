@@ -12,9 +12,7 @@ import { useModal } from './context/ModalProvider';
 import SignUpPage from './pages/SignUpPage/SignUpPage';
 
 function Main() {
-    // const [modalToggle, setmodalToggle] = useModal();
     const [loginShow, setLoginShow] = useState(true);
-    // console.log(modalToggle, setmodalToggle);
     return (
         <>
             <div className='main-container'>    
@@ -24,7 +22,6 @@ function Main() {
                     <span  className='outlet-body'>
                         <Outlet />
                     </span>
-                    {/* <FullPageModal props={{ loginShow, setLoginShow }}> */}
                     <FullPageModal >
                         {loginShow ?
                             <LoginPage props={setLoginShow} />

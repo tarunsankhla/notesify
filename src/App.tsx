@@ -20,34 +20,34 @@ function App() {
 
   return (
     <div className="App">
-  
+
       <Routes >
         <Route element={<Main />}>
           {/* <Route path='/' element={<HomePage />}></Route> */}
           <Route path={ROUTE_PATH_LandingPage} element={
-                                                <Suspense fallback={<h1>Loading Home...</h1>}>
-                                                  <HomePage />
-                                                </Suspense>}
+            <Suspense fallback={<h1>Loading Home...</h1>}>
+              <HomePage />
+            </Suspense>}
           />
           <Route path={ROUTE_PATH_TrashPage} element={
-                                                <RequiredAuth>
-                                                    <Suspense fallback={<h1>Loading Trash...</h1>}>
-                                                      <TrashPage />
-                                                  </Suspense>
-                                                </RequiredAuth>}
+            <RequiredAuth>
+              <Suspense fallback={<h1>Loading Trash...</h1>}>
+                <TrashPage />
+              </Suspense>
+            </RequiredAuth>}
           />
           <Route path={ROUTE_PATH_ArchivePage} element={
-                                                <RequiredAuth>
-                                                  <Suspense fallback={<h1>Loading Archive...</h1>}>
-                                                    <ArchivePage />
-                                                  </Suspense>
-                                                </RequiredAuth>}
+            <RequiredAuth>
+              <Suspense fallback={<h1>Loading Archive...</h1>}>
+                <ArchivePage />
+              </Suspense>
+            </RequiredAuth>}
           />
         </Route>
         <Route path={ROUTE_PATH_Mockman} element={<div className='MockAPI'><Mockman /></div>} />
-        </Routes>
+      </Routes>
     </div>
   );
 }
-  // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiJmNTg4Y2NmOC1jYjhkLTRjMzAtYjg2MC1lNmM3ZjQwZmNmYjIiLCJlbWFpbCI6ImFkYXJzaGJhbGlrYUBnbWFpbC5jb20ifQ.AMka3wzV3nXZA2OEKejEdL546VHpTIrP1GszqcbCbO8
+// eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiJmNTg4Y2NmOC1jYjhkLTRjMzAtYjg2MC1lNmM3ZjQwZmNmYjIiLCJlbWFpbCI6ImFkYXJzaGJhbGlrYUBnbWFpbC5jb20ifQ.AMka3wzV3nXZA2OEKejEdL546VHpTIrP1GszqcbCbO8
 export default App;

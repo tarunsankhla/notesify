@@ -1,10 +1,8 @@
 import React, { useState } from 'react'
 import { useModal } from 'src/context/ModalProvider';
-import "./FullPageModal.css"
-// type Props = { children: JSX.Element }
+import "./FullPageModal.css";
 
 function FullPageModal({ children }) {
-    // const [FullPageModalToggle, setFullPageModalToggle] = useState(false);
     const { modalToggle, setmodalToggle } = useModal();
 
     // console.log(props);k
@@ -22,8 +20,4 @@ function FullPageModal({ children }) {
     );
 }
 
-
-
-
-// eslint-disable-next-line import/no-anonymous-default-export
 export { FullPageModal };
