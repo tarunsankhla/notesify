@@ -39,11 +39,11 @@ function AuthenticationProvider({ children }: { children: React.ReactNode }) {
         firstName: "",
         lastName: "",
         email: ""
-    })
-    // const [s]
+    });
 
     let loginUser = (newUser: any, callback: VoidFunction) => {
         return AuthProvider.loginAuthProvider(() => {
+            console.log("new User in context", newUser);
             setuser(newUser);
             userDispatch(newUser);
             callback();

@@ -1,7 +1,23 @@
 import React, { useReducer, useState } from 'react';
+import { useNavigate } from 'react-router';
 import { Signup } from 'src/assets/holders/holders';
+import { useAuth } from 'src/context/AuthContext';
+import { useModal } from 'src/context/ModalProvider';
+import useAxios from 'src/customhook/useAxios';
+import { VAR_ENCODE_TOKEN, VAR_USER_ID } from 'src/utils/Route';
 import StopPropogation from "src/utils/StopPropogation";
 import "./SignUpPage.css"
+
+interface Location {
+  pathname: string;
+  search: string;
+  hash: string;
+  state: unknown;
+  key: string;
+}
+let location: Location;
+let from: any;
+type Props = { props: any };
 
 const SignUpDetails = (state, action) => {
   console.log(state, action);
@@ -18,10 +34,10 @@ const SignUpDetails = (state, action) => {
   return { ...state }
 }
 
-type Props = { props: any }
 
-function SignUpPage({ props: setlogin }: Props)
-{
+function SignUpPage({ props: setlogin }: Props) {
+
+  
   const [passwordCheckError, setPasswordCheckError] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
   const [state, dispatch] = useReducer(SignUpDetails, {
@@ -31,6 +47,10 @@ function SignUpPage({ props: setlogin }: Props)
     lastName: "",
   });
   const [passwordType, setPasswordType] = useState("password");
+  const { modalToggle, setmodalToggle } = useModal();
+  const [response, error, loading, fetch] = useAxios();
+  const navigate = useNavigate();
+  let auth = useAuth();
 
   function HasAlphabets(letter) {
     for (let i = 0; i < letter.length; i++) {
@@ -66,114 +86,129 @@ function SignUpPage({ props: setlogin }: Props)
     setPasswordCheckError(!!HasAlphabets(value) && !!HasNumber(value) && !!HasSpecialCharacter(value));
   }
 
-  const PasswordVisibilityHandler = () => { console.log(passwordType);
+  const PasswordVisibilityHandler = () => {
+    console.log(passwordType);
     setPasswordType((prev) => prev === "password" ? "text" : "password")
-    
-}
+
+  }
 
   const onSubmittFunc = async () => {
-    // try{
-    //     var object = {
-    //         "email":state.email,
-    //         "password":confirmPassword,
-    //         "firstName":state.firstName,
-    //         "lastName":state.lastName
-    //     };
-    //     var res = await axios.post("/api/auth/signup",object);
-    //     if(res.status === 201)
-    //     {
-    //         var token = res?.data?.encodedToken;
-    //         localStorage.setItem(VAR_ENCODE_TOKEN,token)
-    //         var user = res?.data?.createdUser;
-    //         var userId =res?.data?.createdUser._id;
-    //         localStorage.setItem(VAR_USER_ID, userId);
-    //         userDispatch({ email: res.data.createdUser.email, firstName: res.data.createdUser.firstName, lastName: res.data.createdUser.lastName })
-    //         setlogin(true);
-    //         Alert("success", "SuccessFully Logged In!!");
-    //         navigate("/");  
-    //     }
+    try {
+      var object = {
+        "email": state.email,
+        "password": confirmPassword,
+        "firstName": state.firstName,
+        "lastName": state.lastName
+      };
+      var res = await fetch({
+        method: "post",
+        url: "/api/auth/signup",
+        data: object,
+      });
+      console.log(res);
+      var token = res?.encodedToken;
+      localStorage.setItem(VAR_ENCODE_TOKEN, token)
+      var user = res?.createdUser;
+      var userId = res.createdUser._id;
+      localStorage.setItem(VAR_USER_ID, userId);
+      auth.loginUser({ email: res.createdUser.email, firstName: res.createdUser.firstName, lastName: res.createdUser.lastName },
+        () => { navigate((from?.pathname || ""), { replace: true }); });
+    setlogin(true);
+    setmodalToggle(false);
+      //     var res = await axios.post("/api/auth/signup",object);
+      //     if(res.status === 201)
+      //     {
+      //         var token = res?.data?.encodedToken;
+      //         localStorage.setItem(VAR_ENCODE_TOKEN,token)
+      //         var user = res?.data?.createdUser;
+      //         var userId =res?.data?.createdUser._id;
+      //         localStorage.setItem(VAR_USER_ID, userId);
+      //         userDispatch({ email: res.data.createdUser.email, firstName: res.data.createdUser.firstName, lastName: res.data.createdUser.lastName })
+      //         setlogin(true);
+      //         Alert("success", "SuccessFully Logged In!!");
+      //         navigate("/");  
+      //     }
 
-    // }
-    // catch(error)
-    // {
-    //   console.log(error.message);
-    //   if(error.message.slice(error.message.length-3,error.message.length) === "422")
-    //     {
-    //         Alert("error", "Something suspicious!! The User Already Exist, try logging in");
-    //     }
-    // }
+    }
+    catch (error: any) {
+      console.log(error.message);
+      if (error.message.slice(error.message.length - 3, error.message.length) === "422") {
+        console.log("The User Already Exist, try logging in");
+        // Alert("error", "Something suspicious!! The User Already Exist, try logging in");
+      }
+    }
   }
 
   return (
-    <div  className="signup-body-container" onClick={(event: React.MouseEvent<HTMLElement>) => StopPropogation(event)}>
+    <div className="signup-body-container" onClick={(event: React.MouseEvent<HTMLElement>) => StopPropogation(event)}>
       {/* SignUpPAge
       <button onClick={() => setlogin(true)}>login</button> */}
-        <img src={Signup} className="signupImage" alt='signupImg'/>
-        <div className="signup-container">
-            <div className="title-header">
-              <p>Create your profile and get first <br/>access to the very best of products, inspiration and community.
-              </p>
-            </div>
-            <div className="signup-credential-container">
-                <input type="email" placeholder="Email Address - xyz@gmail.com" onChange={(e)=>dispatch({email : e.target.value})} />
-            </div>
-            <div className="signup-credential-container">
-              <div className='password-holder'>
-                  <input  type={passwordType} placeholder="Password" name="" 
-                        id=""  style={{ borderColor: passwordCheckError ? "red" : "black", outlineColor: passwordCheckError ? "red" : "black" }}
-                        onChange={(e) => {
-                            PasswordCheck(e.target.value);
-                      }} />
-                  {passwordType === "password" ?
-                                        <span className="material-icons-round" onClick={()=>PasswordVisibilityHandler() }>
-                                            visibility
-                                        </span>
-                                        : <span className="material-icons-round" onClick={() => PasswordVisibilityHandler()}>
-                                            visibility_off
-                                        </span>}
-                       </div>                  
-                  <p className='error'>
-                      {confirmPassword.length > 0 && confirmPassword.length < 7
-                      ? "password should be minimum 7 letter"
-                      : ""}
-                  </p>
-                  <p className='error'>
-                      {confirmPassword.length > 0 &&
-                      !passwordCheckError &&
-                      "Password should contain a number, alphabet & special character"}
-                </p>
-             
-            </div>
-            <div className="signup-credential-container">
-                <input type="password" placeholder="Confirm Password" name="" 
-                id="" style={{ borderColor: passwordCheckError ? "red" : "black", outlineColor: passwordCheckError ? "red" : "black" }}
-                onChange={(e) => {
-                    setPasswordCheckError(e.target.value !== confirmPassword);
-                  }}
-                  disabled={passwordCheckError && confirmPassword.length >= 7 ? false : true}/>
-                  <p className='error'>{passwordCheckError && "Confirm Password Should match Password"}</p>
-     
-            </div>
-            <div className="signup-credential-container">
-                <input type="email" placeholder="First Name" onChange={(e)=>dispatch({firstName : e.target.value})}/>
-            </div>
-            <div className="signup-credential-container">
-                <input type="email" placeholder="Last Name" onChange={(e)=>dispatch({lastName : e.target.value})} />
-            </div>
-            <div className="signup-remember-container">
-                <div>
-                    <input type="checkbox" name="" id="" />
-                    I accept all Terms & Conditions
-                </div>
-            </div>
-            <div className="signup-btn-container">
-                <button className="btn signup-action-btn" onClick={onSubmittFunc} >Signup</button>
-                </div>
-            <span className="signup-footer" onClick={() => setlogin(true)}>Already have an Account <span className="material-icons-round">
-                navigate_next
-                </span>
-            </span>
+      <img src={Signup} className="signupImage" alt='signupImg' />
+      <div className="signup-container">
+        <div className="title-header">
+          <p>Create your profile and get first <br />access to the very best of products, inspiration and community.
+          </p>
         </div>
+        <div className="signup-credential-container">
+          <input type="email" placeholder="Email Address - xyz@gmail.com" onChange={(e) => dispatch({ email: e.target.value })} />
+        </div>
+        <div className="signup-credential-container">
+          <div className='password-holder'>
+            <input type={passwordType} placeholder="Password" name=""
+              id="" style={{ borderColor: passwordCheckError ? "red" : "black", outlineColor: passwordCheckError ? "red" : "black" }}
+              onChange={(e) => {
+                PasswordCheck(e.target.value);
+              }} />
+            {passwordType === "password" ?
+              <span className="material-icons-round" onClick={() => PasswordVisibilityHandler()}>
+                visibility
+              </span>
+              : <span className="material-icons-round" onClick={() => PasswordVisibilityHandler()}>
+                visibility_off
+              </span>}
+          </div>
+          <p className='error'>
+            {confirmPassword.length > 0 && confirmPassword.length < 7
+              ? "password should be minimum 7 letter"
+              : ""}
+          </p>
+          <p className='error'>
+            {confirmPassword.length > 0 &&
+              !passwordCheckError &&
+              "Password should contain a number, alphabet & special character"}
+          </p>
+
+        </div>
+        <div className="signup-credential-container">
+          <input type="password" placeholder="Confirm Password" name=""
+            id="" style={{ borderColor: passwordCheckError ? "red" : "black", outlineColor: passwordCheckError ? "red" : "black" }}
+            onChange={(e) => {
+              setPasswordCheckError(e.target.value !== confirmPassword);
+            }}
+            disabled={passwordCheckError && confirmPassword.length >= 7 ? false : true} />
+          <p className='error'>{passwordCheckError && "Confirm Password Should match Password"}</p>
+
+        </div>
+        <div className="signup-credential-container">
+          <input type="email" placeholder="First Name" onChange={(e) => dispatch({ firstName: e.target.value })} />
+        </div>
+        <div className="signup-credential-container">
+          <input type="email" placeholder="Last Name" onChange={(e) => dispatch({ lastName: e.target.value })} />
+        </div>
+        <div className="signup-remember-container">
+          <div>
+            <input type="checkbox" name="" id="" />
+            I accept all Terms & Conditions
+          </div>
+        </div>
+        <div className="signup-btn-container">
+          <button className="btn signup-action-btn" onClick={onSubmittFunc} >Signup</button>
+        </div>
+        <span className="signup-footer" onClick={() => setlogin(true)}>Already have an Account <span className="material-icons-round">
+          navigate_next
+        </span>
+        </span>
+      </div>
     </div>
 
   )

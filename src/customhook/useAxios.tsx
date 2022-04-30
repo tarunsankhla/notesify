@@ -6,9 +6,9 @@ axios.defaults.baseURL = "/";
 axios.defaults.headers.common["authorization"] = localStorage.getItem(VAR_ENCODE_TOKEN) || "";
 
 function useAxios() {
-  const [response, setResponse] = useState(undefined);
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [response, setResponse] = useState<any>(undefined);
+  const [error, setError] = useState<any>("");
+  const [loading, setLoading] = useState<any>(false);
   	
   const fetch = async (params:any) => {
     try {
@@ -16,6 +16,7 @@ function useAxios() {
       const result = await axios.request(params);
       console.log(result);
       setResponse(result.data);
+      return result.data;
     } catch (error:any) {
       if (error.response && error.response.data.errors) {
         console.log(error)

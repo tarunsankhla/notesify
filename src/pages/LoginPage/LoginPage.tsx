@@ -7,46 +7,58 @@ import axios from "axios";
 import useAxios from "src/customhook/useAxios";
 import { VAR_ENCODE_TOKEN, VAR_USER_ID } from "src/utils/Route";
 import { useAuth } from "src/context/AuthContext";
-
-
+import { useModal } from "src/context/ModalProvider";
+interface Location {
+    pathname: string;
+    search: string;
+    hash: string;
+    state: unknown;
+    key: string;
+  }
+let location: Location;
+let from: any;
 
 function LoginPage({ props: setlogin }) {
-    let auth = useAuth();
+    
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const navigate = useNavigate();
+    const { modalToggle, setmodalToggle } = useModal();
     const [response, error, loading, fetch] = useAxios();
-    let location = useLocation();
-    let from = location?.state?.from?.pathname || "/";
+    let auth = useAuth();
+    const navigate = useNavigate();
+    location = useLocation();
+    from = location.state;  // .state?.from?.pathname || "/";
+    
     function guestUserHandler() {
         setEmail("adarshbalika@gmail.com");
         setPassword("adarshBalika123");
-        //     email: "adarshbalika@gmail.com",
+        // email: "adarshbalika@gmail.com",
         // password: "adarshBalika123",
     }
 
     
-    const onSubmitHandler = () => {
+    const onSubmitHandler = async () => {
 
         // try {
         var object = {
             "email": email,
             "password": password
         };
-        fetch({
+        var res = await fetch({
             method: "post",
             url: "/api/auth/login",
             data: object,
         });
-        console.log(response);
-        var token = response?.encodedToken;
+        console.log(res);
+        var token = res?.encodedToken;
         localStorage.setItem(VAR_ENCODE_TOKEN, token)
-        var user = response?.foundUser;
-        var userId = response.foundUser._id;
+        var user = res?.foundUser;
+        var userId = res.foundUser._id;
         localStorage.setItem(VAR_USER_ID, userId);
-        auth.loginUser({ email: response.foundUser.email, firstName: response.foundUser.firstName, lastName: response.foundUser.lastName },
-            () => { navigate(from, { replace: true }); });
+        auth.loginUser({ email: res.foundUser.email, firstName: res.foundUser.firstName, lastName: res.foundUser.lastName },
+            () => { navigate((from?.pathname || ""), { replace: true }); });
         setlogin(true);
+        setmodalToggle(false);
         // var res = await axios.post("/api/auth/login", object);
         
         // console.log(res);
