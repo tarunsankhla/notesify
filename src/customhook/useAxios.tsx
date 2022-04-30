@@ -10,10 +10,11 @@ function useAxios() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   	
-  const fetch = async (params) => {
+  const fetch = async (params:any) => {
     try {
       setLoading(true);
       const result = await axios.request(params);
+      console.log(result);
       setResponse(result.data);
     } catch (error:any) {
       if (error.response && error.response.data.errors) {
@@ -24,7 +25,7 @@ function useAxios() {
       setLoading(false);
     }
   };
-  return [response, error, loading, fetch];
+  return [response, error, loading, fetch]  as const;
 } 
 
 export default useAxios
