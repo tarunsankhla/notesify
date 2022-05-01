@@ -52,6 +52,13 @@ function AuthenticationProvider({ children }: { children: React.ReactNode }) {
 
     let logoutUser = (callback: VoidFunction) => {
         return AuthProvider.logoutAuthProvider(() => {
+            console.log("logout")
+            setuser(null);
+            userDispatch({firstName: "",
+            lastName: "",
+                email: ""
+            });
+            localStorage.removeItem(VAR_USER_DETAILS)
             callback();
         })
     }

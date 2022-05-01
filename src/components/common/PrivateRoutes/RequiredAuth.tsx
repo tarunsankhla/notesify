@@ -7,7 +7,7 @@ type Props = { children: JSX.Element }
 function RequiredAuth({ children }: Props) {
     let location = useLocation();
     let auth = useAuth();
-
+    console.log(auth.user)
     if (!auth.user) { 
         return <Navigate to="/login" state={{from :location  }} replace/>    }
     return children;

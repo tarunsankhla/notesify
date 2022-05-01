@@ -8,6 +8,7 @@ import useAxios from "src/customhook/useAxios";
 import { VAR_ENCODE_TOKEN, VAR_USER_ID } from "src/utils/Route";
 import { useAuth } from "src/context/AuthContext";
 import { useModal } from "src/context/ModalProvider";
+
 interface Location {
     pathname: string;
     search: string;

@@ -6,6 +6,8 @@ import { debounce } from "src/utils/Debounce";
 import DOMPurify from 'dompurify';
 import { FloatAddButton, CreateButton } from "src/components/UI/Buttons/Buttons";
 import { BiXCircle } from "src/components/UI/Icons/Icons";
+import { FullPageModal } from "src/components/UI/Modal/FullPageModal/FullPageModal";
+import { useModal } from "src/context/ModalProvider";
 
 const ContentDetail = (state, action) => {
   switch (action.type) {
@@ -36,6 +38,7 @@ export default function HomePage() {
       color: "",
     });
   var modules = useRef({});
+  const { modalToggle, setmodalToggle } = useModal();
 
 
   useMemo(() => {
@@ -64,11 +67,20 @@ export default function HomePage() {
   //   setNoteContent(text);
   //   noteDispatch({ type: "htmlbody", text });
   // }
+//   archives: []
+// createdAt: "2022-04-30T19:42:02+05:30"
+// email: "adarshbalika@gmail.com"
+// firstName: "Adarsh"
+// id: "1"
+// lastName: "Balika"
+// notes: []
+// updatedAt: "2022-04-30T19:42:02+05:30"
 
   return (
     <div className="home-page">
       <div>
         {showNote &&
+          // <FullPageModal>
           <div className="note-editor-container">
             <div className="close-note" onClick={() => setShowNote(false)}><BiXCircle /></div>
             <input
@@ -89,16 +101,17 @@ export default function HomePage() {
                 onChange={(e) => debounce(() => noteDispatch({ type: "color", data: e.target.value }), 500)} />
               <span><CreateButton /></span>
             </div>
-          </div>
+            </div>
+          // </FullPageModal>
         }
       </div>
 
 
       <div className="latest-notes-container">
-        <h1>Latest Notes : </h1>
+        <div className="page-title">Latest Notes : </div>
         <div></div>
       </div>
-      <span onClick={() => setShowNote(true)}>
+      <span onClick={() => { setShowNote(true);  }}>
         <FloatAddButton />
       </span>
     </div>

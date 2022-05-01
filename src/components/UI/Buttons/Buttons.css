@@ -6,7 +6,7 @@
     position: fixed;
     bottom: 2rem;
     right: 3rem;
-    background-color: var(--floatbtn-bg);
+    background-color: var(--primary-color);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,7 +18,7 @@
 
 .float-add-btn:hover{
     transform: scale(1.1);
-    background-color: rgba(--floatbtn-bg, 0.01);
+    background-color: rgba(--primary-color, 0.01);
     color: white;
 }
 /* float button end */

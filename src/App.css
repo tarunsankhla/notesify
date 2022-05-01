@@ -34,7 +34,7 @@ code {
 }
 
 :root {
-	--floatbtn-bg: #9675b4;
+	--primary-color: #9675b4;
 }
 
 .App-header {
@@ -114,7 +114,7 @@ span:hover {
 
 .page-title {
 	font-size: 1.5em;
-	color: var(--hover-color);
+	color: var(--primary-color);
 	font-weight: 800;
 }
 
@@ -145,4 +145,5 @@ span:hover {
 
 .outlet-body {
 	padding-left: 7em;
+	width: 100%;
 }

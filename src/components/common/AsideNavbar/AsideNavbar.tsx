@@ -9,7 +9,7 @@ function AsideNavbar() {
     let auth = useAuth();
     let navigate = useNavigate();
     const { modalToggle, setmodalToggle } = useModal();
-    
+    console.log(auth.user,auth.userState)
     return (
         <div className='AsideNav'>
             <div>
@@ -26,7 +26,7 @@ function AsideNavbar() {
                 </ul>
             </div>
             <div className='aside-nav-logout'>
-                @tarunsankhla
+                { auth.user ? "@"+auth.user?.firstName  + auth.user?.lastName : "" }
                 <span className='logout-btn' onClick={() => {
                                                 auth.logoutUser(() => { navigate("/"); })
                                             }}>
