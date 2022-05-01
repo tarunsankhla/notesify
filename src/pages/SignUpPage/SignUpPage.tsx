@@ -37,7 +37,7 @@ const SignUpDetails = (state, action) => {
 
 function SignUpPage({ props: setlogin }: Props) {
 
-  
+
   const [passwordCheckError, setPasswordCheckError] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
   const [state, dispatch] = useReducer(SignUpDetails, {
@@ -113,22 +113,8 @@ function SignUpPage({ props: setlogin }: Props) {
       localStorage.setItem(VAR_USER_ID, userId);
       auth.loginUser({ email: res.createdUser.email, firstName: res.createdUser.firstName, lastName: res.createdUser.lastName },
         () => { navigate((from?.pathname || ""), { replace: true }); });
-    setlogin(true);
-    setmodalToggle(false);
-      //     var res = await axios.post("/api/auth/signup",object);
-      //     if(res.status === 201)
-      //     {
-      //         var token = res?.data?.encodedToken;
-      //         localStorage.setItem(VAR_ENCODE_TOKEN,token)
-      //         var user = res?.data?.createdUser;
-      //         var userId =res?.data?.createdUser._id;
-      //         localStorage.setItem(VAR_USER_ID, userId);
-      //         userDispatch({ email: res.data.createdUser.email, firstName: res.data.createdUser.firstName, lastName: res.data.createdUser.lastName })
-      //         setlogin(true);
-      //         Alert("success", "SuccessFully Logged In!!");
-      //         navigate("/");  
-      //     }
-
+      setlogin(true);
+      setmodalToggle(false);
     }
     catch (error: any) {
       console.log(error.message);
@@ -191,8 +177,8 @@ function SignUpPage({ props: setlogin }: Props) {
         </div>
         <div className="signup-credential-container">
           <input type="email" placeholder="First Name" onChange={(e) => dispatch({ firstName: e.target.value })} />
-        </div>
-        <div className="signup-credential-container">
+          {/* </div>
+        <div className="signup-credential-container"> */}
           <input type="email" placeholder="Last Name" onChange={(e) => dispatch({ lastName: e.target.value })} />
         </div>
         <div className="signup-remember-container">

@@ -44,8 +44,8 @@ input[type=radio]{
 }
 .signup-credential-container > input{
     width: 100%;
-    padding: 1em;
-    margin: 1em 0.5em;
+    padding: 0.7em;
+    margin: 0.7em 0.5em;
     border-radius: 0.5em;
     border: 2px solid transparent !important;
     outline: none;
@@ -101,6 +101,7 @@ input[type=radio]{
 .error{
     color: red;
     font-weight: 500;
+    font-size: 0.7em;
 }
 
 button:disabled{

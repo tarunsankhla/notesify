@@ -113,12 +113,12 @@ function LoginPage({ props: setlogin }) {
                         <div className="btn-link">Forgot your password?</div>
                     </div>
                     <div className="login-btn-container">
-                        <div className="btn login-action-btn"
-                            onClick={onSubmitHandler}>Login</div>
-                    </div>
-                    <div className="login-btn-container">
-                        <div className="btn login-action-btn"
-                            onClick={() => { guestUserHandler() }}>Guest User</div>
+                        <button className="btn login-action-btn"
+                            onClick={onSubmitHandler}>Login</button>
+                    {/* </div>
+                    <div className="login-btn-container"> */}
+                        <button className="btn login-action-btn"
+                            onClick={() => { guestUserHandler() }}>Guest User</button>
                     </div>
                     <span className="login-footer" onClick={(e) => {
                         setlogin(false);
