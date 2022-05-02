@@ -60,25 +60,7 @@ function LoginPage({ props: setlogin }) {
             () => { navigate((from?.pathname || ""), { replace: true }); });
         setlogin(true);
         setmodalToggle(false);
-        // var res = await axios.post("/api/auth/login", object);
-        
-        // console.log(res);
-        //     if (res.status === 200) {
-        //         var token = res.data.encodedToken;
-        //         localStorage.setItem(VAR_ENCODE_TOKEN, token)
-        //         var user = res.data.foundUser;
-        //         var userId = res.data.foundUser._id;
-        //         localStorage.setItem(VAR_USER_ID, userId);
-        //         userDispatch({ email: res.data.foundUser.email, firstName: res.data.foundUser.firstName, lastName: res.data.foundUser.lastName });
-        //         setlogin(true);
-        //         Alert("success", "SuccessFully Logged In!!");
-        //         navigate(-1);
-        //     } else {
-        //         Alert("error", "Something went wrong!! try again.");
-        //     }
-        // } catch (error) { 
-        //     Alert("error", "Something went wrong!! try again.");
-        // }
+   
     }
     return (
 

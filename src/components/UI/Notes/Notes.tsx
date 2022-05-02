@@ -1,0 +1,82 @@
+import React from 'react';
+import DOMPurify from 'dompurify';
+import "./Notes.css";
+import { BiPinAngle, BiPinAngleFill, BiTrash, IcRoundArchive } from '../Icons/Icons';
+import useAxios from 'src/customhook/useAxios';
+import { VAR_ENCODE_TOKEN, VAR_NotPinnedNotes } from 'src/utils/Route';
+import { useArchive } from 'src/context/ArchiveContext';
+import { useTrash } from 'src/context/TrashContext';
+
+type Props = { props : any}
+
+const Notes = ({ props }: Props) => {
+  const [response, error, loading, axiosRequest] = useAxios();
+  const { ArchiveContextArray, setArchiveContextArray } = useArchive();
+  const { TrashContextArray, setTrashContextArray } = useTrash();
+  console.log(props);
+  
+
+  function ArchiveHandler() { 
+    try {
+			(async () => {
+				var res = await  axiosRequest({
+          method: "post",
+          url: "/api/notes/archives/" +  props._id,
+          headers: {
+            authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
+          },
+          data: { note: { ...props } }
+        
+        });
+        console.log(res,res.archives,setArchiveContextArray);
+        setArchiveContextArray(res.archives);
+			})();;
+		} catch (error) {
+			console.log("Product list page error", error);
+			// Alert("error", "Some error occured!! refresh page and try again");
+		}
+  }
+
+  function TrashHandler() { 
+    try {
+			(async () => {
+				var res = await  axiosRequest({
+          method: "delete",
+          url: "/api/notes/" +  props._id,
+          headers: {
+            authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
+          }
+        
+        });
+        console.log(res);
+        setTrashContextArray((prev)=>[...prev,props]);
+			})();;
+		} catch (error) {
+			console.log("Product list page error", error);
+			// Alert("error", "Some error occured!! refresh page and try again");
+		}
+  }
+  return (
+    <div className='note-details-container' style={{backgroundColor : props.color  || "wheat"}}>
+      <h3>{props.title}</h3>
+      <div>
+        {props.pin === VAR_NotPinnedNotes ? <BiPinAngle/> :<BiPinAngleFill /> }
+      </div>
+      <p className="color-schema" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(props.content) }}></p> 
+      <div>
+        CreatedOn : {props.createdOn}
+      </div>
+
+      <section>
+        <span onClick={() => ArchiveHandler()}>
+          <IcRoundArchive height="1.7em" width="1.7em" />
+        </span>
+        <span onClick={()=> TrashHandler()}>
+          <BiTrash height="1.7em" width="1.7em"  />
+        </span>
+      </section>
+    </div>
+  )
+}
+
+export default Notes

@@ -12,7 +12,7 @@ function FloatAddButton() {
 
 function CreateButton(props) {
     return (
-      <div className='create-btn'>Create Note <BiPatchPlus/></div>
+      <div className='create-btn'>Create <BiPatchPlus/></div>
     )
   }
   

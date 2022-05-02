@@ -6,10 +6,15 @@ const ROUTE_PATH_LoginPage = "/login";
 const ROUTE_PATH_SignupPage = "/signup";
 const ROUTE_PATH_ProfilePage = "/profile";
 const ROUTE_PATH_Mockman = "/mockman";
+
+
 const VAR_ENCODE_TOKEN = "NotesifyToken";
 const VAR_USER_ID = "NotesifyUserId";
 const VAR_USER_DETAILS = "NotesifyUserDetails";  
 
+
+const VAR_PinnedNotes = "pinnned";
+const VAR_NotPinnedNotes = "notpinned";
 export {
     ROUTE_PATH_LandingPage,
     ROUTE_PATH_TrashPage,
@@ -21,5 +26,7 @@ export {
     ROUTE_PATH_Mockman,
     VAR_ENCODE_TOKEN,
     VAR_USER_ID,
-    VAR_USER_DETAILS
+    VAR_USER_DETAILS,
+    VAR_PinnedNotes,
+    VAR_NotPinnedNotes
 }

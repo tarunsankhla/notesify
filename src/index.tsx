@@ -1,13 +1,15 @@
 import { BrowserRouter } from "react-router-dom";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
-import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { makeServer } from "./server";
 import { AuthenticationProvider } from "./context/AuthContext";
 import { ModalProvider } from "./context/ModalProvider";
-
+import "./index.css";
+import App from "./App";
+import { ArchiveProvider } from "./context/ArchiveContext";
+import { TrashProvider } from "./context/TrashContext";
+import { LabelProvider } from "./context/LabelContext";
 makeServer();
 
 
@@ -17,7 +19,13 @@ root.render(
     <BrowserRouter>
       <AuthenticationProvider>
         <ModalProvider>
-          <App />
+          <ArchiveProvider>
+            <TrashProvider>
+              <LabelProvider>
+                <App />
+              </LabelProvider>
+            </TrashProvider>
+          </ArchiveProvider>
         </ModalProvider>
       </AuthenticationProvider>
     </BrowserRouter>
