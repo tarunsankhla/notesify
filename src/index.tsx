@@ -10,6 +10,7 @@ import App from "./App";
 import { ArchiveProvider } from "./context/ArchiveContext";
 import { TrashProvider } from "./context/TrashContext";
 import { LabelProvider } from "./context/LabelContext";
+import { NotesProvider } from "./context/NotesContext";
 makeServer();
 
 
@@ -19,13 +20,15 @@ root.render(
     <BrowserRouter>
       <AuthenticationProvider>
         <ModalProvider>
+          <NotesProvider>
           <ArchiveProvider>
             <TrashProvider>
               <LabelProvider>
                 <App />
               </LabelProvider>
             </TrashProvider>
-          </ArchiveProvider>
+            </ArchiveProvider>
+          </NotesProvider>
         </ModalProvider>
       </AuthenticationProvider>
     </BrowserRouter>

@@ -13,6 +13,7 @@ import { VAR_ENCODE_TOKEN, VAR_NotPinnedNotes } from "src/utils/Route";
 // import AllNotes from "./AllNotes/AllNotes";
 import StopPropogation from "src/utils/StopPropogation";
 import { annotation, books, Files, Login2, noted, preperation, Signup } from "src/assets/holders/holders";
+import { useNotes } from "src/context/NotesContext";
 
 
 const AllNotes = React.lazy(() => import('./AllNotes/AllNotes'));
@@ -53,7 +54,7 @@ export default function HomePage() {
       priority: "",
       label:"",
     });
-  const [noteDataSet, SetNoteDataSet] = useState<any>([]);
+  const [noteDataSet, SetNoteDataSet] = useNotes();
   var modules = useRef({});
   const [response, error, loading, axiosRequest] = useAxios();
   const { modalToggle, setmodalToggle } = useModal();

@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import ArchiveNotes from 'src/components/UI/Notes/ArchiveNotes';
 import { useArchive } from 'src/context/ArchiveContext';
 import useAxios from 'src/customhook/useAxios';
 import { VAR_ENCODE_TOKEN } from 'src/utils/Route';
@@ -29,9 +30,15 @@ const ArchivePage = () => {
   return (
     <div> <div className="latest-notes-container">
     <div className="page-title">Latest Notes : </div>
-    <div>
+    {/* <div>
       <AllNotes props={ArchiveContextArray} />
-    </div>
+      </div> */}
+      <div className='allnotes-container'>
+            {
+                ArchiveContextArray?.map((note: any) => (
+                    <ArchiveNotes key={note._id} props={note} />
+                ))}
+        </div>
   </div></div>
   )
 }

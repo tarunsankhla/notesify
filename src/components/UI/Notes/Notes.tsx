@@ -6,6 +6,7 @@ import useAxios from 'src/customhook/useAxios';
 import { VAR_ENCODE_TOKEN, VAR_NotPinnedNotes } from 'src/utils/Route';
 import { useArchive } from 'src/context/ArchiveContext';
 import { useTrash } from 'src/context/TrashContext';
+import { useNotes } from 'src/context/NotesContext';
 
 type Props = { props : any}
 
@@ -13,6 +14,7 @@ const Notes = ({ props }: Props) => {
   const [response, error, loading, axiosRequest] = useAxios();
   const { ArchiveContextArray, setArchiveContextArray } = useArchive();
   const { TrashContextArray, setTrashContextArray } = useTrash();
+  const [noteDataSet, SetNoteDataSet] = useNotes();
   console.log(props);
   
 
@@ -30,6 +32,7 @@ const Notes = ({ props }: Props) => {
         });
         console.log(res,res.archives,setArchiveContextArray);
         setArchiveContextArray(res.archives);
+        SetNoteDataSet(res.notes);
 			})();;
 		} catch (error) {
 			console.log("Product list page error", error);
