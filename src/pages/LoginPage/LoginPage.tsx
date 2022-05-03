@@ -8,6 +8,7 @@ import useAxios from "src/customhook/useAxios";
 import { VAR_ENCODE_TOKEN, VAR_USER_ID } from "src/utils/Route";
 import { useAuth } from "src/context/AuthContext";
 import { useModal } from "src/context/ModalProvider";
+import { FullPageModal } from "src/components/UI/Modal/FullPageModal/FullPageModal";
 
 interface Location {
     pathname: string;
@@ -15,12 +16,12 @@ interface Location {
     hash: string;
     state: unknown;
     key: string;
-  }
+}
 let location: Location;
 let from: any;
 
 function LoginPage({ props: setlogin }) {
-    
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const { modalToggle, setmodalToggle } = useModal();
@@ -29,7 +30,7 @@ function LoginPage({ props: setlogin }) {
     const navigate = useNavigate();
     location = useLocation();
     from = location.state;  // .state?.from?.pathname || "/";
-    
+
     function guestUserHandler() {
         setEmail("adarshbalika@gmail.com");
         setPassword("adarshBalika123");
@@ -37,7 +38,7 @@ function LoginPage({ props: setlogin }) {
         // password: "adarshBalika123",
     }
 
-    
+
     const onSubmitHandler = async () => {
 
         // try {
@@ -60,61 +61,57 @@ function LoginPage({ props: setlogin }) {
             () => { navigate((from?.pathname || ""), { replace: true }); });
         setlogin(true);
         setmodalToggle(false);
-   
+
     }
     return (
+        <FullPageModal>
 
-        <div className="login-body-container" onClick={(event: React.MouseEvent<HTMLElement>) => StopPropogation(event)}>
-            {/* <span 
-                onClick={(e) => {
-                setlogin(false);
-            }}>Create account</span> */}
+            <div className="login-body-container" onClick={(event: React.MouseEvent<HTMLElement>) => StopPropogation(event)}>
 
+                <img src={Login} className="login-logo" alt='login-logo' />
 
-            <img src={Login}
-                className="login-logo" alt='login-logo' />
-            <div className="login-container">
-                <div className="title-header">
-                    <div className="login-credential-container">
-                        <input placeholder="Email Address - xyz@gmail.com"
-                            value={email}
-                            onChange={
-                                (e) => setEmail(e.target.value)
-                            } />
-                    </div>
-                    <div className="login-credential-container">
-                        <input type="password" value={password} onChange={
-                            (e) => setPassword(e.target.value)}
-                            name="" placeholder="Password" id="" />
-                    </div>
-                    <div className="login-rem-forgetpass-container">
-                        <div>
-                            <input type="checkbox" name="" id="" />
-                            Remember me
+                <div className="login-container">
+                    <div className="title-header">
+                        <div className="login-credential-container">
+                            <input placeholder="Email Address - xyz@gmail.com"
+                                value={email}
+                                onChange={
+                                    (e) => setEmail(e.target.value)
+                                } />
                         </div>
-                        <div className="btn-link">Forgot your password?</div>
-                    </div>
-                    <div className="login-btn-container">
-                        <button className="btn login-action-btn"
-                            onClick={onSubmitHandler}>Login</button>
-                    {/* </div>
+                        <div className="login-credential-container">
+                            <input type="password" value={password} onChange={
+                                (e) => setPassword(e.target.value)}
+                                name="" placeholder="Password" id="" />
+                        </div>
+                        <div className="login-rem-forgetpass-container">
+                            <div>
+                                <input type="checkbox" name="" id="" />
+                                Remember me
+                            </div>
+                            <div className="btn-link">Forgot your password?</div>
+                        </div>
+                        <div className="login-btn-container">
+                            <button className="btn login-action-btn"
+                                onClick={onSubmitHandler}>Login</button>
+                            {/* </div>
                     <div className="login-btn-container"> */}
-                        <button className="btn login-action-btn"
-                            onClick={() => { guestUserHandler() }}>Guest User</button>
-                    </div>
-                    <span className="login-footer" onClick={(e) => {
-                        setlogin(false);
-                    }}>
-                        Create New Account
-                        <span className="material-icons-round">
-                            navigate_next
+                            <button className="btn login-action-btn"
+                                onClick={() => { guestUserHandler() }}>Guest User</button>
+                        </div>
+                        <span className="login-footer" onClick={(e) => {
+                            setlogin(false);
+                        }}>
+                            Create New Account
+                            <span className="material-icons-round">
+                                navigate_next
+                            </span>
                         </span>
-                    </span>
+                    </div>
                 </div>
+
             </div>
-
-        </div>
-
+        </FullPageModal>
     )
 }
 

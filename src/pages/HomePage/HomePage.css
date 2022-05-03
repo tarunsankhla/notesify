@@ -132,3 +132,8 @@ input[type="color" i]::-webkit-color-swatch {
 .home-holder{
 	height: 30rem;
 }
+
+
+.home-page .modal-fixed-bg-highlight{
+	background: none;
+} 

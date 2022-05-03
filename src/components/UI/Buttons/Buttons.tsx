@@ -10,9 +10,9 @@ function FloatAddButton() {
 
 
 
-function CreateButton(props) {
+function CreateButton({ props: name }) {
     return (
-      <div className='create-btn'>Create <BiPatchPlus/></div>
+      <div className='create-btn'>{name} <BiPatchPlus/></div>
     )
   }
   

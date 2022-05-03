@@ -10,27 +10,17 @@ import {
 } from "src/components/UI/Buttons/Buttons";
 import {
 	BiCheck,
-	BiCheckCircle,
 	BiXCircle,
 } from "src/components/UI/Icons/Icons";
-import { FullPageModal } from "src/components/UI/Modal/FullPageModal/FullPageModal";
 import { useModal } from "src/context/ModalProvider";
 import useAxios from "src/customhook/useAxios";
 import { VAR_ENCODE_TOKEN, VAR_NotPinnedNotes } from "src/utils/Route";
-// import AllNotes from "./AllNotes/AllNotes";
 import StopPropogation from "src/utils/StopPropogation";
-import {
-	annotation,
-	books,
-	Files,
-	Login2,
-	noted,
-	preperation,
-	Signup,
-} from "src/assets/holders/holders";
+import { preperation } from "src/assets/holders/holders";
 import { useNotes } from "src/context/NotesContext";
 
 const AllNotes = React.lazy(() => import("./AllNotes/AllNotes"));
+
 const ContentDetail = (state, action) => {
 	console.log(state, action);
 	switch (action.type) {
@@ -50,22 +40,27 @@ const ContentDetail = (state, action) => {
 		case "label": {
 			return { ...state, label: action.data };
 		}
+		case "reset": { 
+			return { ...action.data };
+		}
 		default: {
 			return { ...state };
 		}
 	}
 };
 
+var initialStateNote = {
+	title: "",
+	htmlbody: "",
+	createdOn: "",
+	color: "#bebdff",
+	priority: "",
+	label: "",
+};
+
 export default function HomePage() {
 	const [showNote, setShowNote] = useState(true);
-	const [noteState, noteDispatch] = useReducer(ContentDetail, {
-		title: "",
-		htmlbody: "",
-		createdOn: "",
-		color: "#bebdff",
-		priority: "",
-		label: "",
-	});
+	const [noteState, noteDispatch] = useReducer(ContentDetail,initialStateNote);
 	const [noteDataSet, SetNoteDataSet] = useNotes();
 	var modules = useRef({});
 	const [response, error, loading, axiosRequest] = useAxios();
@@ -124,142 +119,127 @@ export default function HomePage() {
 			},
 		});
 		console.log(res);
+		noteDispatch({title: "",
+		htmlbody: "",
+		createdOn: "",
+		color: "#bebdff",
+		priority: "",
+		label: "",});
 		SetNoteDataSet(res.notes);
 	}
 
 	return (
 		<div className="home-page">
 			<div>
-				{showNote ? (
-					<div className="note-editor-container">
-						<div
-							className="close-note"
-							onClick={(e) => {
-								StopPropogation(e);
-								setShowNote(false);
-							}}
-						>
-							<BiXCircle />
-						</div>
-						<input
-							className="note-title-input"
-							placeholder="Title note ...."
-							onChange={(e) =>
-								debounce(
-									() => noteDispatch({ type: "title", data: e.target.value }),
-									500
-								)
-							}
-						/>
-
-						<ReactQuill
-							theme="snow"
-							modules={modules.current}
-							// formats={formats}
-							placeholder={"Write Something....."}
-							// value={noteState.htmlbody}
-							onChange={(e) =>
-								debounce(() => noteDispatch({ type: "htmlbody", data: e }), 500)
-							}
-						/>
-
-						<div className="note-editor-action">
-							<select
-								className="select-tag"
-								placeholder="Priority"
-								onChange={(e) =>
-									debounce(
-										() =>
-											noteDispatch({ type: "priority", data: e.target.value }),
-										500
-									)
-								}
-							>
-								<option value="high">High</option>
-								<option value="medium">Medium</option>
-								<option value="low">Low</option>
-							</select>
-
-							<input
-								type="text"
-								placeholder="label"
-								onChange={(e) =>
-									debounce(
-										() => noteDispatch({ type: "label", data: e.target.value }),
-										500
-									)
-								}
-							/>
-
-							<div className="color-pallette-container">
-								<button
-									onClick={(e: React.MouseEvent<HTMLElement>) =>
-										debounce(
-											() => noteDispatch({ type: "color", data: "#bebdff" }),
-											500
-										)
-									}
-									className="color-pallete"
-									style={{ backgroundColor: "#bebdff" }}
-									value="#bebdff"
-								>
-									{noteState.color === "#bebdff" ? <BiCheck /> : ""}
-								</button>
-								<button
-									onClick={(e: React.MouseEvent<HTMLElement>) =>
-										debounce(
-											() => noteDispatch({ type: "color", data: "#ff9999" }),
-											500
-										)
-									}
-									className="color-pallete"
-									style={{ backgroundColor: "#ff9999" }}
-									value="#ff9999"
-								>
-									{noteState.color === "#ff9999" ? <BiCheck /> : ""}
-								</button>
-								<button
-									onClick={(e: React.MouseEvent<HTMLElement>) =>
-										debounce(
-											() => noteDispatch({ type: "color", data: "#ffd7bd" }),
-											500
-										)
-									}
-									className="color-pallete"
-									style={{ backgroundColor: "#ffd7bd" }}
-									value="#ffd7bd"
-								>
-									{noteState.color === "#ffd7bd" ? <BiCheck /> : ""}
-								</button>
-							</div>
-
-							<span onClick={() => createNoteHandler()}>
-								<CreateButton />
-							</span>
-						</div>
-					</div>
-				) : (
-					<div>
-						<img src={preperation} className="home-holder" alt="singupimage" />
-					</div>
-				)}
+				<img src={preperation} className="home-holder" alt="singupimage" />
 			</div>
 
 			<div className="latest-notes-container">
 				<div className="page-title">Latest Notes : </div>
 				<div>
-					<AllNotes props={noteDataSet} />
+					<AllNotes notesdata={noteDataSet} showNoteToggle={setShowNote} noteReducer={noteDispatch}/>
 				</div>
 			</div>
 
 			<span
-				onClick={(e) => {
-					StopPropogation(e);
-					setShowNote(true);
-				}}
-			>
+				onClick={(e) => {StopPropogation(e);setShowNote(true);}}>
 				<FloatAddButton />
 			</span>
+			{showNote && (
+				<div className='modal-fixed-bg-highlight' onClick={() => { setShowNote(false); noteDispatch({ type: "reset",data : initialStateNote }); }}>
+					<div className='modal-view-container'>
+						<div className="note-editor-container" onClick={(event: React.MouseEvent<HTMLElement>) => StopPropogation(event)}>
+							<div
+								className="close-note"
+								onClick={(e) => {
+									StopPropogation(e);
+									setShowNote(false);
+									noteDispatch({ type: "reset",data:initialStateNote })
+								}}>
+								<BiXCircle />
+							</div>
+							<input
+								className="note-title-input"
+								placeholder="Title note ...."
+								onChange={(e) =>
+									noteDispatch({ type: "title", data: e.target.value })}
+								value={noteState.title}
+							/>
+
+							<ReactQuill
+								theme="snow"
+								modules={modules.current}
+								// formats={formats}
+								placeholder={"Write Something....."}
+								value={noteState.htmlbody}
+								onChange={(e) =>
+									noteDispatch({ type: "htmlbody", data: e })
+								}/>
+
+							<div className="note-editor-action">
+								<select
+									className="select-tag"
+									placeholder="Priority"
+									value={noteState.priority}
+									onChange={(e) =>
+												noteDispatch({ type: "priority", data: e.target.value })}>
+									<option value="high">High</option>
+									<option value="medium">Medium</option>
+									<option value="low">Low</option>
+								</select>
+
+								<input
+									type="text"
+									placeholder="label"
+									value={noteState.label}
+									onChange={(e) => noteDispatch({ type: "label", data: e.target.value })}/>
+
+								<div className="color-pallette-container">
+									<button
+										onClick={(e: React.MouseEvent<HTMLElement>) =>
+											debounce(
+												() => noteDispatch({ type: "color", data: "#bebdff" }),
+												500)}
+										className="color-pallete"
+										style={{ backgroundColor: "#bebdff" }}
+										value="#bebdff">
+										{noteState.color === "#bebdff" ? <BiCheck /> : ""}
+									</button>
+									<button
+										onClick={(e: React.MouseEvent<HTMLElement>) =>
+											debounce(
+												() => noteDispatch({ type: "color", data: "#ff9999" }),
+												500)}
+										className="color-pallete"
+										style={{ backgroundColor: "#ff9999" }}
+										value="#ff9999">
+										{noteState.color === "#ff9999" ? <BiCheck /> : ""}
+									</button>
+									<button
+										onClick={(e: React.MouseEvent<HTMLElement>) =>
+											debounce(
+												() => noteDispatch({ type: "color", data: "#ffd7bd" }),
+												500
+											)
+										}
+										className="color-pallete"
+										style={{ backgroundColor: "#ffd7bd" }}
+										value="#ffd7bd"
+									>
+										{noteState.color === "#ffd7bd" ? <BiCheck /> : ""}
+									</button>
+								</div>
+
+								<span onClick={() => createNoteHandler()}>
+									<CreateButton props="Create " />
+								</span>
+								<span onClick={() => createNoteHandler()}>
+									<CreateButton props="Update " />
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>)}
 		</div>
 	);
 }

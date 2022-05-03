@@ -7,16 +7,30 @@ import { VAR_ENCODE_TOKEN, VAR_NotPinnedNotes } from 'src/utils/Route';
 import { useArchive } from 'src/context/ArchiveContext';
 import { useTrash } from 'src/context/TrashContext';
 import { useNotes } from 'src/context/NotesContext';
+import { useEffect } from 'react';
 
 type Props = { props : any}
 
-const Notes = ({ props }: Props) => {
+const Notes = (data: any) => {
+  const { props } = data;
   const [response, error, loading, axiosRequest] = useAxios();
   const { ArchiveContextArray, setArchiveContextArray } = useArchive();
   const { TrashContextArray, setTrashContextArray } = useTrash();
   const [noteDataSet, SetNoteDataSet] = useNotes();
-  console.log(props);
-  
+  console.log(data);
+  var initialStateNote = {
+    title: props.title,
+    htmlbody: props.content,
+    createdOn: "",
+    color: props.color,
+    priority: props.priority,
+    label: props.label,
+  };
+  function EditNoteHandler() { 
+    
+    data.noteReducer({ type: "reset", data: initialStateNote });
+    data.showNoteToggle(true);
+  }
 
   function ArchiveHandler() { 
     try {
@@ -77,7 +91,7 @@ const Notes = ({ props }: Props) => {
         <span onClick={()=> TrashHandler()}>
           <BiTrash height="1.7em" width="1.7em"  />
         </span>
-        <span onClick={()=> {}}><BiEdit height="1.7em" width="1.7em" /></span>
+        <span onClick={()=> {EditNoteHandler()}}><BiEdit height="1.7em" width="1.7em" /></span>
         
       </section>
     </div>

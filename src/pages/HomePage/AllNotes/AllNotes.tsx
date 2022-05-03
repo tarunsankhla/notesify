@@ -2,21 +2,22 @@ import React from 'react';
 import Notes from 'src/components/UI/Notes/Notes';
 import "../HomePage.css";
 
-type Props = {}
+type Props = {prosp}
 
-const AllNotes = ({ props: notesdata }) => {
-
+const AllNotes = (props :any) => {
+    // var { } = props;
+    console.log(props,props.notesdata);
     function ClickOnNoteHanlder(event) {
         event.stopPropagation();
         console.log(event);
         
     }
-    console.log(notesdata);
+    // console.log(props.notesda    ta);
     return (
         <div className='allnotes-container'>
             {
-                notesdata?.map((note: any) => (
-                    <Notes key={note._id} props={note} />
+                props.notesdata?.map((note: any) => (
+                    <Notes key={note._id} props={note} showNoteToggle={props.showNoteToggle} noteReducer={props.noteReducer} />
                 ))}
         </div>
     )
