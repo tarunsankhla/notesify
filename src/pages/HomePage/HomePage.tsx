@@ -59,7 +59,7 @@ var initialStateNote = {
 };
 
 export default function HomePage() {
-	const [showNote, setShowNote] = useState(true);
+	const [showNote, setShowNote] = useState(false);
 	const [noteState, noteDispatch] = useReducer(ContentDetail,initialStateNote);
 	const [noteDataSet, SetNoteDataSet] = useNotes();
 	var modules = useRef({});
@@ -119,13 +119,34 @@ export default function HomePage() {
 			},
 		});
 		console.log(res);
-		noteDispatch({title: "",
-		htmlbody: "",
-		createdOn: "",
-		color: "#bebdff",
-		priority: "",
-		label: "",});
+		noteDispatch({ type: "reset",data : initialStateNote });
 		SetNoteDataSet(res.notes);
+		setShowNote(false);
+	}
+
+	async function updateNoteHandler() {
+		var object = {
+			title: noteState.title,
+			content: noteState.htmlbody,
+			color: noteState.color,
+			createdOn: new Date().toDateString(),
+			pin: noteState.pin,
+			priority: noteState.priority,
+			label: noteState.label,
+		};
+		console.log(object,noteState.id);
+		var res = await axiosRequest({
+			method: "post",
+			url: "/api/notes/"+noteState.id,
+			data: { note: object },
+			headers: {
+				authorization: localStorage.getItem(VAR_ENCODE_TOKEN),
+			},
+		});
+		console.log(res);
+		noteDispatch({ type: "reset",data : initialStateNote });
+		SetNoteDataSet(res.notes);
+		setShowNote(false);
 	}
 
 	return (
@@ -135,15 +156,15 @@ export default function HomePage() {
 			</div>
 
 			<div className="latest-notes-container">
-				<div className="page-title">Latest Notes : </div>
+				
 				<div>
-					<AllNotes notesdata={noteDataSet} showNoteToggle={setShowNote} noteReducer={noteDispatch}/>
+					<AllNotes notesdata={noteDataSet} showNoteToggle={setShowNote} noteReducer={noteDispatch} noteUpdate={updateNoteHandler}/>
 				</div>
 			</div>
 
 			<span
 				onClick={(e) => {StopPropogation(e);setShowNote(true);}}>
-				<FloatAddButton />
+				<FloatAddButton  />
 			</span>
 			{showNote && (
 				<div className='modal-fixed-bg-highlight' onClick={() => { setShowNote(false); noteDispatch({ type: "reset",data : initialStateNote }); }}>
@@ -208,34 +229,34 @@ export default function HomePage() {
 									<button
 										onClick={(e: React.MouseEvent<HTMLElement>) =>
 											debounce(
-												() => noteDispatch({ type: "color", data: "#ff9999" }),
+												() => noteDispatch({ type: "color", data: "rgb(255 101 132)" }),
 												500)}
 										className="color-pallete"
-										style={{ backgroundColor: "#ff9999" }}
-										value="#ff9999">
-										{noteState.color === "#ff9999" ? <BiCheck /> : ""}
+										style={{ backgroundColor: "rgb(255 101 132)" }}
+										value="rgb(255 101 132)">
+										{noteState.color === "rgb(255 101 132)" ? <BiCheck /> : ""}
 									</button>
 									<button
 										onClick={(e: React.MouseEvent<HTMLElement>) =>
 											debounce(
-												() => noteDispatch({ type: "color", data: "#ffd7bd" }),
+												() => noteDispatch({ type: "color", data: "rgb(251 172 12)" }),
 												500
 											)
 										}
 										className="color-pallete"
-										style={{ backgroundColor: "#ffd7bd" }}
-										value="#ffd7bd"
+										style={{ backgroundColor: "rgb(251 172 12)" }}
+										value="rgb(251 172 12)"
 									>
-										{noteState.color === "#ffd7bd" ? <BiCheck /> : ""}
+										{noteState.color === "#rgb(251 172 12)" ? <BiCheck /> : ""}
 									</button>
 								</div>
-
+										{!noteState.id ? 
 								<span onClick={() => createNoteHandler()}>
 									<CreateButton props="Create " />
 								</span>
-								<span onClick={() => createNoteHandler()}>
+								:<span onClick={() => updateNoteHandler()}>
 									<CreateButton props="Update " />
-								</span>
+								</span>}
 							</div>
 						</div>
 					</div>
@@ -243,26 +264,3 @@ export default function HomePage() {
 		</div>
 	);
 }
-
-// var formats = [
-//   'header',
-//   'bold', 'italic', 'underline', 'strike', 'blockquote',
-//   'list', 'bullet', 'indent',
-//   'link', 'image'
-// ];
-
-// const OnUpdateNote = (text:any) => {
-//   console.log(text, noteContent);
-//   // var doc = new DOMParser().parseFromString(text, "text/xml");
-//   // console.log(doc.textContent,doc.firstChild?.textContent);
-//   setNoteContent(text);
-//   noteDispatch({ type: "htmlbody", text });
-// }
-//   archives: []
-// createdAt: "2022-04-30T19:42:02+05:30"
-// email: "adarshbalika@gmail.com"
-// firstName: "Adarsh"
-// id: "1"
-// lastName: "Balika"
-// notes: []
-// updatedAt: "2022-04-30T19:42:02+05:30"

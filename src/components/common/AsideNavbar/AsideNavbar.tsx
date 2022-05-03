@@ -39,20 +39,20 @@ function AsideNavbar() {
                     <li>
                         <NavLink style={getActiveStyle}
                             to={ROUTE_PATH_LandingPage}>
-                            <BiHouseHeart/>Home
+                            <BiHouseHeart  height="1.7em" width="1.7em"/>Home
                         </NavLink>
                     </li>
                     <li>
                         <NavLink style={getActiveStyle}
                             to={ROUTE_PATH_ArchivePage}>
-                            <BiArchive/>
+                            <BiArchive  height="1.7em" width="1.7em"/>
                             Archive
                         </NavLink>
                     </li>
                     <li>
                         <NavLink style={getActiveStyle}
                             to={ROUTE_PATH_TrashPage}>
-                            <BiTrash/>
+                            <BiTrash  height="1.7em" width="1.7em"/>
                             Trash
                         </NavLink>
                     </li>
@@ -62,7 +62,7 @@ function AsideNavbar() {
                             setmodalToggle(true);
                         }
                     }>
-                        <BiPersonHearts/>Profile
+                        <BiPersonHearts  height="1.7em" width="1.7em"/>Profile
                     </li>
                 </ul>
             </div>

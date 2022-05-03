@@ -3,7 +3,7 @@ import DOMPurify from 'dompurify';
 import "./Notes.css";
 import { BiEdit, BiPinAngle, BiPinAngleFill, BiTrash, IcRoundArchive } from '../Icons/Icons';
 import useAxios from 'src/customhook/useAxios';
-import { VAR_ENCODE_TOKEN, VAR_NotPinnedNotes } from 'src/utils/Route';
+import { VAR_ENCODE_TOKEN, VAR_NotPinnedNotes, VAR_PinnedNotes } from 'src/utils/Route';
 import { useArchive } from 'src/context/ArchiveContext';
 import { useTrash } from 'src/context/TrashContext';
 import { useNotes } from 'src/context/NotesContext';
@@ -25,11 +25,48 @@ const Notes = (data: any) => {
     color: props.color,
     priority: props.priority,
     label: props.label,
+    id: props._id,
+    pin : props.pin
   };
   function EditNoteHandler() { 
-    
     data.noteReducer({ type: "reset", data: initialStateNote });
     data.showNoteToggle(true);
+    
+  }
+
+  async function PinNoteHandler() { 
+    // data.noteReducer({ type: "reset", data: {
+    //   title: props.title,
+    //   htmlbody: props.content,
+    //   createdOn: "",
+    //   color: props.color,
+    //   priority: props.priority,
+    //   label: props.label,
+    //   id: props._id,
+    //   pin : props.pin === VAR_NotPinnedNotes ? VAR_PinnedNotes : VAR_NotPinnedNotes
+    // } });
+    // data.showNoteToggle(true);
+    var object = {
+			title: props.title,
+			content: props.content,
+			color: props.color,
+			createdOn: props.cr,
+			priority: props.priority,
+			pin: props.pin === VAR_NotPinnedNotes ? VAR_PinnedNotes : VAR_NotPinnedNotes,
+			label: props.label,
+    };
+    
+		console.log(object,props._id);
+		var res = await axiosRequest({
+			method: "post",
+			url: "/api/notes/"+props._id,
+			data: { note: object },
+			headers: {
+				authorization: localStorage.getItem(VAR_ENCODE_TOKEN),
+			},
+		});
+		console.log(res);
+    SetNoteDataSet(res.notes);
   }
 
   function ArchiveHandler() { 
@@ -76,15 +113,17 @@ const Notes = (data: any) => {
   return (
     <div className='note-details-container' style={{backgroundColor : props.color  || "wheat"}}>
       <h3>{props.title}</h3>
-      <div>
-        {props.pin === VAR_NotPinnedNotes ? <BiPinAngle/> :<BiPinAngleFill /> }
+      <div className='note-pin'>
+        {props.pin === VAR_NotPinnedNotes ?
+          <span onClick={()=>PinNoteHandler()}><BiPinAngle /> </span>
+          : <span onClick={()=>PinNoteHandler()}><BiPinAngleFill /></span>}
       </div>
       <p className="color-schema" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(props.content) }}></p> 
-      <div>
-        CreatedOn : {props.createdOn}
+      <div className='notes-date'>
+         {props.createdOn}
       </div>
 
-      <section className='notes-action'>
+      <section className='notes-action' style={{color: props.color || "black"}}>
         <span onClick={() => ArchiveHandler()}>
           <IcRoundArchive height="1.7em" width="1.7em" />
         </span>

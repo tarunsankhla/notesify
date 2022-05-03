@@ -13,7 +13,7 @@ const VAR_USER_ID = "NotesifyUserId";
 const VAR_USER_DETAILS = "NotesifyUserDetails";  
 
 
-const VAR_PinnedNotes = "pinnned";
+const VAR_PinnedNotes = "pinned";
 const VAR_NotPinnedNotes = "notpinned";
 export {
     ROUTE_PATH_LandingPage,

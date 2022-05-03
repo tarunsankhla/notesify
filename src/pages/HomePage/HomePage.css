@@ -71,6 +71,7 @@
 
 .latest-notes-container {
 	padding-top: 2em;
+	width: 100%;
 }
 
 input[type="color"] {
@@ -117,10 +118,11 @@ input[type="color" i]::-webkit-color-swatch {
 
 /* all notes */
 .allnotes-container {
-	display: flex;
-	justify-content: center;
-	gap: 1em;
-	flex-wrap: wrap;
+    display: flex;
+    justify-content: flex-start;
+    gap: 1em;
+    flex-wrap: wrap;
+    padding: 10px;
 }
 
 .color-pallette-container {
@@ -131,6 +133,7 @@ input[type="color" i]::-webkit-color-swatch {
 
 .home-holder{
 	height: 30rem;
+	width: 100%;
 }
 
 
