@@ -5,7 +5,7 @@ import "./FullPageModal.css";
 function FullPageModal({ children }) {
     const { modalToggle, setmodalToggle } = useModal();
 
-    // console.log(props);k
+    console.log(children);
     return (
         <>
             {

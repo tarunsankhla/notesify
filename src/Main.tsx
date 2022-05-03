@@ -20,12 +20,12 @@ function Main() {
                     <span  className='outlet-body'>
                         <Outlet />
                     </span>
-                    <FullPageModal >
+                    {/* <FullPageModal > */}
                         {loginShow ?
                             <LoginPage props={setLoginShow} />
                             : <SignUpPage  props={setLoginShow} />
                      }
-                    </FullPageModal>
+                    {/* </FullPageModal> */}
                     <ToastContainer style={{ fontSize: "1.5em" }} />
                 </div>
                 <Footer />

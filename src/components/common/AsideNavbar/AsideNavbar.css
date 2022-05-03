@@ -1,18 +1,18 @@
-
 .AsideNav {
     display: flex;
     min-width: -moz-fit-content;
-    min-width: 15em;
+    min-width: 10em;
     height: 80vh;
     background-color: rgba(0, 0, 0, 0.05);
     justify-content: space-between;
     flex-direction: column;
     padding-top: 1em;
-    padding: 0.5em;
+    padding: 1em;
     position: sticky;
     top: 0;
     font-size: 1.2em;
     font-weight: 600;
+    align-items: center;
 }
 
 .AsideNav li{
@@ -23,17 +23,19 @@
     display: flex;
     justify-content: flex-start;
     gap: 1.5em;
-    padding: 0.7em 1.5em 0.7em 2em;
+    padding: 0.5em;
     align-items: center;
+    cursor: pointer;
+    color: var(--primary-color);
 }
 
 .AsideNav li:hover{
-    border-bottom: 2px solid cadetblue;
+    border-bottom: 2px solid var(--primary-color);
 }
 
 .AsideNav li:hover{
-	font-size: 1.01em;
-	transform: scale(1.01);
+	/* font-size: 1.01em;
+	transform: scale(1.01); */
 }
 
 .AsideNav{

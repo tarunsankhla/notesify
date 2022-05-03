@@ -8,6 +8,7 @@ import noted from "./noted.svg";
 import preperation from "./preperation.svg";
 import Signup from "./Signup.svg";
 import Trash from "./Trash.svg";
+import Files from "./files.svg";
 
 export {
     annotation,
@@ -18,5 +19,5 @@ export {
     noted, 
     preperation,
     Signup,
-    Trash 
+    Trash ,Files
  }

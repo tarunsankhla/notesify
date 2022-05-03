@@ -4,15 +4,15 @@ import "./Buttons.css";
 
 function FloatAddButton() {
   return (
-    <div className='float-add-btn'><BiJournalPlus /></div>
+    <div className='float-add-btn'><BiJournalPlus fontSize="1.7em"/></div>
   )
 }
 
 
 
-function CreateButton(props) {
+function CreateButton({ props: name }) {
     return (
-      <div className='create-btn'>Create Note <BiPatchPlus/></div>
+      <div className='create-btn'>{name} <BiPatchPlus/></div>
     )
   }
   

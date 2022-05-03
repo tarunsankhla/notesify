@@ -137,6 +137,7 @@ export const updateNoteHandler = function (schema, request) {
  * */
 
 export const archiveNoteHandler = function (schema, request) {
+  console.log("Archive controller", request);
   const user = requiresAuth.call(this, request);
   try {
     if (!user) {

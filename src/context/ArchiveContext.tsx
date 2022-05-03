@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 
 const Archivecontext = createContext<any>(Array);
 
@@ -12,4 +12,4 @@ const ArchiveProvider = ({ children }) => {
 }
 
 export const useArchive = () => useContext(Archivecontext);
-export { ArchiveProvider };
+export default  React.memo(ArchiveProvider);
