@@ -36,15 +36,16 @@ const ArchiveNotes = ({ props }: Props) => {
     }
 
     return (
-        <div className='note-details-container' style={{ backgroundColor: props.color || "wheat" }}>
+        <div className='note-details-container archive-notes-container' style={{ backgroundColor: props.color || "wheat" }}>
             <h3>{props.title}</h3>
 
             <p className="color-schema" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(props.content) }}></p>
-            <div>
-                CreatedOn : {props.createdOn}
+            <div className='notes-date'>
+                 {props.createdOn}
             </div>
 
-            <section>
+           
+            <section className='notes-action' style={{color: props.color || "black"}}>
                 <span onClick={()=>UnArchiveHandler()}>
                     <BiUnarchive height="1.7em" width="1.7em" />
                 </span>

@@ -14,11 +14,12 @@
     text-align: start;
     color: black;
     font-size: 2.5rem;
+    padding-bottom: 1rem;
 }
 
 .note-details-container .note-pin {
     position: absolute;
-    top: 3px;
+    top: 8px;
     right: 8px;
 }
 .note-details-container .notes-date{
@@ -58,4 +59,13 @@
     margin-top: 10px;
     width: 70%;
     margin-left: auto;
+}
+
+
+.trash-notes-container .notes-action{
+    width: 40%;
+}
+
+.archive-notes-container .notes-action{
+    width: 20%;
 }

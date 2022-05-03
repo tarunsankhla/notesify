@@ -167,3 +167,14 @@ span:hover {
 	padding-left: 2em;
 	width: 100%;
 }
+
+
+.notes-container{
+	padding-top: 2em;
+    width: 100%;
+}
+
+.holder{
+	height: 30rem;
+	width: 100%;
+}

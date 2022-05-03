@@ -103,7 +103,8 @@ const Notes = (data: any) => {
         
         });
         console.log(res);
-        setTrashContextArray((prev)=>[...prev,props]);
+        setTrashContextArray((prev) => [...prev, props]);
+        SetNoteDataSet(res.notes);
 			})();;
 		} catch (error) {
 			console.log("Product list page error", error);

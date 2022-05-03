@@ -152,7 +152,7 @@ export default function HomePage() {
 	return (
 		<div className="home-page">
 			<div>
-				<img src={preperation} className="home-holder" alt="singupimage" />
+				<img src={preperation} className="holder" alt="singupimage" />
 			</div>
 
 			<div className="latest-notes-container">
