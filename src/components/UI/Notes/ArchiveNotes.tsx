@@ -54,4 +54,4 @@ const ArchiveNotes = ({ props }: Props) => {
     )
 }
 
-export default ArchiveNotes
+export default React.memo(ArchiveNotes);

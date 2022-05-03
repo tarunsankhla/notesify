@@ -1,4 +1,3 @@
-
 * {
 	padding: 0;
 	margin: 0;
@@ -24,7 +23,8 @@
 
 body {
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-		"Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",sans-serif;
+		"Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+		sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
@@ -37,11 +37,11 @@ html {
 	font-size: 62.5%;
 }
 
-:root {	
+:root {
 	--primary-color: #9675b4;
-	--primary-shade-color:#ddd2f0;
-	--secondary-color:#dedede;
-	--note-date-color:#751414;
+	--primary-shade-color: #ddd2f0;
+	--secondary-color: #dedede;
+	--note-date-color: #751414;
 }
 
 .App-header {
@@ -101,19 +101,19 @@ html {
 
 input {
 	font-size: 1em;
-    border-radius: 5px;
-    border: none;
-    padding: 7px;
-    font-weight: 600;
+	border-radius: 5px;
+	border: none;
+	padding: 7px;
+	font-weight: 600;
 }
 
-.select-tag{
+.select-tag {
 	font-size: 0.7em;
 	font-size: 0.7em;
-    border-radius: 5px;
-    border: none;
-    padding: 7px;
-    font-weight: 600;
+	border-radius: 5px;
+	border: none;
+	padding: 7px;
+	font-weight: 600;
 }
 
 span {
@@ -168,13 +168,12 @@ span:hover {
 	width: 100%;
 }
 
-
-.notes-container{
+.notes-container {
 	padding-top: 2em;
-    width: 100%;
+	width: 100%;
 }
 
-.holder{
+.holder {
 	height: 30rem;
 	width: 100%;
 }

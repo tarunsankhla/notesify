@@ -15,13 +15,11 @@ import "./AsideNavbar.css";
 function AsideNavbar() {
     let auth = useAuth();
     let navigate = useNavigate();
-    const {modalToggle, setmodalToggle} = useModal();
-    console.log(auth.user, auth.userState);
+    const { modalToggle, setmodalToggle } = useModal();
+    
     const getActiveStyle = ({isActive}) => ({
         color: isActive ? "var(--primary-color)" : "",
         transform: isActive ? "scale(1.1)" : "",
-        // opacity: isActive ? "0.9" : "",
-        // backgroundColor: isActive ? "rgba(0, 0, 0, 0.1)" : "",
         fontWeight: "700",
         fontSize: "1.1em",
         cursor: "pointer",
@@ -29,8 +27,7 @@ function AsideNavbar() {
         justifyContent: "flex-start",
         gap: "1.5em",
         padding: "0.5em",
-        alignItems: "center",
-        // borderBottom: "2px solid var(--primary-color)"
+        alignItems: "center"
     })
     return (
         <div className='AsideNav'>

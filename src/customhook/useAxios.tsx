@@ -33,4 +33,4 @@ function useAxios() {
   return [response, error, loading, fetch]  as const;
 } 
 
-export default useAxios
+export default useAxios;

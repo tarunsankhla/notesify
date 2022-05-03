@@ -1,6 +1,6 @@
 import React from 'react';
 import Notes from 'src/components/UI/Notes/Notes';
-import { VAR_NotPinnedNotes, VAR_PinnedNotes } from 'src/utils/Route';
+import { VAR_NOTPINNED_NOTES, VAR_PINNED_NOTES } from 'src/utils/Route';
 import "../HomePage.css";
 
 type Props = { prosp }
@@ -21,7 +21,7 @@ const AllNotes = (props: any) => {
             
             {
                     props.notesdata?.map((note: any) => (
-                    note.pin === VAR_PinnedNotes &&
+                    note.pin === VAR_PINNED_NOTES &&
                     <Notes key={note._id} props={note} showNoteToggle={props.showNoteToggle}
                         noteReducer={props.noteReducer} noteUpdate={props.noteUpdate} />
                 ))}
@@ -30,7 +30,7 @@ const AllNotes = (props: any) => {
             
             {
                     props.notesdata?.map((note: any) => (
-                        note.pin === VAR_NotPinnedNotes &&
+                        note.pin === VAR_NOTPINNED_NOTES &&
                     <Notes key={note._id} props={note} showNoteToggle={props.showNoteToggle}
                         noteReducer={props.noteReducer} noteUpdate={props.noteUpdate} />
                 ))}
@@ -39,4 +39,4 @@ const AllNotes = (props: any) => {
     )
 }
 
-export default AllNotes
+export default React.memo(AllNotes);

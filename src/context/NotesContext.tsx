@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import React,{ createContext, useContext, useState } from "react";
 
 const noteContext = createContext<any>(Array);
 
@@ -8,4 +8,4 @@ const NotesProvider = ({ children }) => {
 }
 
 export const useNotes = () => useContext(noteContext);
-export { NotesProvider };
+export default React.memo(NotesProvider);

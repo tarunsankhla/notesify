@@ -37,6 +37,7 @@
     border: 2px solid rgba(255,255,255,0.3);
     /* font-size: 0.5em; */
     margin: 3px;
+    max-width: 50vw;
 }
 .color-schema * {
     text-decoration: none;

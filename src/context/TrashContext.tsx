@@ -1,3 +1,4 @@
+import React from "react";
 import { createContext, useContext, useState } from "react";
 
 const trashcontext = createContext<any>(Array);
@@ -12,4 +13,4 @@ const TrashProvider = ({ children }) => {
 }
 
 export const useTrash = () => useContext(trashcontext);
-export { TrashProvider };
+export default React.memo(TrashProvider);

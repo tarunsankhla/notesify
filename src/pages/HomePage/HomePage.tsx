@@ -14,33 +14,38 @@ import {
 } from "src/components/UI/Icons/Icons";
 import { useModal } from "src/context/ModalProvider";
 import useAxios from "src/customhook/useAxios";
-import { VAR_ENCODE_TOKEN, VAR_NotPinnedNotes } from "src/utils/Route";
+import { VAR_ENCODE_TOKEN, VAR_NOTPINNED_NOTES, VAR_RESET } from "src/utils/Route";
 import StopPropogation from "src/utils/StopPropogation";
 import { preperation } from "src/assets/holders/holders";
 import { useNotes } from "src/context/NotesContext";
 
 const AllNotes = React.lazy(() => import("./AllNotes/AllNotes"));
+const htmlbody = "htmlbody";
+const title= "title";
+const color= "color";
+const priority= "priority";
+const label = "label";
 
 const ContentDetail = (state, action) => {
 	console.log(state, action);
 	switch (action.type) {
 		// eslint-disable-next-line no-lone-blocks
-		case "htmlbody": {
+		case htmlbody: {
 			return { ...state, htmlbody: action.data };
 		}
-		case "title": {
+		case title: {
 			return { ...state, title: action.data };
 		}
-		case "color": {
+		case color: {
 			return { ...state, color: action.data };
 		}
-		case "priority": {
+		case priority: {
 			return { ...state, priority: action.data };
 		}
-		case "label": {
+		case label: {
 			return { ...state, label: action.data };
 		}
-		case "reset": { 
+		case VAR_RESET: { 
 			return { ...action.data };
 		}
 		default: {
@@ -57,6 +62,8 @@ var initialStateNote = {
 	priority: "",
 	label: "",
 };
+
+
 
 export default function HomePage() {
 	const [showNote, setShowNote] = useState(false);
@@ -105,7 +112,7 @@ export default function HomePage() {
 			content: noteState.htmlbody,
 			color: noteState.color,
 			createdOn: new Date().toDateString(),
-			pin: VAR_NotPinnedNotes,
+			pin: VAR_NOTPINNED_NOTES,
 			priority: noteState.priority,
 			label: noteState.label,
 		};
@@ -119,7 +126,7 @@ export default function HomePage() {
 			},
 		});
 		console.log(res);
-		noteDispatch({ type: "reset",data : initialStateNote });
+		noteDispatch({ type: VAR_RESET,data : initialStateNote });
 		SetNoteDataSet(res.notes);
 		setShowNote(false);
 	}
@@ -144,10 +151,12 @@ export default function HomePage() {
 			},
 		});
 		console.log(res);
-		noteDispatch({ type: "reset",data : initialStateNote });
+		noteDispatch({ type: VAR_RESET,data : initialStateNote });
 		SetNoteDataSet(res.notes);
 		setShowNote(false);
 	}
+
+	const NotesCollection = React.memo(AllNotes);
 
 	return (
 		<div className="home-page">
@@ -158,7 +167,7 @@ export default function HomePage() {
 			<div className="latest-notes-container">
 				
 				<div>
-					<AllNotes notesdata={noteDataSet} showNoteToggle={setShowNote} noteReducer={noteDispatch} noteUpdate={updateNoteHandler}/>
+					<NotesCollection notesdata={noteDataSet} showNoteToggle={setShowNote} noteReducer={noteDispatch} noteUpdate={updateNoteHandler}/>
 				</div>
 			</div>
 
@@ -167,7 +176,7 @@ export default function HomePage() {
 				<FloatAddButton  />
 			</span>
 			{showNote && (
-				<div className='modal-fixed-bg-highlight' onClick={() => { setShowNote(false); noteDispatch({ type: "reset",data : initialStateNote }); }}>
+				<div className='modal-fixed-bg-highlight' onClick={() => { setShowNote(false); noteDispatch({ type: VAR_RESET,data : initialStateNote }); }}>
 					<div className='modal-view-container'>
 						<div className="note-editor-container" onClick={(event: React.MouseEvent<HTMLElement>) => StopPropogation(event)}>
 							<div
@@ -175,7 +184,7 @@ export default function HomePage() {
 								onClick={(e) => {
 									StopPropogation(e);
 									setShowNote(false);
-									noteDispatch({ type: "reset",data:initialStateNote })
+									noteDispatch({ type: VAR_RESET,data:initialStateNote })
 								}}>
 								<BiXCircle />
 							</div>
@@ -183,7 +192,7 @@ export default function HomePage() {
 								className="note-title-input"
 								placeholder="Title note ...."
 								onChange={(e) =>
-									noteDispatch({ type: "title", data: e.target.value })}
+									noteDispatch({ type: title, data: e.target.value })}
 								value={noteState.title}
 							/>
 
@@ -194,7 +203,7 @@ export default function HomePage() {
 								placeholder={"Write Something....."}
 								value={noteState.htmlbody}
 								onChange={(e) =>
-									noteDispatch({ type: "htmlbody", data: e })
+									noteDispatch({ type: htmlbody, data: e })
 								}/>
 
 							<div className="note-editor-action">
@@ -203,7 +212,7 @@ export default function HomePage() {
 									placeholder="Priority"
 									value={noteState.priority}
 									onChange={(e) =>
-												noteDispatch({ type: "priority", data: e.target.value })}>
+												noteDispatch({ type: priority, data: e.target.value })}>
 									<option value="high">High</option>
 									<option value="medium">Medium</option>
 									<option value="low">Low</option>
@@ -219,7 +228,7 @@ export default function HomePage() {
 									<button
 										onClick={(e: React.MouseEvent<HTMLElement>) =>
 											debounce(
-												() => noteDispatch({ type: "color", data: "#bebdff" }),
+												() => noteDispatch({ type: color, data: "#bebdff" }),
 												500)}
 										className="color-pallete"
 										style={{ backgroundColor: "#bebdff" }}
@@ -229,7 +238,7 @@ export default function HomePage() {
 									<button
 										onClick={(e: React.MouseEvent<HTMLElement>) =>
 											debounce(
-												() => noteDispatch({ type: "color", data: "rgb(255 101 132)" }),
+												() => noteDispatch({ type: color, data: "rgb(255 101 132)" }),
 												500)}
 										className="color-pallete"
 										style={{ backgroundColor: "rgb(255 101 132)" }}
@@ -239,7 +248,7 @@ export default function HomePage() {
 									<button
 										onClick={(e: React.MouseEvent<HTMLElement>) =>
 											debounce(
-												() => noteDispatch({ type: "color", data: "rgb(251 172 12)" }),
+												() => noteDispatch({ type: color, data: "rgb(251 172 12)" }),
 												500
 											)
 										}
@@ -247,7 +256,7 @@ export default function HomePage() {
 										style={{ backgroundColor: "rgb(251 172 12)" }}
 										value="rgb(251 172 12)"
 									>
-										{noteState.color === "#rgb(251 172 12)" ? <BiCheck /> : ""}
+										{noteState.color === "rgb(251 172 12)" ? <BiCheck /> : ""}
 									</button>
 								</div>
 										{!noteState.id ? 

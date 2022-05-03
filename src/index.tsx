@@ -8,7 +8,7 @@ import { ModalProvider } from "./context/ModalProvider";
 import "./index.css";
 import App from "./App";
 import { ArchiveProvider } from "./context/ArchiveContext";
-import { TrashProvider } from "./context/TrashContext";
+import TrashProvider from "./context/TrashContext";
 import { LabelProvider } from "./context/LabelContext";
 import { NotesProvider } from "./context/NotesContext";
 makeServer();

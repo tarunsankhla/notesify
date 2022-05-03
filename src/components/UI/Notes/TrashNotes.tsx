@@ -1,7 +1,7 @@
 import React from 'react';
 import DOMPurify from 'dompurify';
 import { BiRetainTrash, BiTrash, BiUnarchive } from '../Icons/Icons';
-import { VAR_ENCODE_TOKEN, VAR_NotPinnedNotes } from 'src/utils/Route';
+import { VAR_ENCODE_TOKEN, VAR_NOTPINNED_NOTES } from 'src/utils/Route';
 import useAxios from 'src/customhook/useAxios';
 import { useNotes } from 'src/context/NotesContext';
 import { useTrash } from 'src/context/TrashContext';
@@ -21,7 +21,7 @@ const TrashNotes = ({ props }: Props) => {
 			content: props.htmlbody,
 			color: props.color,
 			createdOn: new Date().toDateString(),
-			pin: VAR_NotPinnedNotes,
+			pin: VAR_NOTPINNED_NOTES,
 			priority: props.priority,
 			label: props.label,
 		};
@@ -66,4 +66,4 @@ const TrashNotes = ({ props }: Props) => {
   )
 }
 
-export default TrashNotes
+export default React.memo(TrashNotes);

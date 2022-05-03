@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer, useState } from "react";
+import React, { createContext, useContext, useReducer, useState } from "react";
 import { AuthProvider } from "src/utils/Auth";
 import { VAR_USER_DETAILS } from "src/utils/Route";
 
@@ -72,4 +72,4 @@ export function useAuth() {
     return useContext(AuthenticationContext);
 }
 
-export { AuthenticationProvider };
+export default React.memo(AuthenticationProvider);

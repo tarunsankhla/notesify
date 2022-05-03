@@ -35,11 +35,11 @@ const ArchivePage = () => {
         <div className='allnotes-container'>
           {
             ArchiveContextArray.length ?
-            ArchiveContextArray?.map((note: any) => (
-              <ArchiveNotes key={note._id} props={note} />
-            ))
-              : 
-              <img src={archive} className="holder"  alt="archive note" />
+              ArchiveContextArray?.map((note: any) => (
+                <ArchiveNotes key={note._id} props={note} />
+              ))
+              :
+              <img src={archive} className="holder" alt="archive note" />
           }
         </div>
       </div>

@@ -3,13 +3,13 @@ import DOMPurify from 'dompurify';
 import "./Notes.css";
 import { BiEdit, BiPinAngle, BiPinAngleFill, BiTrash, IcRoundArchive } from '../Icons/Icons';
 import useAxios from 'src/customhook/useAxios';
-import { VAR_ENCODE_TOKEN, VAR_NotPinnedNotes, VAR_PinnedNotes } from 'src/utils/Route';
+import { VAR_ENCODE_TOKEN,  VAR_NOTPINNED_NOTES,  VAR_PINNED_NOTES, VAR_RESET } from 'src/utils/Route';
 import { useArchive } from 'src/context/ArchiveContext';
 import { useTrash } from 'src/context/TrashContext';
 import { useNotes } from 'src/context/NotesContext';
 import { useEffect } from 'react';
 
-type Props = { props : any}
+type Props = { props: any }
 
 const Notes = (data: any) => {
   const { props } = data;
@@ -26,116 +26,102 @@ const Notes = (data: any) => {
     priority: props.priority,
     label: props.label,
     id: props._id,
-    pin : props.pin
+    pin: props.pin
   };
-  function EditNoteHandler() { 
-    data.noteReducer({ type: "reset", data: initialStateNote });
+  function EditNoteHandler() {
+    data.noteReducer({ type: VAR_RESET, data: initialStateNote });
     data.showNoteToggle(true);
-    
+
   }
 
-  async function PinNoteHandler() { 
-    // data.noteReducer({ type: "reset", data: {
-    //   title: props.title,
-    //   htmlbody: props.content,
-    //   createdOn: "",
-    //   color: props.color,
-    //   priority: props.priority,
-    //   label: props.label,
-    //   id: props._id,
-    //   pin : props.pin === VAR_NotPinnedNotes ? VAR_PinnedNotes : VAR_NotPinnedNotes
-    // } });
-    // data.showNoteToggle(true);
+  async function PinNoteHandler() {
     var object = {
-			title: props.title,
-			content: props.content,
-			color: props.color,
-			createdOn: props.cr,
-			priority: props.priority,
-			pin: props.pin === VAR_NotPinnedNotes ? VAR_PinnedNotes : VAR_NotPinnedNotes,
-			label: props.label,
+      title: props.title,
+      content: props.content,
+      color: props.color,
+      createdOn: props.cr,
+      priority: props.priority,
+      pin: props.pin === VAR_NOTPINNED_NOTES ? VAR_PINNED_NOTES : VAR_NOTPINNED_NOTES,
+      label: props.label,
     };
-    
-		console.log(object,props._id);
-		var res = await axiosRequest({
-			method: "post",
-			url: "/api/notes/"+props._id,
-			data: { note: object },
-			headers: {
-				authorization: localStorage.getItem(VAR_ENCODE_TOKEN),
-			},
-		});
-		console.log(res);
+
+    console.log(object, props._id);
+    var res = await axiosRequest({
+      method: "post",
+      url: "/api/notes/" + props._id,
+      data: { note: object },
+      headers: {
+        authorization: localStorage.getItem(VAR_ENCODE_TOKEN),
+      },
+    });
     SetNoteDataSet(res.notes);
   }
 
-  function ArchiveHandler() { 
+  function ArchiveHandler() {
     try {
-			(async () => {
-				var res = await  axiosRequest({
+      (async () => {
+        var res = await axiosRequest({
           method: "post",
-          url: "/api/notes/archives/" +  props._id,
+          url: "/api/notes/archives/" + props._id,
           headers: {
             authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
           },
           data: { note: { ...props } }
-        
+
         });
-        console.log(res,res.archives,setArchiveContextArray);
         setArchiveContextArray(res.archives);
         SetNoteDataSet(res.notes);
-			})();;
-		} catch (error) {
-			console.log("Product list page error", error);
-			// Alert("error", "Some error occured!! refresh page and try again");
-		}
+      })();;
+    } catch (error) {
+      console.log("Product list page error", error);
+      // Alert("error", "Some error occured!! refresh page and try again");
+    }
   }
 
-  function TrashHandler() { 
+  function TrashHandler() {
     try {
-			(async () => {
-				var res = await  axiosRequest({
+      (async () => {
+        var res = await axiosRequest({
           method: "delete",
-          url: "/api/notes/" +  props._id,
+          url: "/api/notes/" + props._id,
           headers: {
             authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
           }
-        
+
         });
-        console.log(res);
         setTrashContextArray((prev) => [...prev, props]);
         SetNoteDataSet(res.notes);
-			})();;
-		} catch (error) {
-			console.log("Product list page error", error);
-			// Alert("error", "Some error occured!! refresh page and try again");
-		}
+      })();;
+    } catch (error) {
+      console.log("Product list page error", error);
+      // Alert("error", "Some error occured!! refresh page and try again");
+    }
   }
   return (
-    <div className='note-details-container' style={{backgroundColor : props.color  || "wheat"}}>
+    <div className='note-details-container' style={{ backgroundColor: props.color || "wheat" }}>
       <h3>{props.title}</h3>
       <div className='note-pin'>
-        {props.pin === VAR_NotPinnedNotes ?
-          <span onClick={()=>PinNoteHandler()}><BiPinAngle /> </span>
-          : <span onClick={()=>PinNoteHandler()}><BiPinAngleFill /></span>}
+        {props.pin === VAR_NOTPINNED_NOTES ?
+          <span onClick={() => PinNoteHandler()}><BiPinAngle /> </span>
+          : <span onClick={() => PinNoteHandler()}><BiPinAngleFill /></span>}
       </div>
-      <p className="color-schema" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(props.content) }}></p> 
+      <p className="color-schema" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(props.content) }}></p>
       <div className='notes-date'>
-         {props.createdOn}
+        {props.createdOn}
       </div>
 
-      <section className='notes-action' style={{color: props.color || "black"}}>
+      <section className='notes-action' style={{ color: props.color || "black" }}>
         <span onClick={() => ArchiveHandler()}>
           <IcRoundArchive height="1.7em" width="1.7em" />
         </span>
-        <span onClick={()=> TrashHandler()}>
-          <BiTrash height="1.7em" width="1.7em"  />
+        <span onClick={() => TrashHandler()}>
+          <BiTrash height="1.7em" width="1.7em" />
         </span>
-        <span onClick={()=> {EditNoteHandler()}}><BiEdit height="1.7em" width="1.7em" /></span>
-        
+        <span onClick={() => { EditNoteHandler() }}><BiEdit height="1.7em" width="1.7em" /></span>
+
       </section>
     </div>
   )
 }
 
-export default Notes
+export default React.memo(Notes);
