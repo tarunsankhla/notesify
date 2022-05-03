@@ -125,3 +125,12 @@ export function BiUnarchive(props: SVGProps<SVGSVGElement>) {
     <svg width="1em" height="1em" viewBox="0 0 24 24" {...props}><path fill="currentColor" d="M20 21H4V10h2v9h12v-9h2v11M3 3h18v6H3V3m2 2v2h14V5m-8.5 12v-3H8l4-4l4 4h-2.5v3"></path></svg>
   )
 }
+
+
+
+//edit
+export function BiEdit(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg width="1em" height="1em" viewBox="0 0 24 24" {...props}><path fill="currentColor" d="M20.7 7c-.3.4-.7.7-.7 1c0 .3.3.6.6 1c.5.5 1 .9.9 1.4c0 .5-.5 1-1 1.5L16.4 16L15 14.7l4.2-4.2l-1-1l-1.4 1.4L13 7.1l4-3.8c.4-.4 1-.4 1.4 0l2.3 2.3c.4.4.4 1.1 0 1.4M3 17.2l9.6-9.6l3.7 3.8L6.8 21H3v-3.8M10 5v2H2V5h8Z"></path></svg>
+  )
+}

@@ -1,4 +1,3 @@
-
 .AsideNav {
     display: flex;
     min-width: -moz-fit-content;
@@ -26,15 +25,17 @@
     gap: 1.5em;
     padding: 0.5em;
     align-items: center;
+    cursor: pointer;
+    color: var(--primary-color);
 }
 
 .AsideNav li:hover{
-    border-bottom: 2px solid cadetblue;
+    border-bottom: 2px solid var(--primary-color);
 }
 
 .AsideNav li:hover{
-	font-size: 1.01em;
-	transform: scale(1.01);
+	/* font-size: 1.01em;
+	transform: scale(1.01); */
 }
 
 .AsideNav{

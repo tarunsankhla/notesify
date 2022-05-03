@@ -1,7 +1,7 @@
 import React from 'react';
 import DOMPurify from 'dompurify';
 import "./Notes.css";
-import { BiPinAngle, BiPinAngleFill, BiTrash, IcRoundArchive } from '../Icons/Icons';
+import { BiEdit, BiPinAngle, BiPinAngleFill, BiTrash, IcRoundArchive } from '../Icons/Icons';
 import useAxios from 'src/customhook/useAxios';
 import { VAR_ENCODE_TOKEN, VAR_NotPinnedNotes } from 'src/utils/Route';
 import { useArchive } from 'src/context/ArchiveContext';
@@ -70,13 +70,15 @@ const Notes = ({ props }: Props) => {
         CreatedOn : {props.createdOn}
       </div>
 
-      <section>
+      <section className='notes-action'>
         <span onClick={() => ArchiveHandler()}>
           <IcRoundArchive height="1.7em" width="1.7em" />
         </span>
         <span onClick={()=> TrashHandler()}>
           <BiTrash height="1.7em" width="1.7em"  />
         </span>
+        <span onClick={()=> {}}><BiEdit height="1.7em" width="1.7em" /></span>
+        
       </section>
     </div>
   )

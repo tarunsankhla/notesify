@@ -1,6 +1,6 @@
 .note-details-container{
     color: black;
-    font-size: 2em;
+    font-size: 1em;
     padding: 1em;
        border-radius: 10px;
 }
@@ -12,4 +12,12 @@
 
 .note-details-container span{
     cursor: pointer;
+}
+
+.notes-action{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 10px;
 }
