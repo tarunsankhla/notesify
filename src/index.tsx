@@ -3,14 +3,14 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import reportWebVitals from "./reportWebVitals";
 import { makeServer } from "./server";
-import { AuthenticationProvider } from "./context/AuthContext";
+import AuthenticationProvider from "./context/AuthContext";
 import { ModalProvider } from "./context/ModalProvider";
 import "./index.css";
 import App from "./App";
-import { ArchiveProvider } from "./context/ArchiveContext";
+import ArchiveProvider from "./context/ArchiveContext";
 import TrashProvider from "./context/TrashContext";
-import { LabelProvider } from "./context/LabelContext";
-import { NotesProvider } from "./context/NotesContext";
+import {LabelProvider} from "./context/LabelContext";
+import NotesProvider from "./context/NotesContext";
 makeServer();
 
 
