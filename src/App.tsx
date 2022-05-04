@@ -11,6 +11,8 @@ import React, { Suspense } from 'react';
 // const {Mockman} = require("mockman-js");
 import Mockman from 'mockman-js';
 import RequiredAuth from './components/common/PrivateRoutes/RequiredAuth';
+import Skeleton from './components/common/Skeleton/Skeleton';
+
 
 const HomePage = React.lazy(() => import('./pages/HomePage/HomePage'));
 const TrashPage = React.lazy(() => import('./pages/TrashPage/TrashPage'));
@@ -25,20 +27,20 @@ function App() {
         <Route element={<Main />}>
           {/* <Route path='/' element={<HomePage />}></Route> */}
           <Route path={ROUTE_PATH_LandingPage} element={
-            <Suspense fallback={<h1>Loading Home...</h1>}>
+            <Suspense fallback={ <Skeleton />}>
               <HomePage />
             </Suspense>}
           />
           <Route path={ROUTE_PATH_TrashPage} element={
             <RequiredAuth>
-              <Suspense fallback={<h1>Loading Trash...</h1>}>
+              <Suspense fallback={ <Skeleton />}>
                 <TrashPage />
               </Suspense>
             </RequiredAuth>}
           />
           <Route path={ROUTE_PATH_ArchivePage} element={
             <RequiredAuth>
-              <Suspense fallback={<h1>Loading Archive...</h1>}>
+              <Suspense fallback={ <Skeleton />}>
                 <ArchivePage />
               </Suspense>
             </RequiredAuth>}

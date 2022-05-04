@@ -3,7 +3,7 @@ import DOMPurify from 'dompurify';
 import "./Notes.css";
 import { BiEdit, BiPinAngle, BiPinAngleFill, BiTrash, IcRoundArchive } from '../Icons/Icons';
 import useAxios from 'src/customhook/useAxios';
-import { VAR_ENCODE_TOKEN,  VAR_NOTPINNED_NOTES,  VAR_PINNED_NOTES, VAR_RESET } from 'src/utils/Route';
+import { VAR_ENCODE_TOKEN, VAR_NOTPINNED_NOTES, VAR_PINNED_NOTES, VAR_RESET } from 'src/utils/Route';
 import { useArchive } from 'src/context/ArchiveContext';
 import { useTrash } from 'src/context/TrashContext';
 import { useNotes } from 'src/context/NotesContext';
@@ -54,6 +54,7 @@ const Notes = (data: any) => {
         authorization: localStorage.getItem(VAR_ENCODE_TOKEN),
       },
     });
+    console.log(res);
     SetNoteDataSet(res.notes);
   }
 
@@ -106,20 +107,22 @@ const Notes = (data: any) => {
           : <span onClick={() => PinNoteHandler()}><BiPinAngleFill /></span>}
       </div>
       <p className="color-schema" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(props.content) }}></p>
-      <div className='notes-date'>
-        {props.createdOn}
+      <div className='notes-footer'>
+        <span className='notes-date'>
+          {props.createdOn}
+        </span>
+
+        <section className='notes-action' style={{ color: props.color || "black" }}>
+          <span onClick={() => ArchiveHandler()}>
+            <IcRoundArchive height="1.3em" width="1.3em" />
+          </span>
+          <span onClick={() => TrashHandler()}>
+            <BiTrash height="1.3em" width="1.3em" />
+          </span>
+          <span onClick={() => { EditNoteHandler() }}><BiEdit height="1.3em" width="1.3em" /></span>
+
+        </section>
       </div>
-
-      <section className='notes-action' style={{ color: props.color || "black" }}>
-        <span onClick={() => ArchiveHandler()}>
-          <IcRoundArchive height="1.7em" width="1.7em" />
-        </span>
-        <span onClick={() => TrashHandler()}>
-          <BiTrash height="1.7em" width="1.7em" />
-        </span>
-        <span onClick={() => { EditNoteHandler() }}><BiEdit height="1.7em" width="1.7em" /></span>
-
-      </section>
     </div>
   )
 }

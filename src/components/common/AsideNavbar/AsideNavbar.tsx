@@ -18,14 +18,14 @@ function AsideNavbar() {
     const { modalToggle, setmodalToggle } = useModal();
     
     const getActiveStyle = ({isActive}) => ({
-        color: isActive ? "var(--primary-color)" : "",
+        color: isActive ? "var(--primary-color)" : "black",
         transform: isActive ? "scale(1.1)" : "",
         fontWeight: "700",
-        fontSize: "1.1em",
+        fontSize: "1em",
         cursor: "pointer",
         display: "flex",
         justifyContent: "flex-start",
-        gap: "1.5em",
+        gap: "0.5em",
         padding: "0.5em",
         alignItems: "center"
     })
@@ -36,20 +36,20 @@ function AsideNavbar() {
                     <li>
                         <NavLink style={getActiveStyle}
                             to={ROUTE_PATH_LandingPage}>
-                            <BiHouseHeart  height="1.7em" width="1.7em"/>Home
+                            <BiHouseHeart  height="1.5em" width="1.5em"/>Home
                         </NavLink>
                     </li>
                     <li>
                         <NavLink style={getActiveStyle}
                             to={ROUTE_PATH_ArchivePage}>
-                            <BiArchive  height="1.7em" width="1.7em"/>
+                            <BiArchive  height="1.5em" width="1.5em"/>
                             Archive
                         </NavLink>
                     </li>
                     <li>
                         <NavLink style={getActiveStyle}
                             to={ROUTE_PATH_TrashPage}>
-                            <BiTrash  height="1.7em" width="1.7em"/>
+                            <BiTrash  height="1.5em" width="1.5em"/>
                             Trash
                         </NavLink>
                     </li>
@@ -59,12 +59,12 @@ function AsideNavbar() {
                             setmodalToggle(true);
                         }
                     }>
-                        <BiPersonHearts  height="1.7em" width="1.7em"/>Profile
+                        <BiPersonHearts  height="1.5em" width="1.5em"/>Profile
                     </li>
                 </ul>
             </div>
             <div className='aside-nav-logout'>
-                { auth.user ? "@" + auth.user?.firstName + auth.user?.lastName : ""}
+                { auth.user ? "@" + auth.userState?.firstName + auth.userState?.lastName : ""}
                 <span className='logout-btn'
                     onClick={
                         () => {
@@ -73,7 +73,7 @@ function AsideNavbar() {
                             })
                         }
                 }>
-                    <BiBoxArrowRight/>
+                    <BiBoxArrowRight  height="1.5em" width="1.5em"/>
                 </span>
             </div>
         </div>

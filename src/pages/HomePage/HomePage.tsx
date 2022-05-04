@@ -18,6 +18,7 @@ import { VAR_ENCODE_TOKEN, VAR_NOTPINNED_NOTES, VAR_RESET } from "src/utils/Rout
 import StopPropogation from "src/utils/StopPropogation";
 import { preperation } from "src/assets/holders/holders";
 import { useNotes } from "src/context/NotesContext";
+import Skeletons from "src/components/common/Skeleton/Skeleton";
 
 const AllNotes = React.lazy(() => import("./AllNotes/AllNotes"));
 const htmlbody = "htmlbody";
@@ -163,7 +164,9 @@ export default function HomePage() {
 			<div>
 				<img src={preperation} className="holder" alt="singupimage" />
 			</div>
-
+			
+			
+		
 			<div className="latest-notes-container">
 				
 				<div>

@@ -1,7 +1,7 @@
  /* float button  start*/
  .float-add-btn{
-    height: 4rem;
-    width: 4rem;
+    height: 3em;
+    width: 3em;
     border-radius: 50%;
     position: fixed;
     bottom: 2rem;

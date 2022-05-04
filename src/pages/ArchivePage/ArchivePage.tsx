@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { archive } from 'src/assets/holders/holders';
+import Skeleton from 'src/components/common/Skeleton/Skeleton';
 import ArchiveNotes from 'src/components/UI/Notes/ArchiveNotes';
 import { useArchive } from 'src/context/ArchiveContext';
 import useAxios from 'src/customhook/useAxios';
@@ -39,7 +40,10 @@ const ArchivePage = () => {
                 <ArchiveNotes key={note._id} props={note} />
               ))
               :
-              <img src={archive} className="holder" alt="archive note" />
+              <div>
+                <img src={archive} className="holder" alt="archive note" />
+                <Skeleton />
+              </div>
           }
         </div>
       </div>

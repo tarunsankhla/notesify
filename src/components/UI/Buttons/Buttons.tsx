@@ -4,7 +4,7 @@ import "./Buttons.css";
 
 function FloatAddButton() {
   return (
-    <div className='float-add-btn'><BiJournalPlus fontSize="1.7em"/></div>
+    <div className='float-add-btn'><BiJournalPlus /></div>
   )
 }
 

@@ -14,7 +14,8 @@
     /* background-color: cadetblue; */
     color:var(--primary-color);
     gap: 1em;
-    background-color: var(--primary-shade-color);
+    /* background-color: var(--primary-shade-color); */
+    background-color: white;
 }
 
 

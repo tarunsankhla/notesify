@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Trash } from 'src/assets/holders/holders';
+import Skeleton from 'src/components/common/Skeleton/Skeleton';
 import TrashNotes from 'src/components/UI/Notes/TrashNotes';
 import { useTrash } from 'src/context/TrashContext';
 import AllNotes from '../HomePage/AllNotes/AllNotes';
@@ -26,7 +27,10 @@ const TrashPage = () => {
               <TrashNotes key={note._id} props={note} />
             ))
               : 
-              <img src={Trash}  loading="lazy" className="holder" alt='holder trash'/>
+              <div>
+                <img src={Trash} loading="lazy" className="holder" alt='holder trash' />
+                <Skeleton />
+              </div>
           }
         </div>
       </div>

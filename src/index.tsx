@@ -11,6 +11,7 @@ import ArchiveProvider from "./context/ArchiveContext";
 import TrashProvider from "./context/TrashContext";
 import {LabelProvider} from "./context/LabelContext";
 import NotesProvider from "./context/NotesContext";
+import "react-loading-skeleton/dist/skeleton.css";
 makeServer();
 
 
