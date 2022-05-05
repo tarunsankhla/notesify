@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import DOMPurify from 'dompurify';
 import "./Notes.css";
 import { BiEdit, BiPinAngle, BiPinAngleFill, BiTrash, IcRoundArchive } from '../Icons/Icons';
@@ -7,7 +7,7 @@ import { VAR_ENCODE_TOKEN, VAR_NOTPINNED_NOTES, VAR_PINNED_NOTES, VAR_RESET } fr
 import { useArchive } from 'src/context/ArchiveContext';
 import { useTrash } from 'src/context/TrashContext';
 import { useNotes } from 'src/context/NotesContext';
-import { useEffect } from 'react';
+import ShowDate from "src/utils/ShowDate";
 
 type Props = { props: any }
 
@@ -18,6 +18,7 @@ const Notes = (data: any) => {
   const { TrashContextArray, setTrashContextArray } = useTrash();
   const [noteDataSet, SetNoteDataSet] = useNotes();
   console.log(data);
+  
   var initialStateNote = {
     title: props.title,
     htmlbody: props.content,
@@ -98,6 +99,10 @@ const Notes = (data: any) => {
       // Alert("error", "Some error occured!! refresh page and try again");
     }
   }
+  const getDate = useCallback(() => { 
+    console.log("date date");
+    return ShowDate(props.createdOn);
+  }, [props.createdOn])
   return (
     <div className='note-details-container' style={{ backgroundColor: props.color || "wheat" }}>
       <h3>{props.title}</h3>
@@ -109,7 +114,7 @@ const Notes = (data: any) => {
       <p className="color-schema" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(props.content) }}></p>
       <div className='notes-footer'>
         <span className='notes-date'>
-          {props.createdOn}
+          {getDate()}
         </span>
 
         <section className='notes-action' style={{ color: props.color || "black" }}>
