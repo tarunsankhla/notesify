@@ -167,8 +167,7 @@ span:hover {
 .outlet-body {
 	padding-left: 2em;
 	width: 100%;
-		background-color: rgba(0, 0, 0, 0.05);;
-
+	background-color: rgba(0, 0, 0, 0.05);
 }
 
 .notes-container {

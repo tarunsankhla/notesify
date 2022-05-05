@@ -38,4 +38,4 @@ const TrashPage = () => {
   )
 }
 
-export default TrashPage
+export default TrashPage;

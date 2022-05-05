@@ -10,6 +10,7 @@ import {
 } from "src/components/UI/Buttons/Buttons";
 import {
 	BiCheck,
+	BiFilter,
 	BiXCircle,
 } from "src/components/UI/Icons/Icons";
 import { useModal } from "src/context/ModalProvider";
@@ -19,6 +20,7 @@ import StopPropogation from "src/utils/StopPropogation";
 import { preperation } from "src/assets/holders/holders";
 import { useNotes } from "src/context/NotesContext";
 import Skeletons from "src/components/common/Skeleton/Skeleton";
+import FilterNotes from "./AllNotes/FilterNotes";
 
 const AllNotes = React.lazy(() => import("./AllNotes/AllNotes"));
 const htmlbody = "htmlbody";
@@ -68,12 +70,13 @@ var initialStateNote = {
 
 export default function HomePage() {
 	const [showNote, setShowNote] = useState(false);
+	const [NotesArray, SetNotesArray] = useState([]);
 	const [noteState, noteDispatch] = useReducer(ContentDetail,initialStateNote);
 	const [noteDataSet, SetNoteDataSet] = useNotes();
 	var modules = useRef({});
 	const [response, error, loading, axiosRequest] = useAxios();
 	const { modalToggle, setmodalToggle } = useModal();
-
+	var Tags = ["Todo", "Goals"];
 	useMemo(() => {
 		modules.current = {
 			toolbar: [
@@ -91,6 +94,7 @@ export default function HomePage() {
 		};
 	}, []);
 
+	useEffect(() => { SetNotesArray(noteDataSet) }, [noteDataSet]);
 	useEffect(() => {
 		try {
 			(async () => {
@@ -100,6 +104,7 @@ export default function HomePage() {
 				});
 				console.log(res);
 				SetNoteDataSet(res.notes);
+				SetNotesArray(res.notes);
 			})();
 		} catch (error) {
 			console.log("Product list page error", error);
@@ -129,6 +134,7 @@ export default function HomePage() {
 		console.log(res);
 		noteDispatch({ type: VAR_RESET,data : initialStateNote });
 		SetNoteDataSet(res.notes);
+		SetNotesArray(res.notes);
 		setShowNote(false);
 	}
 
@@ -154,6 +160,7 @@ export default function HomePage() {
 		console.log(res);
 		noteDispatch({ type: VAR_RESET,data : initialStateNote });
 		SetNoteDataSet(res.notes);
+		SetNotesArray(res.notes);
 		setShowNote(false);
 	}
 
@@ -161,6 +168,7 @@ export default function HomePage() {
 
 	return (
 		<div className="home-page">
+			<FilterNotes />
 			<div>
 				<img src={preperation} className="holder" alt="singupimage" />
 			</div>
@@ -170,7 +178,7 @@ export default function HomePage() {
 			<div className="latest-notes-container">
 				
 				<div>
-					<NotesCollection notesdata={noteDataSet} showNoteToggle={setShowNote} noteReducer={noteDispatch} noteUpdate={updateNoteHandler}/>
+					<NotesCollection notesdata={NotesArray} showNoteToggle={setShowNote} noteReducer={noteDispatch} noteUpdate={updateNoteHandler}/>
 				</div>
 			</div>
 
@@ -221,12 +229,21 @@ export default function HomePage() {
 									<option value="low">Low</option>
 								</select>
 
-								<input
-									type="text"
-									placeholder="label"
-									value={noteState.label}
-									onChange={(e) => noteDispatch({ type: "label", data: e.target.value })}/>
+								
 
+								<ul>
+									{Tags.map(i => (
+										<li>{i}</li>))
+									}
+									
+									<li>
+										<input type="text"
+											placeholder="label"
+											value={noteState.label}
+											onChange={(e) => noteDispatch({ type: "label", data: e.target.value })} />
+									</li>
+									
+								</ul>
 								<div className="color-pallette-container">
 									<button
 										onClick={(e: React.MouseEvent<HTMLElement>) =>

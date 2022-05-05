@@ -29,7 +29,7 @@
     width: -moz-fit-content;
     width: fit-content;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     /* word-spacing: 0.1em; */
     margin: 5px;

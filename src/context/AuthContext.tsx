@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useReducer, useState } from "react";
 import { AuthProvider } from "src/utils/Auth";
-import { VAR_USER_DETAILS } from "src/utils/Route";
+import { VAR_ENCODE_TOKEN, VAR_USER_DETAILS, VAR_USER_ID } from "src/utils/Route";
 
 interface AuthContextInterface {
     user: any,
@@ -53,12 +53,15 @@ function AuthenticationProvider({ children }: { children: React.ReactNode }) {
     let logoutUser = (callback: VoidFunction) => {
         return AuthProvider.logoutAuthProvider(() => {
             console.log("logout")
+            localStorage.removeItem(VAR_USER_DETAILS);
+            localStorage.removeItem(VAR_ENCODE_TOKEN);
+            localStorage.removeItem(VAR_USER_ID);
             setuser(false);
             userDispatch({firstName: " ",
             lastName: " ",
                 email: " "
             });
-            localStorage.removeItem(VAR_USER_DETAILS)
+            
             callback();
         })
     }

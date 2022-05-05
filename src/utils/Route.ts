@@ -1,6 +1,7 @@
 const ROUTE_PATH_LandingPage = "/";
 const ROUTE_PATH_TrashPage = "/trash";
 const ROUTE_PATH_ArchivePage = "/archive";
+const ROUTE_PATH_LabelPage = "/label";
 const ROUTE_PATH_Unknown = "*";
 const ROUTE_PATH_LoginPage = "/login";
 const ROUTE_PATH_SignupPage = "/signup";
@@ -18,6 +19,7 @@ export {
 	ROUTE_PATH_LandingPage,
 	ROUTE_PATH_TrashPage,
 	ROUTE_PATH_ArchivePage,
+	ROUTE_PATH_LabelPage,
 	ROUTE_PATH_Unknown,
 	ROUTE_PATH_LoginPage,
 	ROUTE_PATH_SignupPage,

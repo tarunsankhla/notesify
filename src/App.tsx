@@ -1,7 +1,7 @@
 // import logo from './logo.svg';
 import './App.css';
 import { Route, Routes } from 'react-router';
-import { ROUTE_PATH_ArchivePage, ROUTE_PATH_LandingPage, ROUTE_PATH_Mockman, ROUTE_PATH_TrashPage } from './utils/Route';
+import { ROUTE_PATH_ArchivePage, ROUTE_PATH_LabelPage, ROUTE_PATH_LandingPage, ROUTE_PATH_Mockman, ROUTE_PATH_TrashPage } from './utils/Route';
 // import HomePage from "./pages/HomePage/HomePage";
 // import HomePage from './pages/HomePage/HomePage';
 // import { TrashPage } from "./pages/HomePage/TrashPage";
@@ -17,6 +17,7 @@ import Skeleton from './components/common/Skeleton/Skeleton';
 const HomePage = React.lazy(() => import('./pages/HomePage/HomePage'));
 const TrashPage = React.lazy(() => import('./pages/TrashPage/TrashPage'));
 const ArchivePage = React.lazy(() => import('./pages/ArchivePage/ArchivePage'));
+const LabelPage = React.lazy(() => import('./pages/LabelPage/LabelPage'));
 
 function App() {
 
@@ -42,6 +43,13 @@ function App() {
             <RequiredAuth>
               <Suspense fallback={ <Skeleton />}>
                 <ArchivePage />
+              </Suspense>
+            </RequiredAuth>}
+          />
+            <Route path={ROUTE_PATH_LabelPage} element={
+            <RequiredAuth>
+              <Suspense fallback={ <Skeleton />}>
+                <LabelPage />
               </Suspense>
             </RequiredAuth>}
           />

@@ -4,7 +4,7 @@ import Notes from 'src/components/UI/Notes/Notes';
 import { VAR_NOTPINNED_NOTES, VAR_PINNED_NOTES } from 'src/utils/Route';
 import "../HomePage.css";
 
-type Props = { prosp }
+type Props = { props }
 
 const AllNotes = (props: any) => {
     // var { } = props;
