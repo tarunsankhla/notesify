@@ -245,6 +245,8 @@ select {
 
 .label-list-add{
 	display: flex;
+	height: fit-content;
+
 }
 
 .label-list-container{

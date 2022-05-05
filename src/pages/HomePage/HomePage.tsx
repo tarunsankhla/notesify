@@ -280,6 +280,26 @@ export default function HomePage() {
 									>
 										{noteState.color === "rgb(251 172 12)" ? <BiCheck /> : ""}
 									</button>
+									<button
+										onClick={(e: React.MouseEvent<HTMLElement>) =>
+											debounce(
+												() => noteDispatch({ type: color, data: "#539987" }),
+												500)}
+										className="color-pallete"
+										style={{ backgroundColor: "#539987" }}
+										value="#539987">
+										{noteState.color === "#539987" ? <BiCheck /> : ""}
+									</button>
+									<button
+										onClick={(e: React.MouseEvent<HTMLElement>) =>
+											debounce(
+												() => noteDispatch({ type: color, data: "#8c7aa9" }),
+												500)}
+										className="color-pallete"
+										style={{ backgroundColor: "#8c7aa9" }}
+										value="#8c7aa9">
+										{noteState.color === "#8c7aa9" ? <BiCheck /> : ""}
+									</button>
 								</div>
 								{!noteState.id ?
 									<span onClick={() => createNoteHandler()}>
