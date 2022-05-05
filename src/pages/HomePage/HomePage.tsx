@@ -246,35 +246,6 @@ export default function HomePage() {
 									<option value="low">Low</option>
 								</select>
 
-
-
-								<ul>
-									{LabelContextArray.map(i => (
-										<li>
-											<input type="checkbox" value={i} id="" checked={noteState.label.includes(i)}
-												onClick={() => { noteDispatch({ type: "label", data: i }); }} />
-											{i}
-										</li>))
-									}
-								</ul>
-								<div>
-									<input type="text"
-										placeholder="label"
-										value={newLabel}
-										onChange={(e) => {
-											if (!!e.target.value) {
-												setNewLabel(e.target.value);
-											}
-										}} />
-
-									<button onClick={() => {
-										// noteDispatch({ type: "label", data: newLabel });
-										setNewLabel("");
-										HandeLabel(newLabel);
-									}}>add</button>
-								</div>
-
-
 								<div className="color-pallette-container">
 									<button
 										onClick={(e: React.MouseEvent<HTMLElement>) =>
@@ -317,6 +288,33 @@ export default function HomePage() {
 									: <span onClick={() => updateNoteHandler()}>
 										<CreateButton props="Update " />
 									</span>}
+								<div className="label-list-container">
+									<div className="label-list">
+										{LabelContextArray.map(i => (
+											<li>
+												<input type="checkbox" value={i} id="" checked={noteState.label.includes(i)}
+													onClick={() => { noteDispatch({ type: "label", data: i }); }} />
+												{i}
+											</li>))
+										}
+									</div>
+									<div className="label-list-add">
+										<input type="text"
+											placeholder="label"
+											value={newLabel}
+											onChange={(e) => {
+												if (!!e.target.value) {
+													setNewLabel(e.target.value);
+												}
+											}} />
+
+										<span onClick={() => {
+											// noteDispatch({ type: "label", data: newLabel });
+											setNewLabel("");
+											HandeLabel(newLabel);
+										}}><CreateButton props="Label" /></span>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
