@@ -1,15 +1,15 @@
-.notes-container-header{
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+.notes-container-header {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
 }
-.notes-container-header > div{
-    display: flex;
+.notes-container-header > div {
+	display: flex;
 }
 
-.label-container{
-    border: 1px solid rgba(0,0,0,0.2);
-    padding: 1em;
-    border-radius: 1em;
-    height: fit-content;
+.label-container {
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	padding: 1em;
+	border-radius: 1em;
+	height: fit-content;
 }

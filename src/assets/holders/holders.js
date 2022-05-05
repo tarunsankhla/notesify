@@ -13,11 +13,12 @@ import Files from "./files.svg";
 export {
     annotation,
     archive,
-    books, 
-    Login , 
-    Login2 ,
-    noted, 
+    books,
+    Login,
+    Login2,
+    noted,
     preperation,
     Signup,
-    Trash ,Files
- }
+    Trash,
+    Files
+}

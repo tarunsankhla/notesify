@@ -12,7 +12,6 @@ const TrashNotes = ({ props }: Props) => {
   const [response, error, loading, axiosRequest] = useAxios();
   const [noteDataSet, SetNoteDataSet] = useNotes();
   const { TrashContextArray, setTrashContextArray } = useTrash();
-  console.log(props);
 
 
   async function retainNoteHandler() {
@@ -34,7 +33,6 @@ const TrashNotes = ({ props }: Props) => {
         authorization: localStorage.getItem(VAR_ENCODE_TOKEN),
       },
     });
-    console.log(res);
     SetNoteDataSet(res.notes);
     RemoveNoteFromTrashHandler();
   }

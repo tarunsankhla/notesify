@@ -55,7 +55,7 @@ const ContentDetail = (state, action) => {
 			return { ...state, priority: action.data };
 		}
 		case label: {
-			if (state.label.includes(action.data)) { 
+			if (state.label.includes(action.data)) {
 				var index = state.label.includes(action.data);
 				return { ...state, label: [...state.label.slice(0, index), ...state.label.slice(index + 1)] }
 			}
@@ -149,7 +149,6 @@ export default function HomePage() {
 				authorization: localStorage.getItem(VAR_ENCODE_TOKEN),
 			},
 		});
-		console.log(res);
 		noteDispatch({ type: VAR_RESET, data: initialStateNote });
 		SetNoteDataSet(res.notes);
 		SetNotesArray(res.notes);
@@ -175,7 +174,6 @@ export default function HomePage() {
 				authorization: localStorage.getItem(VAR_ENCODE_TOKEN),
 			},
 		});
-		console.log(res);
 		noteDispatch({ type: VAR_RESET, data: initialStateNote });
 		SetNoteDataSet(res.notes);
 		SetNotesArray(res.notes);
@@ -186,7 +184,7 @@ export default function HomePage() {
 
 	return (
 		<div className="home-page">
-			<FilterNotes notesdata={NotesArray} setnotesdate={SetNotesArray}/>
+			<FilterNotes notesdata={NotesArray} setnotesdate={SetNotesArray} />
 			<div>
 				<img src={preperation} className="holder" alt="singupimage" />
 			</div>

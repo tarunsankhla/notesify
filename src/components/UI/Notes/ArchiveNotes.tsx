@@ -12,7 +12,8 @@ const ArchiveNotes = ({ props }: Props) => {
     const [response, error, loading, axiosRequest] = useAxios();
     const { ArchiveContextArray, setArchiveContextArray } = useArchive();
     const [noteDataSet, SetNoteDataSet] = useNotes();
-    console.log(props);
+
+
     function UnArchiveHandler() {
         try {
             (async () => {

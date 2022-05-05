@@ -1,25 +1,23 @@
-.Navbar{
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+.Navbar {
+	font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+		"Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 
 .Navbar {
-    display: flex;
-    width: 100%;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 10px;
-    padding-left: 3em;
-    font-weight: 700;
-    font-size: 1.5em;
-    /* background-color: cadetblue; */
-    color:var(--primary-color);
-    gap: 1em;
-    /* background-color: var(--primary-shade-color); */
-    background-color: white;
+	display: flex;
+	width: 100%;
+	justify-content: flex-start;
+	align-items: center;
+	padding: 10px;
+	padding-left: 3em;
+	font-weight: 700;
+	font-size: 1.5em;
+	color: var(--primary-color);
+	gap: 1em;
+	background-color: white;
 }
 
-
-.logo-navbar{
+.logo-navbar {
 	height: 2em;
 	cursor: pointer;
 }

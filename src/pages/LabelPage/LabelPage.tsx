@@ -27,13 +27,13 @@ function LabelPage() {
         <div className='notes-container-header'>
           <span className="page-title">Labels : </span>
           <div>
-            <input onChange={(e) => setInput(e.target.value)} value={ input}/>
+            <input onChange={(e) => setInput(e.target.value)} value={input} />
             <span onClick={() => CreateLabelHandler()} ><CreateButton props="Create Label" /></span>
           </div>
         </div>
         <div className=''>
           <div>Total Notes : {noteDataSet.length}</div>
-          
+
           {LabelContextArray.length ?
             <div className='allnotes-container'>
               {LabelContextArray.map(i => (
@@ -42,8 +42,7 @@ function LabelPage() {
                   <div>
                     {noteDataSet.map(note => (
                       note.label.includes(i) &&
-                      <ReadNotes props={note} />
-
+                        <ReadNotes props={note} />
                     ))}
                   </div>
                 </div>

@@ -1,140 +1,125 @@
-.signup-body-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: fit-content;   
-    box-shadow: 0 4px 2px rgba(0,0,0,0.02),
-    0 8px 16px rgba(0,0,0,0.03),
-    0 16px 10px rgba(0,0,0,0.04),
-    0 26px 18px rgba(0,0,0,0.05);
-    /* margin: 3em;  */
-    background-color: #ffdd61;
-    /* border-radius: 2em; */
-    padding: 0 4em;
+.signup-body-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: fit-content;
+	box-shadow: 0 4px 2px rgba(0, 0, 0, 0.02), 0 8px 16px rgba(0, 0, 0, 0.03),
+		0 16px 10px rgba(0, 0, 0, 0.04), 0 26px 18px rgba(0, 0, 0, 0.05);
+	/* margin: 3em;  */
+	background-color: #ffdd61;
+	/* border-radius: 2em; */
+	padding: 0 4em;
 }
 
-.signup-container{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    background-color: transparent;
-    width: 50vw;
-    height: fit-content;
-    border-radius: var(--border-radius);
-    font-size: 1.5rem;
-    padding: 2rem 0;
-    /* margin: 1em;
+.signup-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	background-color: transparent;
+	width: 50vw;
+	height: fit-content;
+	border-radius: var(--border-radius);
+	font-size: 1.5rem;
+	padding: 2rem 0;
+	/* margin: 1em;
     margin-bottom: 3em; */
-  
 }
 
-input[type=checkbox]{
-    margin : 1em;
-    cursor: pointer;
+input[type="checkbox"] {
+	margin: 1em;
+	cursor: pointer;
 }
 
-
-input[type=radio]{
-    cursor: pointer;
-    margin: 1em;
+input[type="radio"] {
+	cursor: pointer;
+	margin: 1em;
 }
-.signup-credential-container{
-    width: 70%;
+.signup-credential-container {
+	width: 70%;
 }
-.signup-credential-container > input{
-    width: 100%;
-    padding: 0.7em;
-    margin: 0.7em 0.5em;
-    border-radius: 0.5em;
-    border: 2px solid transparent !important;
-    outline: none;
-    background-color: white !important;
-}
-
-
-.signup-credential-container > label{
-    font-weight: 500;
+.signup-credential-container > input {
+	width: 100%;
+	padding: 0.7em;
+	margin: 0.7em 0.5em;
+	border-radius: 0.5em;
+	border: 2px solid transparent !important;
+	outline: none;
+	background-color: white !important;
 }
 
-
-.signup-remember-container
-{
-    display: flex;
-    justify-content: space-between;
-    /* width: 70%; */
-    gap: 1em;
-    font-size: 0.7em;
+.signup-credential-container > label {
+	font-weight: 500;
 }
 
-.signup-action-btn   {
-    display:block;
-    /* font-size: 2rem; */
-    width: 100%;
-    border: 1px solid transparent;
+.signup-remember-container {
+	display: flex;
+	justify-content: space-between;
+	gap: 1em;
+	font-size: 0.7em;
 }
 
-.signup-btn-container{
-    width: 70%;
-    /* padding: 1em; */
+.signup-action-btn {
+	display: block;
+	width: 100%;
+	border: 1px solid transparent;
 }
 
-.title-header{
-    /* font-size: 2rem; */
-    font-weight: 600;
-    color: #4d5cdb;
+.signup-btn-container {
+	width: 70%;
 }
 
-
-.signup-footer{
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    justify-content: space-evenly;
-    cursor: pointer;
+.title-header {
+	font-weight: 600;
+	color: #4d5cdb;
 }
 
-.signupImage{
-    max-width: 30vw;
-    height: 50vh;
-}
-.error{
-    color: red;
-    font-weight: 500;
-    font-size: 0.7em;
+.signup-footer {
+	display: flex;
+	align-items: center;
+	text-decoration: none;
+	justify-content: space-evenly;
+	cursor: pointer;
 }
 
-button:disabled{
-    cursor:not-allowed;
+.signupImage {
+	max-width: 30vw;
+	height: 50vh;
+}
+.error {
+	color: red;
+	font-weight: 500;
+	font-size: 0.7em;
 }
 
-/*  */
+button:disabled {
+	cursor: not-allowed;
+}
 
-.password-holder > input{
+.password-holder > input {
 	width: 80%;
 	padding: 0.5em;
 	margin: 0 0 0 0.5em;
 	border: 2px solid transparent !important;
 	outline: none;
 	font-size: 1.5rem;
-    background-color: #e8f0fe !important;
-
+	background-color: #e8f0fe !important;
 }
 
-.password-holder{
+.password-holder {
 	align-items: center;
-    display: flex;
-    margin: 0.5em;
-    background: #e8f0fe;
-    justify-content: space-around;
+	display: flex;
+	margin: 0.5em;
+	background: #e8f0fe;
+	justify-content: space-around;
 	border-radius: 0.5em;
 	width: 100%;
 }
 @media screen and (max-width: 800px) {
-    .signup-container{
-        width: 100vw;
-    }
-    .signupImage{
-        display: none;
-    }
+	.signup-container {
+		width: 100vw;
+	}
+	.signupImage {
+		display: none;
+	}
 }

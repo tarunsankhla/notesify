@@ -5,13 +5,13 @@ import reportWebVitals from "./reportWebVitals";
 import { makeServer } from "./server";
 import AuthenticationProvider from "./context/AuthContext";
 import { ModalProvider } from "./context/ModalProvider";
-import "./index.css";
-import App from "./App";
 import ArchiveProvider from "./context/ArchiveContext";
 import TrashProvider from "./context/TrashContext";
-import {LabelProvider} from "./context/LabelContext";
+import { LabelProvider } from "./context/LabelContext";
 import NotesProvider from "./context/NotesContext";
 import "react-loading-skeleton/dist/skeleton.css";
+import "./index.css";
+import App from "./App";
 makeServer();
 
 
@@ -22,12 +22,12 @@ root.render(
       <AuthenticationProvider>
         <ModalProvider>
           <NotesProvider>
-          <ArchiveProvider>
-            <TrashProvider>
-              <LabelProvider>
-                <App />
-              </LabelProvider>
-            </TrashProvider>
+            <ArchiveProvider>
+              <TrashProvider>
+                <LabelProvider>
+                  <App />
+                </LabelProvider>
+              </TrashProvider>
             </ArchiveProvider>
           </NotesProvider>
         </ModalProvider>

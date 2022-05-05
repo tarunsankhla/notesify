@@ -12,4 +12,4 @@ const ArchiveProvider = ({ children }) => {
 }
 
 export const useArchive = () => useContext(Archivecontext);
-export default  React.memo(ArchiveProvider);
+export default React.memo(ArchiveProvider);

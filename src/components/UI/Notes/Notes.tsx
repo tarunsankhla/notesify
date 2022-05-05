@@ -18,7 +18,7 @@ const Notes = (data: any) => {
   const { TrashContextArray, setTrashContextArray } = useTrash();
   const [noteDataSet, SetNoteDataSet] = useNotes();
   console.log(data);
-  
+
   var initialStateNote = {
     title: props.title,
     htmlbody: props.content,
@@ -55,7 +55,6 @@ const Notes = (data: any) => {
         authorization: localStorage.getItem(VAR_ENCODE_TOKEN),
       },
     });
-    console.log(res);
     SetNoteDataSet(res.notes);
   }
 
@@ -99,7 +98,7 @@ const Notes = (data: any) => {
       // Alert("error", "Some error occured!! refresh page and try again");
     }
   }
-  const getDate = useCallback(() => { 
+  const getDate = useCallback(() => {
     console.log("date date");
     return ShowDate(props.createdOn);
   }, [props.createdOn])

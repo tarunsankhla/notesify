@@ -57,16 +57,17 @@ function AuthenticationProvider({ children }: { children: React.ReactNode }) {
             localStorage.removeItem(VAR_ENCODE_TOKEN);
             localStorage.removeItem(VAR_USER_ID);
             setuser(false);
-            userDispatch({firstName: " ",
-            lastName: " ",
+            userDispatch({
+                firstName: " ",
+                lastName: " ",
                 email: " "
             });
-            
+
             callback();
         })
     }
 
-    let value = { user, loginUser, logoutUser, userState}
+    let value = { user, loginUser, logoutUser, userState }
     return <AuthenticationContext.Provider value={value}>{children}</AuthenticationContext.Provider>;
 
 }

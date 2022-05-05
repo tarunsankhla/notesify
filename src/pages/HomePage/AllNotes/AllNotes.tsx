@@ -7,14 +7,10 @@ import "../HomePage.css";
 type Props = { props }
 
 const AllNotes = (props: any) => {
-    // var { } = props;
     console.log(props, props.notesdata);
     function ClickOnNoteHanlder(event) {
         event.stopPropagation();
-        console.log(event);
-
     }
-    // console.log(props.notesda    ta);
     return (
         <div>
             {props.notesdata?.some((note: any) => (
@@ -24,7 +20,6 @@ const AllNotes = (props: any) => {
                         Pinned
                     </div>
                     <div className='allnotes-container'>
-
                         {
                             props.notesdata?.map((note: any) => (
                                 note.pin === VAR_PINNED_NOTES &&

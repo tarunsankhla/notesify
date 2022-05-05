@@ -71,14 +71,12 @@ html {
 /* MAin */
 .main-container {
 	display: flex;
-	/* background-color: var(--nav-color); */
 	flex-direction: column;
 	position: relative;
 }
 
 .main-body {
 	display: flex;
-	/* background-color: rgba(0, 0, 0, 0.1); */
 	width: 100%;
 	min-height: 100vh;
 }
@@ -180,7 +178,6 @@ span:hover {
 	width: 100%;
 }
 
-
-button:hover{
+button:hover {
 	cursor: pointer;
 }

@@ -5,11 +5,7 @@ import { LogoBGPNG, LogoPNG, LogoSVG, LogoWEBP1, LogoWEBP2 } from "src/assets/im
 function Navbar() {
   return (
     <div className='Navbar'>
-      {/* <img src={LogoSVG} />
-      <img src={LogoBGPNG} />
-      <img src={LogoPNG}/> */}
-      <img src={LogoWEBP1} loading="lazy" alt='logo' className='logo-navbar'/>
-      {/* <img src={LogoWEBP2}/> */}
+      <img src={LogoWEBP1} loading="lazy" alt='logo' className='logo-navbar' />
       Notes</div>
   )
 }

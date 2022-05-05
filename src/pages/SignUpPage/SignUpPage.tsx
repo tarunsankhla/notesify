@@ -83,8 +83,8 @@ function SignUpPage({ props: setlogin }: Props) {
 
 		setPasswordCheckError(
 			!!HasAlphabets(value) &&
-				!!HasNumber(value) &&
-				!!HasSpecialCharacter(value)
+			!!HasNumber(value) &&
+			!!HasSpecialCharacter(value)
 		);
 	}
 
@@ -136,31 +136,72 @@ function SignUpPage({ props: setlogin }: Props) {
 		}
 	};
 
-  return (
-    <FullPageModal>
-		<div className="signup-body-container"
-			onClick={(event: React.MouseEvent<HTMLElement>) => StopPropogation(event)} >
-      
-			<img src={Signup} className="signupImage" alt="signupImg" />
-			<div className="signup-container">
-				<div className="title-header">
-					<p>
-						Create your profile and get first <br />
-						access to the very best of products, inspiration and community.
-					</p>
-				</div>
-				<div className="signup-credential-container">
-					<input
-						type="email"
-						placeholder="Email Address - xyz@gmail.com"
-						onChange={(e) => dispatch({ email: e.target.value })}
-					/>
-				</div>
-				<div className="signup-credential-container">
-					<div className="password-holder">
+	return (
+		<FullPageModal>
+			<div className="signup-body-container"
+				onClick={(event: React.MouseEvent<HTMLElement>) => StopPropogation(event)} >
+
+				<img src={Signup} className="signupImage" alt="signupImg" />
+				<div className="signup-container">
+					<div className="title-header">
+						<p>
+							Create your profile and get first <br />
+							access to the very best of products, inspiration and community.
+						</p>
+					</div>
+					<div className="signup-credential-container">
 						<input
-							type={passwordType}
-							placeholder="Password"
+							type="email"
+							placeholder="Email Address - xyz@gmail.com"
+							onChange={(e) => dispatch({ email: e.target.value })}
+						/>
+					</div>
+					<div className="signup-credential-container">
+						<div className="password-holder">
+							<input
+								type={passwordType}
+								placeholder="Password"
+								name=""
+								id=""
+								style={{
+									borderColor: passwordCheckError ? "red" : "black",
+									outlineColor: passwordCheckError ? "red" : "black",
+								}}
+								onChange={(e) => {
+									PasswordCheck(e.target.value);
+								}}
+							/>
+							{passwordType === "password" ? (
+								<span
+									className="material-icons-round"
+									onClick={() => PasswordVisibilityHandler()}
+								>
+									visibility
+								</span>
+							) : (
+								<span
+									className="material-icons-round"
+									onClick={() => PasswordVisibilityHandler()}
+								>
+									visibility_off
+								</span>
+							)}
+						</div>
+						<p className="error">
+							{confirmPassword.length > 0 && confirmPassword.length < 7
+								? "password should be minimum 7 letter"
+								: ""}
+						</p>
+						<p className="error">
+							{confirmPassword.length > 0 &&
+								!passwordCheckError &&
+								"Password should contain a number, alphabet & special character"}
+						</p>
+					</div>
+					<div className="signup-credential-container">
+						<input
+							type="password"
+							placeholder="Confirm Password"
 							name=""
 							id=""
 							style={{
@@ -168,89 +209,48 @@ function SignUpPage({ props: setlogin }: Props) {
 								outlineColor: passwordCheckError ? "red" : "black",
 							}}
 							onChange={(e) => {
-								PasswordCheck(e.target.value);
+								setPasswordCheckError(e.target.value !== confirmPassword);
 							}}
+							disabled={
+								passwordCheckError && confirmPassword.length >= 7 ? false : true
+							}
 						/>
-						{passwordType === "password" ? (
-							<span
-								className="material-icons-round"
-								onClick={() => PasswordVisibilityHandler()}
-							>
-								visibility
-							</span>
-						) : (
-							<span
-								className="material-icons-round"
-								onClick={() => PasswordVisibilityHandler()}
-							>
-								visibility_off
-							</span>
-						)}
+						<p className="error">
+							{passwordCheckError && "Confirm Password Should match Password"}
+						</p>
 					</div>
-					<p className="error">
-						{confirmPassword.length > 0 && confirmPassword.length < 7
-							? "password should be minimum 7 letter"
-							: ""}
-					</p>
-					<p className="error">
-						{confirmPassword.length > 0 &&
-							!passwordCheckError &&
-							"Password should contain a number, alphabet & special character"}
-					</p>
-				</div>
-				<div className="signup-credential-container">
-					<input
-						type="password"
-						placeholder="Confirm Password"
-						name=""
-						id=""
-						style={{
-							borderColor: passwordCheckError ? "red" : "black",
-							outlineColor: passwordCheckError ? "red" : "black",
-						}}
-						onChange={(e) => {
-							setPasswordCheckError(e.target.value !== confirmPassword);
-						}}
-						disabled={
-							passwordCheckError && confirmPassword.length >= 7 ? false : true
-						}
-					/>
-					<p className="error">
-						{passwordCheckError && "Confirm Password Should match Password"}
-					</p>
-				</div>
-				<div className="signup-credential-container">
-					<input
-						type="email"
-						placeholder="First Name"
-						onChange={(e) => dispatch({ firstName: e.target.value })}
-					/>
-					{/* </div>
+					<div className="signup-credential-container">
+						<input
+							type="email"
+							placeholder="First Name"
+							onChange={(e) => dispatch({ firstName: e.target.value })}
+						/>
+						{/* </div>
         <div className="signup-credential-container"> */}
-					<input
-						type="email"
-						placeholder="Last Name"
-						onChange={(e) => dispatch({ lastName: e.target.value })}
-					/>
-				</div>
-				<div className="signup-remember-container">
-					<div>
-						<input type="checkbox" name="" id="" />I accept all Terms &
-						Conditions
+						<input
+							type="email"
+							placeholder="Last Name"
+							onChange={(e) => dispatch({ lastName: e.target.value })}
+						/>
 					</div>
+					<div className="signup-remember-container">
+						<div>
+							<input type="checkbox" name="" id="" />I accept all Terms &
+							Conditions
+						</div>
+					</div>
+					<div className="signup-btn-container">
+						<button className="btn signup-action-btn" onClick={onSubmittFunc}>
+							Signup
+						</button>
+					</div>
+					<span className="signup-footer" onClick={() => setlogin(true)}>
+						Already have an Account{" "}
+						<span className="material-icons-round">navigate_next</span>
+					</span>
 				</div>
-				<div className="signup-btn-container">
-					<button className="btn signup-action-btn" onClick={onSubmittFunc}>
-						Signup
-					</button>
-				</div>
-				<span className="signup-footer" onClick={() => setlogin(true)}>
-					Already have an Account{" "}
-					<span className="material-icons-round">navigate_next</span>
-				</span>
 			</div>
-      </div>
-      </FullPageModal>
+		</FullPageModal>
 	);
 }
 
