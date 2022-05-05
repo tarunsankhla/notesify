@@ -13,3 +13,10 @@
 	border-radius: 1em;
 	height: fit-content;
 }
+
+.label-list-container-ind {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1em;
+	flex-direction: column;
+}

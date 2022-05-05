@@ -39,7 +39,7 @@ function LabelPage() {
               {LabelContextArray.map(i => (
                 <div className='label-container' key={i}>
                   <h3>{i}</h3>
-                  <div>
+                  <div className='label-list-container-ind'>
                     {noteDataSet.map(note => (
                       note.label.includes(i) &&
                         <ReadNotes props={note} />
