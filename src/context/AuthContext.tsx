@@ -6,7 +6,8 @@ interface AuthContextInterface {
     user: any,
     loginUser: (user: any, callback: VoidFunction) => void,
     logoutUser: (callback: VoidFunction) => void,
-    userState: any
+    userState: any,
+    userDispatch:any
 }
 
 
@@ -71,7 +72,7 @@ function AuthenticationProvider({ children }: { children: React.ReactNode }) {
         })
     }
 
-    const value = { user, loginUser, logoutUser, userState }
+    const value = { user, loginUser, logoutUser, userState,userDispatch }
     return <AuthenticationContext.Provider value={value}>{children}</AuthenticationContext.Provider>;
 
 }

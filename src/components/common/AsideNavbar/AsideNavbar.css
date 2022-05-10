@@ -44,6 +44,7 @@
 	align-items: center;
 	gap: 0.5em;
 	font-size: 1.1em;
+	border-top: 2PX SOLID #9675b4;;
 }
 
 .logout-btn {

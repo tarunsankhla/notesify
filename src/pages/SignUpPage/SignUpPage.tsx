@@ -144,9 +144,9 @@ function SignUpPage({ props: setlogin }: Props) {
 				{/* <img src={Signup} className="signupImage" alt="signupImg" /> */}
 				<div className="signup-container">
 					<div className="title-header">
-						<p>
-							Create your profile and get first <br />
-							access to the very best of products, inspiration and community.
+						<p style={{fontSize: "10px"}} >
+							Create your profile and get access
+							to create notes and maintain them
 						</p>
 					</div>
 					<div className="signup-credential-container">
@@ -234,10 +234,10 @@ function SignUpPage({ props: setlogin }: Props) {
 						/>
 					</div>
 					<div className="signup-remember-container">
-						<div>
+						
 							<input type="checkbox" name="" id="" />I accept all Terms &
 							Conditions
-						</div>
+						
 					</div>
 					<div className="signup-btn-container">
 						<button className="btn signup-action-btn" onClick={onSubmittFunc}>

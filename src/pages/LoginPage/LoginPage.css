@@ -29,9 +29,10 @@
 	max-width: 90%;
 }
 .login-credential-container > input {
+
 	width: 100%;
-	padding: 1em;
-	margin: 1em;
+    padding: 10px;
+	margin: 10px;
 	border-radius: 0.5em;
 	border: 2px solid transparent !important;
 	outline: none;

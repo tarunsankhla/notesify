@@ -313,7 +313,7 @@ export default function HomePage() {
 										<CreateButton props="Update " />
 									</span>}
 								<div className="label-list-container">
-									<div className="label-list-add">
+									
 										<div className="label-list">
 											{LabelContextArray.map(i => (
 												<li>
@@ -323,7 +323,7 @@ export default function HomePage() {
 												</li>))
 											}
 										</div>
-
+									<div className="label-list-add">
 										<input type="text"
 											placeholder="label"
 											value={newLabel}

@@ -131,6 +131,8 @@ input[type="color" i]::-webkit-color-swatch {
 .color-pallette-container {
 	display: flex;
 	gap: 5px;
+	width: 20%;
+    flex-wrap: wrap;
 }
 
 .home-holder {
@@ -218,7 +220,7 @@ select {
     overflow-y: scroll;
     flex-direction: column;
     background-color: white;
-	/* width: 25%; */
+	width: 30%;
 	height: fit-content;
 }
 .note-editor-action select{
@@ -248,7 +250,8 @@ select {
 .label-list-add{
 	display: flex;
 	height: fit-content;
-
+	flex-wrap: wrap;
+	gap: 1em;
 }
 
 .label-list-container{
@@ -256,16 +259,25 @@ select {
     padding: 10;
     gap: 1em;
     flex-wrap: wrap;
-    min-width: 80%;
+	width: 100%;
+    /* min-width: 80%; */
 }
+
 @media screen and (max-width:780px) {
 	.note-editor-container{
 		width: 70%;
 	}
+	.note-editor-action select {
+		width: 30%;
+	}
+	.ql-editor {
+		font-size: 10px;
+	}
+	
 }
 
 @media screen and (max-width:660px) {
 	.note-editor-container{
-		width: 70%;
+		width: 94%;
 	}
 }

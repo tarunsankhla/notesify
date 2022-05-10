@@ -11,28 +11,28 @@ import {
 } from 'src/components/UI/Icons/Icons';
 import { useAuth } from 'src/context/AuthContext';
 import { useModal } from 'src/context/ModalProvider';
-import { ROUTE_PATH_LABELPAGE, ROUTE_PATH_LANDINGPAGE, ROUTE_PATH_TRASHPAGE } from 'src/utils/Route';
+import { ROUTE_PATH_ARCHIVEPAGE, ROUTE_PATH_LABELPAGE, ROUTE_PATH_LANDINGPAGE, ROUTE_PATH_PROFILEPAGE, ROUTE_PATH_TRASHPAGE } from 'src/utils/Route';
 import "./AsideNavbar.css";
 
 const getActiveStyle = ({ isActive }) => ({
-        color: isActive ? "var(--primary-color)" : "black",
-        transform: isActive ? "scale(1.1)" : "",
-        fontWeight: "700",
-        fontSize: "1em",
-        cursor: "pointer",
-        display: "flex",
-        justifyContent: "flex-start",
-        gap: "0.5em",
-        padding: "0.5em",
-        alignItems: "center"
-    })
-    
+    color: isActive ? "var(--primary-color)" : "black",
+    transform: isActive ? "scale(1.1)" : "",
+    fontWeight: "700",
+    fontSize: "1em",
+    cursor: "pointer",
+    display: "flex",
+    justifyContent: "flex-start",
+    gap: "0.5em",
+    padding: "0.5em",
+    alignItems: "center"
+})
+
 function AsideNavbar() {
     let auth = useAuth();
     let navigate = useNavigate();
     const { modalToggle, setmodalToggle } = useModal();
 
-    
+
     return (
         <div className='AsideNav'>
             <div>
@@ -45,7 +45,7 @@ function AsideNavbar() {
                     </li>
                     <li>
                         <NavLink style={getActiveStyle}
-                            to={ROUTE_PATH_TRASHPAGE}>
+                            to={ROUTE_PATH_ARCHIVEPAGE}>
                             <BiArchive height="1.5em" width="1.5em" />
                             <p className="title-hide-responsive">Archive</p>
                         </NavLink>
@@ -76,20 +76,22 @@ function AsideNavbar() {
                                 <BiBoxArrowInLeft height="1.5em" width="1.5em" />
                             </span>
 
-                            : <li onClick={
-                                () => {
-                                }
-                            }>
-                                <BiPersonHearts height="1.5em" width="1.5em" />
-                                <p className="title-hide-responsive">Profile</p>
+                            : <li>
+                                <NavLink style={getActiveStyle}
+                                    to={ROUTE_PATH_PROFILEPAGE}>
+                                    <BiPersonHearts height="1.5em" width="1.5em" />
+                                    <p className="title-hide-responsive">Profile</p>
+                                </NavLink>
                             </li>
                     }
                 </ul>
             </div>
-            <div className='aside-nav-logout'>
-                {
-                    auth.user ?
-                        <> <p className="title-hide-responsive">{`@${auth.userState?.firstName}${auth.userState?.lastName}`} </p>
+            {
+                auth.user ?
+                    <>
+                        <hr/>
+                        <div className='aside-nav-logout'>
+                            <p className="title-hide-responsive">{`@${auth.userState?.firstName}${auth.userState?.lastName}`} </p>
                             <span className='logout-btn'
                                 onClick={
                                     () => {
@@ -99,9 +101,9 @@ function AsideNavbar() {
                                     }}>
                                 <BiBoxArrowRight height="1.5em" width="1.5em" />
                             </span>
-                        </>
-                        : ""}
-            </div>
+                        </div>
+                    </>
+                    : ""}
         </div>
     )
 }
