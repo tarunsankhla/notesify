@@ -3,7 +3,6 @@ import { useLocation, useNavigate } from "react-router";
 import StopPropogation from "src/utils/StopPropogation";
 import { Login } from "src/assets/holders/holders";
 import "./LoginPage.css";
-import axios from "axios";
 import useAxios from "src/customhook/useAxios";
 import { VAR_ENCODE_TOKEN, VAR_USER_ID } from "src/utils/Route";
 import { useAuth } from "src/context/AuthContext";
@@ -31,13 +30,11 @@ function LoginPage({ props: setlogin }) {
     location = useLocation();
     from = location.state;  // .state?.from?.pathname || "/";
 
+
     function guestUserHandler() {
         setEmail("adarshbalika@gmail.com");
         setPassword("adarshBalika123");
-        // email: "adarshbalika@gmail.com",
-        // password: "adarshBalika123",
     }
-
 
     const onSubmitHandler = async () => {
 
@@ -51,7 +48,6 @@ function LoginPage({ props: setlogin }) {
             url: "/api/auth/login",
             data: object,
         });
-        console.log(res);
         var token = res?.encodedToken;
         localStorage.setItem(VAR_ENCODE_TOKEN, token)
         var user = res?.foundUser;
@@ -94,8 +90,7 @@ function LoginPage({ props: setlogin }) {
                         <div className="login-btn-container">
                             <button className="btn login-action-btn"
                                 onClick={onSubmitHandler}>Login</button>
-                            {/* </div>
-                    <div className="login-btn-container"> */}
+
                             <button className="btn login-action-btn"
                                 onClick={() => { guestUserHandler() }}>Guest User</button>
                         </div>

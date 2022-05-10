@@ -15,7 +15,7 @@ function useAxios() {
       setLoading(true);
       console.log(params);
       // params.data["authorization"] = localStorage.getItem(VAR_ENCODE_TOKEN);
-      console.log(params);
+      // console.log(params);
       const result = await axios.request(params);
       console.log(result);
       setResponse(result.data);

@@ -1,0 +1,31 @@
+.notes-skeleton {
+	display: flex;
+	flex-direction: column;
+	position: relative;
+	text-align: start;
+	min-width: 20em;
+	color: black;
+	font-size: 1em;
+	padding: 10px;
+	border-radius: 5px;
+	background-color: rgba(0, 0, 0, 0.1);
+}
+
+.notes-skeleton-footer {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+}
+
+.notes-skeleton-container {
+	display: flex;
+	width: 100%;
+	padding: 0.5em;
+	flex-wrap: wrap;
+	gap: 1em;
+	justify-content: center;
+}
+
+.react-loading-skeleton {
+	z-index: 0 !important;
+}

@@ -1,81 +1,109 @@
-import {useNavigate} from 'react-router';
-import {NavLink} from 'react-router-dom';
+import { useNavigate } from 'react-router';
+import { NavLink } from 'react-router-dom';
 import {
     BiTrash,
     BiPersonHearts,
     BiHouseHeart,
     BiBoxArrowRight,
-    BiArchive
+    BiArchive,
+    BiBoxArrowInLeft,
+    BiTags
 } from 'src/components/UI/Icons/Icons';
-import {useAuth} from 'src/context/AuthContext';
-import {useModal} from 'src/context/ModalProvider';
-import {ROUTE_PATH_ArchivePage, ROUTE_PATH_LandingPage, ROUTE_PATH_TrashPage} from 'src/utils/Route';
+import { useAuth } from 'src/context/AuthContext';
+import { useModal } from 'src/context/ModalProvider';
+import { ROUTE_PATH_ARCHIVEPAGE, ROUTE_PATH_LABELPAGE, ROUTE_PATH_LANDINGPAGE, ROUTE_PATH_PROFILEPAGE, ROUTE_PATH_TRASHPAGE } from 'src/utils/Route';
 import "./AsideNavbar.css";
+
+const getActiveStyle = ({ isActive }) => ({
+    color: isActive ? "var(--primary-color)" : "black",
+    transform: isActive ? "scale(1.1)" : "",
+    fontWeight: "700",
+    fontSize: "1em",
+    cursor: "pointer",
+    display: "flex",
+    justifyContent: "flex-start",
+    gap: "0.5em",
+    padding: "0.5em",
+    alignItems: "center"
+})
 
 function AsideNavbar() {
     let auth = useAuth();
     let navigate = useNavigate();
     const { modalToggle, setmodalToggle } = useModal();
-    
-    const getActiveStyle = ({isActive}) => ({
-        color: isActive ? "var(--primary-color)" : "",
-        transform: isActive ? "scale(1.1)" : "",
-        fontWeight: "700",
-        fontSize: "1.1em",
-        cursor: "pointer",
-        display: "flex",
-        justifyContent: "flex-start",
-        gap: "1.5em",
-        padding: "0.5em",
-        alignItems: "center"
-    })
+
+
     return (
         <div className='AsideNav'>
             <div>
                 <ul>
                     <li>
                         <NavLink style={getActiveStyle}
-                            to={ROUTE_PATH_LandingPage}>
-                            <BiHouseHeart  height="1.7em" width="1.7em"/>Home
+                            to={ROUTE_PATH_LANDINGPAGE}>
+                            <BiHouseHeart height="1.5em" width="1.5em" /><p className="title-hide-responsive">Home</p>
                         </NavLink>
                     </li>
                     <li>
                         <NavLink style={getActiveStyle}
-                            to={ROUTE_PATH_ArchivePage}>
-                            <BiArchive  height="1.7em" width="1.7em"/>
-                            Archive
+                            to={ROUTE_PATH_ARCHIVEPAGE}>
+                            <BiArchive height="1.5em" width="1.5em" />
+                            <p className="title-hide-responsive">Archive</p>
                         </NavLink>
                     </li>
                     <li>
                         <NavLink style={getActiveStyle}
-                            to={ROUTE_PATH_TrashPage}>
-                            <BiTrash  height="1.7em" width="1.7em"/>
-                            Trash
+                            to={ROUTE_PATH_LABELPAGE}>
+                            <BiTags height="1.5em" width="1.5em" />
+                            <p className="title-hide-responsive">Label</p>
                         </NavLink>
                     </li>
-                    <li onClick={
-                        () => {
-                            console.log("login");
-                            setmodalToggle(true);
-                        }
-                    }>
-                        <BiPersonHearts  height="1.7em" width="1.7em"/>Profile
+                    <li>
+                        <NavLink style={getActiveStyle}
+                            to={ROUTE_PATH_TRASHPAGE}>
+                            <BiTrash height="1.5em" width="1.5em" />
+                            <p className="title-hide-responsive">Trash</p>
+                        </NavLink>
                     </li>
+                    {
+                        !auth.user ?
+
+                            <span onClick={
+                                () => {
+                                    console.log("login");
+                                    setmodalToggle(true);
+                                }} className='create-btn' style={{ width: "100%" }}>
+                                <p className="title-hide-responsive">Login</p>
+                                <BiBoxArrowInLeft height="1.5em" width="1.5em" />
+                            </span>
+
+                            : <li>
+                                <NavLink style={getActiveStyle}
+                                    to={ROUTE_PATH_PROFILEPAGE}>
+                                    <BiPersonHearts height="1.5em" width="1.5em" />
+                                    <p className="title-hide-responsive">Profile</p>
+                                </NavLink>
+                            </li>
+                    }
                 </ul>
             </div>
-            <div className='aside-nav-logout'>
-                { auth.user ? "@" + auth.user?.firstName + auth.user?.lastName : ""}
-                <span className='logout-btn'
-                    onClick={
-                        () => {
-                            auth.logoutUser(() => {
-                                navigate("/");
-                            })
-                        }
-                }>
-                    <BiBoxArrowRight/>
-                </span>
-            </div>
+            {
+                auth.user ?
+                    <>
+                        <hr/>
+                        <div className='aside-nav-logout'>
+                            <p className="title-hide-responsive">{`@${auth.userState?.firstName}${auth.userState?.lastName}`} </p>
+                            <span className='logout-btn'
+                                onClick={
+                                    () => {
+                                        auth.logoutUser(() => {
+                                            navigate("/");
+                                        })
+                                    }}>
+                                <BiBoxArrowRight height="1.5em" width="1.5em" />
+                            </span>
+                        </div>
+                    </>
+                    : ""}
         </div>
     )
 }

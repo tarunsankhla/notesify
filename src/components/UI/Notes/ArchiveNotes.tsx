@@ -12,7 +12,8 @@ const ArchiveNotes = ({ props }: Props) => {
     const [response, error, loading, axiosRequest] = useAxios();
     const { ArchiveContextArray, setArchiveContextArray } = useArchive();
     const [noteDataSet, SetNoteDataSet] = useNotes();
-    console.log(props);
+
+
     function UnArchiveHandler() {
         try {
             (async () => {
@@ -40,16 +41,18 @@ const ArchiveNotes = ({ props }: Props) => {
             <h3>{props.title}</h3>
 
             <p className="color-schema" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(props.content) }}></p>
-            <div className='notes-date'>
-                 {props.createdOn}
-            </div>
-
-           
-            <section className='notes-action' style={{color: props.color || "black"}}>
-                <span onClick={()=>UnArchiveHandler()}>
-                    <BiUnarchive height="1.7em" width="1.7em" />
+            <div className='notes-footer'>
+                <span className='notes-date'>
+                    {props.createdOn}
                 </span>
-            </section>
+
+
+                <section className='notes-action' style={{ color: props.color || "black" }}>
+                    <span onClick={() => UnArchiveHandler()}>
+                        <BiUnarchive height="1.3em" width="1.3em" />
+                    </span>
+                </section>
+            </div>
         </div>
     )
 }

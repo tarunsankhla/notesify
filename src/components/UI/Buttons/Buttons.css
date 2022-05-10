@@ -1,51 +1,64 @@
- /* float button  start*/
- .float-add-btn{
-    height: 4rem;
-    width: 4rem;
-    border-radius: 50%;
-    position: fixed;
-    bottom: 2rem;
-    right: 3rem;
-    background-color: var(--primary-color);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: burlywood;
-    font-size: 2rem;
-    aspect-ratio: 1;
-    cursor: pointer;
+/* float button  start*/
+.float-add-btn {
+	height: 2.5em;
+	width: 2.5em;
+	border-radius: 50%;
+	position: fixed;
+	bottom: 2rem;
+	right: 3rem;
+	background-color: var(--primary-color);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: burlywood;
+	font-size: 2rem;
+	aspect-ratio: 1;
+	cursor: pointer;
+	outline: none;
+    border: none;
 }
 
-.float-add-btn:hover{
-    transform: scale(1.1);
-    background-color: rgba(--primary-color, 0.01);
-    color: white;
+.float-add-btn:hover {
+	transform: scale(1.1);
+	background-color: rgba(--primary-color, 0.01);
+	color: white;
 }
 /* float button end */
 
 /* Create Button Start */
-.create-btn{
-    color: white;
-    width: -moz-fit-content;
-    width: fit-content;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /* word-spacing: 0.1em; */
-    margin: 5px;
-    padding: 5px;
-    border-radius: 0.5rem;
-    gap: 5px;
-    /* font-size: 1.5em; */
-    font-weight: 600;
-    background-color: red;
-    cursor: pointer;
-    font-family: cursive;
-    font-size: 1.5rem;
+.create-btn {
+	color: white;
+	width: -moz-fit-content;
+	width: fit-content;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	margin: 5px;
+	padding: 5px;
+	border-radius: 0.5rem;
+	gap: 5px;
+	font-weight: 600;
+	background-color: red;
+	cursor: pointer;
+	font-family: cursive;
+	font-size: 1.5rem;
+	outline: none;
+    border: none;
 }
 
-
-.create-btn:hover{
-    transition: scale(1.05);
+.create-btn:hover {
+	transition: scale(1.05);
 }
 /* Create Button End */
+
+@media screen and (max-width:720px) {
+	.float-add-btn{
+		width: 2.5em;
+		height: 2.5em;
+		bottom: 4em;
+	}
+	.create-btn{
+		padding: 5px 5px 0;
+		display: inline;
+	}
+}

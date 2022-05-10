@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { archive } from 'src/assets/holders/holders';
+import Skeleton from 'src/components/common/Skeleton/Skeleton';
 import ArchiveNotes from 'src/components/UI/Notes/ArchiveNotes';
 import { useArchive } from 'src/context/ArchiveContext';
 import useAxios from 'src/customhook/useAxios';
 import { VAR_ENCODE_TOKEN } from 'src/utils/Route';
-import AllNotes from '../HomePage/AllNotes/AllNotes';
 import "./ArchivePage.css";
 
 const ArchivePage = () => {
@@ -20,8 +20,6 @@ const ArchivePage = () => {
             authorization: localStorage.getItem(VAR_ENCODE_TOKEN)
           },
         });
-        console.log(res);
-        // setArchiveContextArray(res.archives);
       })();;
     } catch (error) {
       console.log("Product list page error", error);
@@ -39,7 +37,10 @@ const ArchivePage = () => {
                 <ArchiveNotes key={note._id} props={note} />
               ))
               :
-              <img src={archive} className="holder" alt="archive note" />
+              <div>
+                <img src={archive} className="holder" alt="archive note" />
+                <Skeleton />
+              </div>
           }
         </div>
       </div>

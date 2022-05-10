@@ -1,25 +1,22 @@
 
-import {BiJournalPlus, BiPatchPlus} from 'src/components/UI/Icons/Icons';
+import { BiJournalPlus, BiPatchPlus } from 'src/components/UI/Icons/Icons';
 import "./Buttons.css";
 
 function FloatAddButton() {
   return (
-    <div className='float-add-btn'><BiJournalPlus fontSize="1.7em"/></div>
+    <button className='float-add-btn'><BiJournalPlus /></button>
   )
 }
 
-
-
 function CreateButton({ props: name }) {
-    return (
-      <div className='create-btn'>{name} <BiPatchPlus/></div>
-    )
-  }
-  
-  CreateButton.propTypes = {}
-  
+  return (
+    <button className='create-btn'>{name} <BiPatchPlus /></button>
+  )
+}
+
+CreateButton.propTypes = {}
+
 export {
-    CreateButton,
-    FloatAddButton
+  CreateButton,
+  FloatAddButton
 };
-  
