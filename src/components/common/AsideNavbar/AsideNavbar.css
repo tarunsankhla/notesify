@@ -54,3 +54,31 @@
 .logout-btn:hover {
 	transform: scale(1.1);
 }
+.title-hide-responsive{
+	display: flex;
+}
+
+@media screen and (max-width:720px) {
+	.title-hide-responsive{
+		display: none;
+	}
+	.AsideNav{
+		position: fixed;
+		flex-direction: row;
+		width: 100vw;
+		height: 3em;
+		background-color: red;
+		z-index: 999;
+    	background-color: rgba(255,255,255,0.7);
+		align-items: baseline;
+		padding: 0 1em 0 0;;
+		bottom: 0;
+    	top: inherit;
+	}
+	.AsideNav li{
+		display: inline-block;
+	}
+	.aside-nav-logout{
+		align-items: baseline;
+	}
+}

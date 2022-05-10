@@ -23,6 +23,7 @@
 	background-color: var(--secondary-color);
 	border-radius: 10px;
 	gap: 10px;
+	width: 85%;
 	position: relative;
 	box-shadow: 0 4px 2px rgb(0 0 0 / 2%), 0 8px 16px rgb(0 0 0 / 3%),
 		0 16px 10px rgb(0 0 0 / 4%), 0 26px 18px rgb(0 0 0 / 5%);
@@ -135,6 +136,7 @@ input[type="color" i]::-webkit-color-swatch {
 .home-holder {
 	height: 30rem;
 	width: 100%;
+	flex-wrap: wrap;
 }
 
 .home-page .modal-fixed-bg-highlight {
@@ -150,7 +152,7 @@ input[type="color" i]::-webkit-color-swatch {
 	align-items: center;
 	user-select: auto;
 	gap: 1em;
-	width: 50%;
+	min-width: 50%;
 	border-radius: 2em;
 	position: relative;
 }
@@ -216,7 +218,7 @@ select {
     overflow-y: scroll;
     flex-direction: column;
     background-color: white;
-	width: 25%;
+	/* width: 25%; */
 	height: fit-content;
 }
 .note-editor-action select{
@@ -255,4 +257,15 @@ select {
     gap: 1em;
     flex-wrap: wrap;
     min-width: 80%;
+}
+@media screen and (max-width:780px) {
+	.note-editor-container{
+		width: 70%;
+	}
+}
+
+@media screen and (max-width:660px) {
+	.note-editor-container{
+		width: 70%;
+	}
 }

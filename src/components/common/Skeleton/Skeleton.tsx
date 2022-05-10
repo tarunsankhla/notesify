@@ -16,7 +16,7 @@ const Skeletons = (props: Props) => {
             </span>
             <div className='notes-skeleton-footer'>
               <Skeleton width={80} height="70%" baseColor='#ebab34' duration={4} />
-              <Skeleton width={130} height="90%" baseColor="#5294e0" borderRadius="1em" highlightColor='#96c7ff' duration={4} />
+              <Skeleton width={100} height="90%" baseColor="#5294e0" borderRadius="1em" highlightColor='#96c7ff' duration={4} />
             </div>
           </div>))
       }

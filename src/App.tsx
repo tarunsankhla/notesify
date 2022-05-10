@@ -1,6 +1,6 @@
 import './App.css';
 import { Route, Routes } from 'react-router';
-import { ROUTE_PATH_ArchivePage, ROUTE_PATH_LabelPage, ROUTE_PATH_LandingPage, ROUTE_PATH_Mockman, ROUTE_PATH_TrashPage } from './utils/Route';
+import { ROUTE_PATH_TRASHPAGE, ROUTE_PATH_LANDINGPAGE, ROUTE_PATH_LABELPAGE, ROUTE_PATH_Mockman, ROUTE_PATH_ARCHIVEPAGE } from './utils/Route';
 import Main from './Main';
 import React, { Suspense } from 'react';
 import Mockman from 'mockman-js';
@@ -20,26 +20,26 @@ function App() {
 
       <Routes >
         <Route element={<Main />}>
-          <Route path={ROUTE_PATH_LandingPage} element={
+          <Route path={ROUTE_PATH_LANDINGPAGE} element={
             <Suspense fallback={<Skeleton />}>
               <HomePage />
             </Suspense>}
           />
-          <Route path={ROUTE_PATH_TrashPage} element={
+          <Route path={ROUTE_PATH_TRASHPAGE} element={
             <RequiredAuth>
               <Suspense fallback={<Skeleton />}>
                 <TrashPage />
               </Suspense>
             </RequiredAuth>}
           />
-          <Route path={ROUTE_PATH_ArchivePage} element={
+          <Route path={ROUTE_PATH_ARCHIVEPAGE} element={
             <RequiredAuth>
               <Suspense fallback={<Skeleton />}>
                 <ArchivePage />
               </Suspense>
             </RequiredAuth>}
           />
-          <Route path={ROUTE_PATH_LabelPage} element={
+          <Route path={ROUTE_PATH_LABELPAGE} element={
             <RequiredAuth>
               <Suspense fallback={<Skeleton />}>
                 <LabelPage />

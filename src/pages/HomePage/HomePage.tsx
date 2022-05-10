@@ -21,6 +21,7 @@ import { useNotes } from "src/context/NotesContext";
 import Skeletons from "src/components/common/Skeleton/Skeleton";
 import FilterNotes from "./AllNotes/FilterNotes";
 import { useLabel } from "src/context/LabelContext";
+import { useAuth } from "src/context/AuthContext";
 
 const AllNotes = React.lazy(() => import("./AllNotes/AllNotes"));
 const htmlbody = "htmlbody";
@@ -34,7 +35,7 @@ var initialStateNote = {
 	htmlbody: "",
 	createdOn: "",
 	color: "#bebdff",
-	priority: "",
+	priority: "high",
 	label: [],
 };
 
@@ -83,6 +84,7 @@ export default function HomePage() {
 	const { modalToggle, setmodalToggle } = useModal();
 	const { LabelContextArray, setLabelContextArray } = useLabel();
 	const [newLabel, setNewLabel] = useState("");
+	const { user } = useAuth();
 	var Tags = ["Todo", "Goals"];
 
 
@@ -198,10 +200,12 @@ export default function HomePage() {
 				</div>
 			</div>
 
-			<span
-				onClick={(e) => { StopPropogation(e); setShowNote(true); }}>
-				<FloatAddButton />
-			</span>
+			{
+				user && <span
+					onClick={(e) => { StopPropogation(e); setShowNote(true); }}>
+					<FloatAddButton />
+				</span>
+			}
 			{showNote && (
 				<div className='modal-fixed-bg-highlight' onClick={() => { setShowNote(false); noteDispatch({ type: VAR_RESET, data: initialStateNote }); }}>
 					<div className='modal-view-container'>
@@ -309,16 +313,17 @@ export default function HomePage() {
 										<CreateButton props="Update " />
 									</span>}
 								<div className="label-list-container">
-									<div className="label-list">
-										{LabelContextArray.map(i => (
-											<li>
-												<input type="checkbox" value={i} id="" checked={noteState.label.includes(i)}
-													onClick={() => { noteDispatch({ type: "label", data: i }); }} />
-												{i}
-											</li>))
-										}
-									</div>
 									<div className="label-list-add">
+										<div className="label-list">
+											{LabelContextArray.map(i => (
+												<li>
+													<input type="checkbox" value={i} id="" checked={noteState.label.includes(i)}
+														onClick={() => { noteDispatch({ type: "label", data: i }); }} />
+													{i}
+												</li>))
+											}
+										</div>
+
 										<input type="text"
 											placeholder="label"
 											value={newLabel}

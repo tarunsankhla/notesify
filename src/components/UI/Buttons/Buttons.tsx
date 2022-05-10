@@ -4,13 +4,13 @@ import "./Buttons.css";
 
 function FloatAddButton() {
   return (
-    <div className='float-add-btn'><BiJournalPlus /></div>
+    <button className='float-add-btn'><BiJournalPlus /></button>
   )
 }
 
 function CreateButton({ props: name }) {
   return (
-    <div className='create-btn'>{name} <BiPatchPlus /></div>
+    <button className='create-btn'>{name} <BiPatchPlus /></button>
   )
 }
 

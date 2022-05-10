@@ -141,7 +141,7 @@ function SignUpPage({ props: setlogin }: Props) {
 			<div className="signup-body-container"
 				onClick={(event: React.MouseEvent<HTMLElement>) => StopPropogation(event)} >
 
-				<img src={Signup} className="signupImage" alt="signupImg" />
+				{/* <img src={Signup} className="signupImage" alt="signupImg" /> */}
 				<div className="signup-container">
 					<div className="title-header">
 						<p>

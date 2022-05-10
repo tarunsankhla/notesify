@@ -5,9 +5,7 @@
 	height: fit-content;
 	box-shadow: 0 4px 2px rgba(0, 0, 0, 0.02), 0 8px 16px rgba(0, 0, 0, 0.03),
 		0 16px 10px rgba(0, 0, 0, 0.04), 0 26px 18px rgba(0, 0, 0, 0.05);
-	/* margin: 3em;  */
 	background-color: #ffdd61;
-	/* border-radius: 2em; */
 	padding: 0 4em;
 }
 
@@ -20,10 +18,8 @@
 	width: 50vw;
 	height: fit-content;
 	border-radius: var(--border-radius);
-	font-size: 1.5rem;
+	font-size: 1em;
 	padding: 2rem 0;
-	/* margin: 1em;
-    margin-bottom: 3em; */
 }
 
 input[type="checkbox"] {

@@ -24,7 +24,7 @@ const TrashNotes = ({ props }: Props) => {
       priority: props.priority,
       label: props.label,
     };
-    console.log(object);
+
     var res = await axiosRequest({
       method: "post",
       url: "/api/notes",

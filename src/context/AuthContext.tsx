@@ -12,13 +12,16 @@ interface AuthContextInterface {
 
 function userCredentialHandler(state, action) {
     console.log(state, action);
+    
     if (action.email || action.firstName || action.lastName) {
+        if (action.type !== "logout") { 
         localStorage.setItem(VAR_USER_DETAILS, JSON.stringify({
             ...state,
             email: action.email,
             firstName: action.firstName,
             lastName: action.lastName
         }))
+        }
         return {
             ...state,
             email: action.email,
@@ -34,7 +37,7 @@ function userCredentialHandler(state, action) {
 const AuthenticationContext = createContext<AuthContextInterface>(null!);
 
 function AuthenticationProvider({ children }: { children: React.ReactNode }) {
-    let [user, setuser] = useState<any>(!!localStorage.getItem(VAR_USER_DETAILS) && !!JSON.parse(localStorage.getItem(VAR_USER_DETAILS) ?? ""));
+    const [user, setuser] = useState<any>(!!localStorage.getItem(VAR_USER_DETAILS));
     const [userState, userDispatch] = useReducer(userCredentialHandler, localStorage.getItem(VAR_USER_DETAILS) ? JSON.parse(localStorage.getItem(VAR_USER_DETAILS) ?? "") : {
         firstName: "",
         lastName: "",
@@ -52,12 +55,13 @@ function AuthenticationProvider({ children }: { children: React.ReactNode }) {
 
     let logoutUser = (callback: VoidFunction) => {
         return AuthProvider.logoutAuthProvider(() => {
-            console.log("logout")
+            console.log("logout");
+            setuser(false);
             localStorage.removeItem(VAR_USER_DETAILS);
             localStorage.removeItem(VAR_ENCODE_TOKEN);
             localStorage.removeItem(VAR_USER_ID);
-            setuser(false);
-            userDispatch({
+            
+            userDispatch({type:"logout",
                 firstName: " ",
                 lastName: " ",
                 email: " "
@@ -67,7 +71,7 @@ function AuthenticationProvider({ children }: { children: React.ReactNode }) {
         })
     }
 
-    let value = { user, loginUser, logoutUser, userState }
+    const value = { user, loginUser, logoutUser, userState }
     return <AuthenticationContext.Provider value={value}>{children}</AuthenticationContext.Provider>;
 
 }

@@ -99,7 +99,6 @@ const Notes = (data: any) => {
     }
   }
   const getDate = useCallback(() => {
-    console.log("date date");
     return ShowDate(props.createdOn);
   }, [props.createdOn])
   return (

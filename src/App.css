@@ -42,6 +42,10 @@ html {
 	--primary-shade-color: #ddd2f0;
 	--secondary-color: #dedede;
 	--note-date-color: #751414;
+
+
+	--black-hl-p5:rgba(0, 0, 0, 0.05);
+	--white-hl-p3:rgba(255, 255, 255, 0.3);
 }
 
 .App-header {
@@ -165,7 +169,7 @@ span:hover {
 .outlet-body {
 	padding-left: 2em;
 	width: 100%;
-	background-color: rgba(0, 0, 0, 0.05);
+	background-color: var(--black-hl-p5);
 }
 
 .notes-container {
