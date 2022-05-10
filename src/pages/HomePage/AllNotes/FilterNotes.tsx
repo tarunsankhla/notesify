@@ -16,7 +16,7 @@ const sortby = "sortby";
 
 
 const initialStateFilter = {
-    priority: "",
+    priority: "true",
     sortby: "",
     label: ""
 }
@@ -48,16 +48,35 @@ const FilterNotes = (props: any) => {
     const [FilterTab, SetFilterTab] = useState(false);
     const [filterState, filterDispatch] = useReducer(FilterReducer, initialStateFilter)
     const [notesDateContext, SetNoteDataContext] = useNotes();
+    let filteredArray = [];
     console.log(props.notesdata, props.setnotesdate);
 
     function HandleFilter() {
-        let filteredArray = notesDateContext.filter(note => {
+        filteredArray = notesDateContext.filter(note => {
             return (!!filterState.priority && note.priority === filterState.priority) ||
                 (!!filterState.label && note.label.includes(filterState.label))
 
         });
+        console.log(filteredArray,filterState.sortby);
+
         if (!!(filterState.sortby[0] === "f")) {
-            filteredArray.reverse();
+            console.log(filteredArray);
+
+            if (filteredArray.length) {
+                console.log(filteredArray);
+                filteredArray.reverse();
+            }
+            else {
+                console.log("empty",filteredArray);
+                filteredArray = notesDateContext.reverse();
+            }
+            
+        }
+        else if(!!(filterState.sortby[0] === "t")){
+            if (!filteredArray.length) { 
+                console.log("empty",filteredArray);
+                filteredArray = notesDateContext;
+            }
         }
         props.setnotesdate(() => filteredArray);
     }
@@ -76,6 +95,7 @@ const FilterNotes = (props: any) => {
     }
 
     return (
+        <>
         <div className="home-page-filter">
             <input type="search" onChange={(e) =>
                 debounce(() => { SearchHandler(e.target.value) }, 1000)} />
@@ -114,7 +134,7 @@ const FilterNotes = (props: any) => {
                             onChange={(e) =>
                                 filterDispatch({ type: sortby, data: e.target.value })}>
                             <option value="true">Newest First</option>
-                            <option value="false">Latest First</option>
+                            <option value="false">Oldest First</option>
                         </select>
                     </div>
                     <div>
@@ -136,7 +156,10 @@ const FilterNotes = (props: any) => {
                     }}>Reset</button>
                 </div>
             }
+            <div></div>
         </div>
+        {FilterTab && <p> Results : {props.notesdata.length}</p>}
+    </>
     )
 }
 
