@@ -16,8 +16,8 @@ const sortby = "sortby";
 
 
 const initialStateFilter = {
-    priority: "true",
-    sortby: "",
+    priority: "",
+    sortby: "true",
     label: ""
 }
 
@@ -48,11 +48,10 @@ const FilterNotes = (props: any) => {
     const [FilterTab, SetFilterTab] = useState(false);
     const [filterState, filterDispatch] = useReducer(FilterReducer, initialStateFilter)
     const [notesDateContext, SetNoteDataContext] = useNotes();
-    let filteredArray = [];
     console.log(props.notesdata, props.setnotesdate);
 
     function HandleFilter() {
-        filteredArray = notesDateContext.filter(note => {
+        let filteredArray = notesDateContext.filter(note => {
             return (!!filterState.priority && note.priority === filterState.priority) ||
                 (!!filterState.label && note.label.includes(filterState.label))
 
@@ -68,7 +67,7 @@ const FilterNotes = (props: any) => {
             }
             else {
                 console.log("empty",filteredArray);
-                filteredArray = notesDateContext.reverse();
+                filteredArray = [...notesDateContext].reverse();
             }
             
         }
