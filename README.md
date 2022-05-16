@@ -1,3 +1,25 @@
+Notesify
+
+[Live demo](https://notestore.netlify.app/)
+
+Features:
+Home Page,
+Note Management(create , updat , delete)
+Rich text Editor,
+Archive Managment,
+Labels Page,
+Trash Page,
+Search and Filter,
+Pin Notes,
+User Page,
+Login Page,
+Sign up Page
+
+
+Tech Stack used:
+React, Typescript, Javascript, React Toastify, Mockapi, CSS
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
