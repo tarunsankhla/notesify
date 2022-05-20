@@ -1,0 +1,28 @@
+
+.btn-landing{
+	/* border-radius: 1em; */
+	width: 50%;
+    outline: none;
+    border: none;
+    color:white;
+    font-weight: 800;
+    padding: 10px 1.2em !important;
+	background-color: var(--primary-color) !important;
+}
+
+.page-img{
+    width: 40vw;
+    height: 75%;
+    object-fit: contain;
+    display: block;
+}
+.notfoundpage-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4em;
+    width: 100%;
+    height: 100vh;
+    gap: 1em;
+}

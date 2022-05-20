@@ -82,4 +82,11 @@
 	.aside-nav-logout{
 		align-items: baseline;
 	}
+	.AsideNav-Navbar{
+		width: 100%;
+	}
+	.ul-asidenav{
+		display: flex;
+    	justify-content: space-evenly;
+	}
 }

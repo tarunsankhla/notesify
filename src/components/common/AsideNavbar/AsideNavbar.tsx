@@ -35,8 +35,8 @@ function AsideNavbar() {
 
     return (
         <div className='AsideNav'>
-            <div>
-                <ul>
+            <div className='AsideNav-Navbar'>
+                <ul className='ul-asidenav'>
                     <li>
                         <NavLink style={getActiveStyle}
                             to={ROUTE_PATH_LANDINGPAGE}>
