@@ -119,7 +119,7 @@ function SignUpPage({ props: setlogin }: Props) {
 					lastName: res.createdUser.lastName,
 				},
 				() => {
-					navigate(from?.pathname || "", { replace: true });
+					navigate(from?.pathname || "/home", { replace: true });
 				}
 			);
 			setlogin(true);

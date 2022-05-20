@@ -1,6 +1,6 @@
 .footer{
     padding: 1em 0;
-    background-color: honeydew;
+    background-color: var(--secondary-color);
     font-size: 1.3em;
     font-weight: 700;
 }

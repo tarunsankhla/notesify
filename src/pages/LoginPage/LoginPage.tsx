@@ -34,6 +34,11 @@ function LoginPage({ props: setlogin }) {
     function guestUserHandler() {
         setEmail("adarshbalika@gmail.com");
         setPassword("adarshBalika123");
+        var object = {
+            "email": "adarshbalika@gmail.com",
+            "password": "adarshBalika123"
+        };
+        LoginHandler(object)
     }
 
     const onSubmitHandler = async () => {
@@ -43,10 +48,14 @@ function LoginPage({ props: setlogin }) {
             "email": email,
             "password": password
         };
+        LoginHandler(object)
+    }
+
+    const LoginHandler = async (dataObject) => {
         var res = await fetch({
             method: "post",
             url: "/api/auth/login",
-            data: object,
+            data: dataObject,
         });
         var token = res?.encodedToken;
         localStorage.setItem(VAR_ENCODE_TOKEN, token)
@@ -54,7 +63,7 @@ function LoginPage({ props: setlogin }) {
         var userId = res.foundUser._id;
         localStorage.setItem(VAR_USER_ID, userId);
         auth.loginUser({ email: res.foundUser.email, firstName: res.foundUser.firstName, lastName: res.foundUser.lastName },
-            () => { navigate((from?.pathname || ""), { replace: true }); });
+            () => { navigate((from?.pathname || "/home"), { replace: true }); });
         setlogin(true);
         setmodalToggle(false);
 

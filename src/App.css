@@ -85,21 +85,6 @@ html {
 	min-height: 100vh;
 }
 
-.sm-txt {
-	font-size: 0.4em;
-}
-
-.md-txt {
-	font-size: 0.6em;
-}
-
-.lg-txt {
-	font-size: 0.8em;
-}
-
-.xlg-txt {
-	font-size: 1em;
-}
 
 input {
 	font-size: 1em;
@@ -154,6 +139,116 @@ span:hover {
 	width: 1.5em;
 	border-radius: 50%;
 }
+
+.sm-txt {
+	font-size: 0.4em;
+}
+
+.md-txt {
+	font-size: 0.6em;
+}
+
+.lg-txt {
+	font-size: 0.8em;
+}
+
+.xlg-txt {
+	font-size: 1em;
+}
+
+.xxlg-txt {
+	font-size: 1.3em;
+}
+.big-txt{
+	font-size: 3em;
+}
+
+
+.fn-wg-800 {
+	font-weight: 800;
+}
+
+.fn-wg-700 {
+	font-weight: 700;
+}
+
+.fn-wg-600 {
+	font-weight: 600;
+}
+
+.pd-5 {
+	padding: 5px;
+}
+.pd-10 {
+	padding: 10px;
+}
+
+
+.gray-txt {
+	color: gray;
+}
+
+.cursive{
+	font-family: cursive;
+}
+.underline{
+	text-decoration: underline;
+}
+
+
+.align-center {
+	align-items: center;
+}
+
+.align-start{
+	align-items: flex-start;
+	text-align: start;
+}
+
+.flex-center{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 3px;
+}
+
+.flex-cln{
+	display: flex;
+	flex-direction: column;
+}
+
+.space-btwn {
+	justify-content: space-between;
+}
+
+.flex {
+	display: flex;
+	gap: 5px;
+}
+
+.relative {
+	position: relative;
+}
+
+.absolute {
+	position: absolute;
+}
+
+.fixed {
+	position: fixed;
+}
+
+.full-input {
+	width: 100%;
+	background-color: var(--secondary-color);
+}
+
+.full-width {
+	width: 100%;
+}
+
+
+
 
 .card-body-channel {
 	display: flex;

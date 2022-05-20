@@ -123,8 +123,8 @@ export default function HomePage() {
 					url: "/api/notes",
 				});
 				console.log(res);
-				SetNoteDataSet(res.notes);
-				SetNotesArray(res.notes);
+				SetNoteDataSet(res?.notes || []);
+				SetNotesArray(res?.notes || []);
 			})();
 		} catch (error) {
 			console.log("Product list page error", error);
