@@ -85,6 +85,7 @@ export default function HomePage() {
 	const { modalToggle, setmodalToggle } = useModal();
 	const { LabelContextArray, setLabelContextArray } = useLabel();
 	const [newLabel, setNewLabel] = useState("");
+	const [showLabel, setShowLabel] = useState(false);
 	const { user } = useAuth();
 	var Tags = ["Todo", "Goals"];
 
@@ -315,7 +316,8 @@ export default function HomePage() {
 									: <span onClick={() => updateNoteHandler()}>
 										<CreateButton props="Update " />
 									</span>}
-								<div className="label-list-container">
+								{showLabel &&
+									<div className="label-list-container">
 									
 										<div className="label-list">
 											{LabelContextArray.map(i => (
@@ -329,20 +331,27 @@ export default function HomePage() {
 									<div className="label-list-add">
 										<input type="text"
 											placeholder="label"
-											value={newLabel}
+												value={newLabel}
+												className="full-input"
 											onChange={(e) => {
 												if (!!e.target.value) {
 													setNewLabel(e.target.value);
 												}
 											}} />
-
-										<span onClick={() => {
-											// noteDispatch({ type: "label", data: newLabel });
-											setNewLabel("");
-											HandeLabel(newLabel);
-										}}><CreateButton props="Label" /></span>
+										<span className="flex">
+											<button onClick={()=>setShowLabel(false)} className="btn-close">Close</button>
+											<span onClick={() => {
+												// noteDispatch({ type: "label", data: newLabel });
+												setNewLabel("");
+												HandeLabel(newLabel);
+													// setShowLabel(false);
+												}}>
+													<CreateButton props="Create Label" />
+												</span>
+											</span>
 									</div>
-								</div>
+								</div>}
+								<span onClick={()=>setShowLabel(true)}><CreateButton props="Add Label"/></span>
 							</div>
 						</div>
 					</div>

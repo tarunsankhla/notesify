@@ -99,6 +99,7 @@ input[type="color" i]::-webkit-color-swatch {
 	align-items: center;
 	margin-left: auto;
 	flex-wrap: wrap;
+	position: relative;
 }
 
 .color-pallete {
@@ -214,29 +215,47 @@ select {
 	font-weight: 600;
 }
 
+
+.note-editor-action select{
+	width: 40%;
+}
+
 .label-list{
 	display: flex;
     max-height: 4em;
     overflow-y: scroll;
     flex-direction: column;
     background-color: white;
-	width: 30%;
+	width: 100%;
 	height: fit-content;
 }
-.note-editor-action select{
-	width: 40%;
+
+
+.label-list::-webkit-scrollbar {
+	width: 1rem;
 }
+
+.label-list::-webkit-scrollbar-track {
+	background-color: white;
+}
+
+.label-list::-webkit-scrollbar-thumb {
+	background-color:var(--primary-color);
+	border-radius: 1rem;
+	border: 3px solid white;
+}
+
  .label-list li {
 	list-style: none;
-	font-weight: 500;
-	font-size: 1.2rem;
-	cursor: pointer;
-	display: flex;
-	justify-content: flex-start;
-	gap: 1em;
-	padding: 0 7px;
-	align-items: center;
-	cursor: pointer;
+    font-weight: 500;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: flex-start;
+    gap: 1em;
+    padding: 2px 1em;
+    align-items: center;
+    cursor: pointer;
 }
 
 .label-list li:hover {
@@ -251,16 +270,21 @@ select {
 	display: flex;
 	height: fit-content;
 	flex-wrap: wrap;
-	gap: 1em;
+	/* gap: 1em; */
+	flex-direction: column;
 }
 
 .label-list-container{
 	display: flex;
-    padding: 10;
+	flex-direction: column;
+    padding: 10px;
     gap: 1em;
     flex-wrap: wrap;
-	width: 100%;
+	/* width: 100%; */
     /* min-width: 80%; */
+	position: absolute;
+	background-color: #f2f2f2;
+	z-index: 999;
 }
 
 @media screen and (max-width:780px) {

@@ -11,7 +11,7 @@ import {
 } from 'src/components/UI/Icons/Icons';
 import { useAuth } from 'src/context/AuthContext';
 import { useModal } from 'src/context/ModalProvider';
-import { ROUTE_PATH_ARCHIVEPAGE, ROUTE_PATH_LABELPAGE, ROUTE_PATH_LANDINGPAGE, ROUTE_PATH_PROFILEPAGE, ROUTE_PATH_TRASHPAGE } from 'src/utils/Route';
+import { ROUTE_PATH_ARCHIVEPAGE, ROUTE_PATH_HOMEPAGE, ROUTE_PATH_LABELPAGE, ROUTE_PATH_LANDINGPAGE, ROUTE_PATH_PROFILEPAGE, ROUTE_PATH_TRASHPAGE } from 'src/utils/Route';
 import "./AsideNavbar.css";
 
 const getActiveStyle = ({ isActive }) => ({
@@ -39,7 +39,7 @@ function AsideNavbar() {
                 <ul className='ul-asidenav'>
                     <li>
                         <NavLink style={getActiveStyle}
-                            to={ROUTE_PATH_LANDINGPAGE}>
+                            to={ROUTE_PATH_HOMEPAGE}>
                             <BiHouseHeart height="1.5em" width="1.5em" /><p className="title-hide-responsive">Home</p>
                         </NavLink>
                     </li>
