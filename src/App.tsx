@@ -51,7 +51,7 @@ function App() {
           />
          <Route path={ROUTE_PATH_PROFILEPAGE} element={
             <RequiredAuth>
-              <Suspense fallback="Loading">
+              <Suspense fallback=".....Loading">
                 <ProfilePage />
               </Suspense>
             </RequiredAuth>}

@@ -1,4 +1,5 @@
 import React, { useEffect, useReducer, useState } from 'react'
+import { Toast } from 'src/components/common/Toast/Toast';
 import { useAuth } from 'src/context/AuthContext';
 import { VAR_USER_DETAILS } from 'src/utils/Route';
 import "./ProfilePage.css";
@@ -54,7 +55,7 @@ const ProfilePage = (props: Props) => {
     localStorage.setItem(VAR_USER_DETAILS, JSON.stringify(userDetails));
     userDispatch(userDetails);
     setEditON(false);
-    // Toast("success","User Details Updated")
+    Toast("User Details Updated")
   }
   return (
     <div className='profile-page'>

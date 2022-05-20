@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react';
 import { books, Files } from 'src/assets/holders/holders'
 import Skeleton from 'src/components/common/Skeleton/Skeleton'
+import { Toast } from 'src/components/common/Toast/Toast';
 import { CreateButton } from 'src/components/UI/Buttons/Buttons'
 import ReadNotes from 'src/components/UI/Notes/ReadNotes';
 import { useLabel } from 'src/context/LabelContext';
@@ -19,6 +20,7 @@ function LabelPage() {
     if (!!input) {
       setLabelContextArray(prev => [...prev, input]);
       setInput("");
+      Toast(" Label created !!")
     }
   }
   return (

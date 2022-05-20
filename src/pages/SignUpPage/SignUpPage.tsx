@@ -1,6 +1,7 @@
 import React, { useReducer, useState } from "react";
 import { useNavigate } from "react-router";
 import { Signup } from "src/assets/holders/holders";
+import { Toast } from "src/components/common/Toast/Toast";
 import { FullPageModal } from "src/components/UI/Modal/FullPageModal/FullPageModal";
 import { useAuth } from "src/context/AuthContext";
 import { useModal } from "src/context/ModalProvider";
@@ -124,8 +125,10 @@ function SignUpPage({ props: setlogin }: Props) {
 			);
 			setlogin(true);
 			setmodalToggle(false);
+			Toast("Signed In!")
 		} catch (error: any) {
 			console.log(error.message);
+			Toast(error.message)
 			if (
 				error.message.slice(error.message.length - 3, error.message.length) ===
 				"422"

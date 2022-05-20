@@ -22,6 +22,7 @@ import Skeletons from "src/components/common/Skeleton/Skeleton";
 import FilterNotes from "./AllNotes/FilterNotes";
 import { useLabel } from "src/context/LabelContext";
 import { useAuth } from "src/context/AuthContext";
+import { Toast } from "src/components/common/Toast/Toast";
 
 const AllNotes = React.lazy(() => import("./AllNotes/AllNotes"));
 const htmlbody = "htmlbody";
@@ -155,6 +156,7 @@ export default function HomePage() {
 		SetNoteDataSet(res.notes);
 		SetNotesArray(res.notes);
 		setShowNote(false);
+		Toast("Notes Created!!");
 	}
 
 	async function updateNoteHandler() {
@@ -180,6 +182,7 @@ export default function HomePage() {
 		SetNoteDataSet(res.notes);
 		SetNotesArray(res.notes);
 		setShowNote(false);
+		Toast("Updated Note!!")
 	}
 
 	const NotesCollection = useMemo(() => { return AllNotes }, []);

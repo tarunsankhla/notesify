@@ -5,6 +5,7 @@ import useAxios from 'src/customhook/useAxios';
 import { useArchive } from 'src/context/ArchiveContext';
 import { VAR_ENCODE_TOKEN } from 'src/utils/Route';
 import { useNotes } from 'src/context/NotesContext';
+import { Toast } from 'src/components/common/Toast/Toast';
 
 type Props = { props: any }
 
@@ -30,7 +31,9 @@ const ArchiveNotes = ({ props }: Props) => {
                 setArchiveContextArray(res.archives);
                 SetNoteDataSet(res.notes);
             })();
+            Toast("Note Unarchived");
         } catch (error) {
+            Toast(error);
             console.log("Product list page error", error);
             // Alert("error", "Some error occured!! refresh page and try again");
         }

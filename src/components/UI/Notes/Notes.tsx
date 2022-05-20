@@ -8,6 +8,7 @@ import { useArchive } from 'src/context/ArchiveContext';
 import { useTrash } from 'src/context/TrashContext';
 import { useNotes } from 'src/context/NotesContext';
 import ShowDate from "src/utils/ShowDate";
+import { Toast } from 'src/components/common/Toast/Toast';
 
 type Props = { props: any }
 
@@ -29,6 +30,7 @@ const Notes = (data: any) => {
     id: props._id,
     pin: props.pin
   };
+
   function EditNoteHandler() {
     data.noteReducer({ type: VAR_RESET, data: initialStateNote });
     data.showNoteToggle(true);
@@ -56,6 +58,7 @@ const Notes = (data: any) => {
       },
     });
     SetNoteDataSet(res.notes);
+    Toast("Note pinned!");
   }
 
   function ArchiveHandler() {
@@ -72,8 +75,10 @@ const Notes = (data: any) => {
         });
         setArchiveContextArray(res.archives);
         SetNoteDataSet(res.notes);
-      })();;
+      })();
+      Toast("Note Archived!!");
     } catch (error) {
+      Toast(error);
       console.log("Product list page error", error);
       // Alert("error", "Some error occured!! refresh page and try again");
     }
@@ -92,8 +97,10 @@ const Notes = (data: any) => {
         });
         setTrashContextArray((prev) => [...prev, props]);
         SetNoteDataSet(res.notes);
-      })();;
+      })();
+      Toast("Moved to Trash!!");
     } catch (error) {
+      Toast(error)
       console.log("Product list page error", error);
       // Alert("error", "Some error occured!! refresh page and try again");
     }

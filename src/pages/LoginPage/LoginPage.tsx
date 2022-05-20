@@ -8,6 +8,7 @@ import { VAR_ENCODE_TOKEN, VAR_USER_ID } from "src/utils/Route";
 import { useAuth } from "src/context/AuthContext";
 import { useModal } from "src/context/ModalProvider";
 import { FullPageModal } from "src/components/UI/Modal/FullPageModal/FullPageModal";
+import { Toast } from "src/components/common/Toast/Toast";
 
 interface Location {
     pathname: string;
@@ -66,7 +67,7 @@ function LoginPage({ props: setlogin }) {
             () => { navigate((from?.pathname || "/home"), { replace: true }); });
         setlogin(true);
         setmodalToggle(false);
-
+        Toast("Logged In!");
     }
     return (
         <FullPageModal>

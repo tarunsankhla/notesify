@@ -5,6 +5,7 @@ import { VAR_ENCODE_TOKEN, VAR_NOTPINNED_NOTES } from 'src/utils/Route';
 import useAxios from 'src/customhook/useAxios';
 import { useNotes } from 'src/context/NotesContext';
 import { useTrash } from 'src/context/TrashContext';
+import { Toast } from 'src/components/common/Toast/Toast';
 
 type Props = { props: any }
 
@@ -35,12 +36,14 @@ const TrashNotes = ({ props }: Props) => {
     });
     SetNoteDataSet(res.notes);
     RemoveNoteFromTrashHandler();
+    Toast("Undo Trash!!");
   }
 
   function RemoveNoteFromTrashHandler() {
     setTrashContextArray((prev) => {
       return [...prev].filter((note) => note._id !== props._id) ?? []
-    })
+    });
+    Toast("Removed From Trash!!")
   }
   return (
     <div className='note-details-container trash-notes-container' style={{ backgroundColor: props.color || "wheat" }}>
