@@ -316,6 +316,7 @@ export default function HomePage() {
 									: <span onClick={() => updateNoteHandler()}>
 										<CreateButton props="Update " />
 									</span>}
+								<span onClick={()=>setShowLabel(true)}><CreateButton props="Add Label"/></span>
 								{showLabel &&
 									<div className="label-list-container">
 									
@@ -351,7 +352,7 @@ export default function HomePage() {
 											</span>
 									</div>
 								</div>}
-								<span onClick={()=>setShowLabel(true)}><CreateButton props="Add Label"/></span>
+								
 							</div>
 						</div>
 					</div>

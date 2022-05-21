@@ -39,6 +39,8 @@ input[type="radio"] {
 	padding: 5px;
 	margin: 0.7em 0.5em;
 	border-radius: 0.5em;
+	font-size: 15px;
+	font-weight: 500;
 	border: 2px solid transparent !important;
 	outline: none;
 	background-color: white !important;

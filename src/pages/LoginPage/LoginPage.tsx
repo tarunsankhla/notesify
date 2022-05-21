@@ -42,32 +42,43 @@ function LoginPage({ props: setlogin }) {
         LoginHandler(object)
     }
 
-    const onSubmitHandler = async () => {
-
+    const onSubmitHandler = async (e) => {
+        e.preventDefault();
         // try {
-        var object = {
-            "email": email,
-            "password": password
-        };
-        LoginHandler(object)
+        if (email.trim() === "" || password.trim() === "") {
+            // Alert("error", "Input cannot be blank");
+            Toast("Input cannot be blank")
+        } else {
+            var object = {
+                "email": email,
+                "password": password
+            };
+            await LoginHandler(object)
+        }
     }
 
     const LoginHandler = async (dataObject) => {
-        var res = await fetch({
-            method: "post",
-            url: "/api/auth/login",
-            data: dataObject,
-        });
-        var token = res?.encodedToken;
-        localStorage.setItem(VAR_ENCODE_TOKEN, token)
-        var user = res?.foundUser;
-        var userId = res.foundUser._id;
-        localStorage.setItem(VAR_USER_ID, userId);
-        auth.loginUser({ email: res.foundUser.email, firstName: res.foundUser.firstName, lastName: res.foundUser.lastName },
-            () => { navigate((from?.pathname || "/home"), { replace: true }); });
-        setlogin(true);
-        setmodalToggle(false);
-        Toast("Logged In!");
+        
+        try {
+            var res = await fetch({
+                method: "post",
+                url: "/api/auth/login",
+                data: dataObject,
+            });
+            var token = res?.encodedToken;
+            localStorage.setItem(VAR_ENCODE_TOKEN, token)
+            var user = res?.foundUser;
+            var userId = res?.foundUser?._id;
+            localStorage.setItem(VAR_USER_ID, userId);
+            auth.loginUser({ email: res?.foundUser?.email, firstName: res?.foundUser?.firstName, lastName: res?.foundUser?.lastName },
+                () => { navigate((from?.pathname || "/home"), { replace: true }); });
+            setlogin(true);
+            setmodalToggle(false);
+            Toast("Logged In!");
+        } catch (error) { 
+            Toast(error);
+            console.log(error);
+        }
     }
     return (
         <FullPageModal>
@@ -78,40 +89,44 @@ function LoginPage({ props: setlogin }) {
 
                 <div className="login-container">
                     <div className="title-header">
-                        <div className="login-credential-container">
-                            <input placeholder="Email Address - xyz@gmail.com"
-                                value={email}
-                                onChange={
-                                    (e) => setEmail(e.target.value)
-                                } />
-                        </div>
-                        <div className="login-credential-container">
-                            <input type="password" value={password} onChange={
-                                (e) => setPassword(e.target.value)}
-                                name="" placeholder="Password" id="" />
-                        </div>
-                        <div className="login-rem-forgetpass-container">
-                            <div>
-                                <input type="checkbox" name="" id="" />
-                                Remember me
+                        
+                        <form onSubmit={(e) => onSubmitHandler(e)}>
+                            <div className="login-credential-container">
+                                <input placeholder="Email Address - xyz@gmail.com"
+                                    value={email}
+                                    type="email"
+                                    onChange={
+                                        (e) => setEmail(e.target.value)
+                                    } />
                             </div>
-                            <div className="btn-link">Forgot your password?</div>
-                        </div>
-                        <div className="login-btn-container">
-                            <button className="btn login-action-btn"
-                                onClick={onSubmitHandler}>Login</button>
+                            <div className="login-credential-container">
+                                <input type="password" value={password} onChange={
+                                    (e) => setPassword(e.target.value)}
+                                    name="" placeholder="Password" id="" />
+                            </div>
+                            <div className="login-rem-forgetpass-container">
+                                <div>
+                                    <input type="checkbox" name="" id="" />
+                                    Remember me
+                                </div>
+                                <div className="btn-link">Forgot your password?</div>
+                            </div>
+                            <div className="login-btn-container">
+                                <button className="btn login-action-btn"
+                                    type="submit">Login</button>
 
-                            <button className="btn login-action-btn"
-                                onClick={() => { guestUserHandler() }}>Guest User</button>
-                        </div>
-                        <span className="login-footer" onClick={(e) => {
-                            setlogin(false);
-                        }}>
-                            Create New Account
-                            <span className="material-icons-round">
-                                navigate_next
+                                <button className="btn login-action-btn"
+                                    onClick={() => { guestUserHandler() }}>Guest User</button>
+                            </div>
+                            <span className="login-footer cursive" onClick={(e) => {
+                                setlogin(false);
+                            }}>
+                                Create New Account
+                                <span className="material-icons-round">
+                                    navigate_next
+                                </span>
                             </span>
-                        </span>
+                        </form>
                     </div>
                 </div>
 

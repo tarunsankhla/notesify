@@ -6,6 +6,7 @@
 		0 16px 10px rgba(0, 0, 0, 0.04), 0 26px 18px rgba(0, 0, 0, 0.05);
 	background-color: #ffdd61;
 	padding: 3em;
+	gap: 10px;
 }
 
 .login-container {
@@ -19,11 +20,11 @@
 	height: fit-content;
 	border-radius: var(--border-radius);
 	font-size: 1.5rem;
-	padding: 2rem 0;
+	padding: 0;
 	gap: 1em;
 	border-radius: 2em;
-	box-shadow: 0 4px 2px 0 rgba(0, 0, 0, 0.02), 0 8px 16px 0 rgba(0, 0, 0, 0.03),
-		0 16px 10px 0 rgba(0, 0, 0, 0.04), 0 4px 4px 0 rgba(0, 0, 0, 0.02);
+	/* box-shadow: 0 4px 2px 0 rgba(0, 0, 0, 0.02), 0 8px 16px 0 rgba(0, 0, 0, 0.03),
+		0 16px 10px 0 rgba(0, 0, 0, 0.04), 0 4px 4px 0 rgba(0, 0, 0, 0.02); */
 }
 
 .login-credential-container {
@@ -53,20 +54,27 @@
 }
 
 .login-action-btn {
-	flex-grow: 1;
-	border: none;
+	/* flex-grow: 1; */
+	outline: none;
+    border: none;
+    color:white;
+    font-weight: 800;
+    padding: 10px 1.2em !important;
+	background-color: var(--primary-color) !important;
 }
 
 .login-btn-container {
 	width: 80%;
 	display: flex;
 	margin: auto;
+	justify-content: space-between;
+    gap: 10px;
 }
 
 .title-header {
 	font-weight: 700;
 	width: 100%;
-	padding: 1em;
+	/* padding: 1em; */
 }
 
 .login-footer {
