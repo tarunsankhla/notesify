@@ -50,6 +50,13 @@ Sign up Page
 Tech Stack used:
 React, Typescript, Javascript, React Toastify, Mockapi, CSS
 
+#Extra Features Added
+Responsive Site (Both Desktop and Mobile Responsive)
+Persisting Dark / Light Mode
+CTAs on Footer in Mobile View
+Remembering Routing History - After Login it will redirect to the path where it was initiated
+
+
 # Feature
 
 1. Home Page  [HomePage](https://feetz.netlify.app/).
