@@ -2,11 +2,8 @@
 
 Meet your modern, Note Taking App
 
-Manage your daily tasks and workflow in a modern way and boost your efficiency without any efforts.
 
 You can check the Website on [Note Store Live App](https://notestore.netlify.app/)
-
-![image](https://user-images.githubusercontent.com/47709623/169646754-059818f0-ce43-4e99-bb80-8c3dc24fbe6b.png)
 
 <hr />
 
@@ -17,8 +14,26 @@ You can check the Website on [Note Store Live App](https://notestore.netlify.app
 ![License](https://img.shields.io/github/license/tarunsankhla/notesify)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 ![Twitter](https://img.shields.io/twitter/url?url=https%3A%2F%2Fgithub.com%2Ftarunsankhla%2Fnotesify)&nbsp;&nbsp;&nbsp;
 
+ ---
 
-Features:
+## 📕 Table of Contents
+
+
+- [About](#About)
+- [Features It has](#Feature)
+- [Demo](#Demo)
+- [Getting Started](#Getting-Started-with-Create-React-App)
+- [Connect with me](#Connect-with-me)
+
+---
+
+# About
+
+Manage your daily tasks and workflow in a modern way and boost your efficiency without any efforts.
+![image](https://user-images.githubusercontent.com/47709623/169646754-059818f0-ce43-4e99-bb80-8c3dc24fbe6b.png)
+
+
+# Feature :
 Home Page,
 Note Management(create , updat , delete)
 Rich text Editor,
@@ -35,6 +50,67 @@ Sign up Page
 Tech Stack used:
 React, Typescript, Javascript, React Toastify, Mockapi, CSS
 
+# Feature
+
+1. Home Page  [HomePage](https://feetz.netlify.app/).
+  -  page with a list of few categories.
+  - If  click on any one of the categories I will be redirected to the product list page with the selected category.
+  - Also has Latest Arrival onclick to product list page.
+
+2. Product Listing Page [ProductListingPage](https://feetz.netlify.app/products).
+ - All product are listed and can be filtered using section of filters.
+ - Price( low to high & high to low.) / Category (various categorie) / Ratings
+ -  clear filters to clear all the applied filters.
+ - Add to Cart on product cards to add products and max of 4 and minimum 1 and can remove from cart oncart page.
+ - Add to Wishlist and remove from wishlist 
+
+3. Cart  Management  [CartPage](https://feetz.netlify.app/cart).
+ - From navbar you can got to cart page
+ -  addmore quantity to product and also remove from cart and can also add to wishlist
+ -  on increasing quantity price is also calulated accordingly
+ -  and Bill summary containg all product cost X quantity
+
+4. Wishlist Management  [WishListPage](https://feetz.netlify.app/wishlist).
+ - Navigate from navbar
+-  can remove items from wishlist and also move them to cart
+
+5. Product Detail Page
+  - You ca click on product cards and navigate to product page and can see all details and even add to cart and add to wishlist , if product already exist then can increment and decrement quantity    
+  
+ 
+ 6. Loading & Alerts
+- Add item to the cart
+- Remove Item from the cart
+- Increase or Decrease item in the cart
+ - Move an item from the cart to the wishlist
+- Add item to the wishlist
+ - Remove Item from the wishlist
+ - Move an item from wishlist to cart
+
+
+7. User Profile [ProfilePage](https://feetz.netlify.app/profile).
+ - user profile with details containing this email Id, First Name and Last Name and Can edit and update
+
+8. Search [Search](https://feetz.netlify.app/products/search?query=football).
+-  search for an item from the list via the input textbox on the header navbar.
+
+9. Sign-up Page [SignUpPage](https://feetz.netlify.app/login)
+- email, first name, last name, password & confirm password.
+-  hide-show icon button that shows or hides my password.
+
+  10. Login Page [LoginPage](https://feetz.netlify.app/login)
+ - login email & password.
+ - guest user
+ 
+ 11. Logout
+ - logoutbutton Nav
+ 
+ 12. Order Summary on  [CartPage](https://feetz.netlify.app/cart).
+
+
+ ## Demo
+
+<hr />
 
 # Getting Started with Create React App
 
