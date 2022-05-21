@@ -1,8 +1,22 @@
-Notesify
+# NoteStore
 
-[Live demo](https://notestore.netlify.app/)
-**![image](https://user-images.githubusercontent.com/47709623/169646754-059818f0-ce43-4e99-bb80-8c3dc24fbe6b.png)
-**
+Meet your modern, Note Taking App
+
+Manage your daily tasks and workflow in a modern way and boost your efficiency without any efforts.
+
+You can check the Website on [Note Store Live App](https://notestore.netlify.app/)
+
+![image](https://user-images.githubusercontent.com/47709623/169646754-059818f0-ce43-4e99-bb80-8c3dc24fbe6b.png)
+
+<hr />
+
+
+![Issues](https://img.shields.io/github/issues/tarunsankhla/notesify)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+![Forks](https://img.shields.io/github/forks/tarunsankhla/notesify)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+![Stars](https://img.shields.io/github/stars/tarunsankhla/notesify)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+![License](https://img.shields.io/github/license/tarunsankhla/notesify)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+![Twitter](https://img.shields.io/twitter/url?url=https%3A%2F%2Fgithub.com%2Ftarunsankhla%2Fnotesify)&nbsp;&nbsp;&nbsp;
+
 
 Features:
 Home Page,
@@ -92,3 +106,18 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+ ## Connect with me
+<p align="center">
+<a href="https://twitter.com/tarunsankhla21" target="blank"><img align="center" src="https://img.icons8.com/fluency/2x/twitter-circled.png" alt="tarunsankhla21" height="50" width="50" /></a> &nbsp;&nbsp;&nbsp;
+<a href="https://www.linkedin.com/in/tarun-sankhla/" target="blank"><img align="center" src="https://img.icons8.com/color/2x/linkedin.png" alt="tarun sankhla" height="50" width="50" /></a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="https://instagram.com/tarun_sankhla_" target="blank"><img align="center" src="https://img.icons8.com/plasticine/2x/instagram.png" alt="tarun_sankhla_" height="50" width="50" /></a> &nbsp;&nbsp;&nbsp;
+<a href="https://linktr.ee/tarunsank" target="blank"><img align="center" src="https://img.icons8.com/color/2x/linktree.png" alt="tarunsank" height="50" width="50" />
+</a> &nbsp;&nbsp;&nbsp;
+<a href="https://tarunsankhla.hashnode.dev/" target="blank"><img align="center" src="https://img.icons8.com/plasticine/2x/blog.png" alt="tarunsank" height="50" width="50" />
+</a> &nbsp;&nbsp;&nbsp;
+  
+  
+  
+</p>
