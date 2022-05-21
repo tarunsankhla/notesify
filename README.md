@@ -1,6 +1,8 @@
 Notesify
 
 [Live demo](https://notestore.netlify.app/)
+**![image](https://user-images.githubusercontent.com/47709623/169646754-059818f0-ce43-4e99-bb80-8c3dc24fbe6b.png)
+**
 
 Features:
 Home Page,
