@@ -1,7 +1,7 @@
 /* float button  start*/
 .float-add-btn {
-	height: 2.5em;
-	width: 2.5em;
+	height: 3em;
+    width: 3em;
 	border-radius: 50%;
 	position: fixed;
 	bottom: 2rem;
@@ -16,6 +16,8 @@
 	cursor: pointer;
 	outline: none;
     border: none;
+	box-shadow: 0 4px 2px rgb(0 0 0 / 2%), 0 8px 16px rgb(0 0 0 / 3%),
+		0 16px 10px rgb(0 0 0 / 4%), 0 26px 18px rgb(0 0 0 / 5%);
 }
 
 .float-add-btn:hover {
@@ -58,7 +60,10 @@
 		bottom: 4em;
 	}
 	.create-btn{
+		/* padding: 5px 5px 0;
+		display: inline; */
 		padding: 5px 5px 0;
-		display: inline;
+    /* display: inline; */
+    	width: fit-content !important;
 	}
 }

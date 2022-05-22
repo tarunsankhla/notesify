@@ -238,6 +238,11 @@ span:hover {
 	gap: 5px;
 }
 
+.nl-flex{
+	display: flex;
+	gap: 5px;
+}
+
 .relative {
 	position: relative;
 }
@@ -269,6 +274,9 @@ span:hover {
     border-radius: 10px;
 	height: fit-content;
     padding: 3px 7px;
+	width: fit-content;
+    padding: 3px 7px;
+    margin-left: auto;
 }
 
 .card-body-channel {
@@ -294,7 +302,7 @@ span:hover {
 }
 
 .holder {
-	height: 30rem;
+	height: 10em;
 	width: 100%;
 }
 

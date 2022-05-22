@@ -46,28 +46,39 @@ const ContentDetail = (state, action) => {
 		// eslint-disable-next-line no-lone-blocks
 		case htmlbody: {
 			return { ...state, htmlbody: action.data };
+			break;
 		}
 		case title: {
 			return { ...state, title: action.data };
+			break;
 		}
 		case color: {
 			return { ...state, color: action.data };
+			break;
 		}
 		case priority: {
 			return { ...state, priority: action.data };
+			break;
 		}
 		case label: {
-			if (state.label.includes(action.data)) {
-				var index = state.label.includes(action.data);
-				return { ...state, label: [...state.label.slice(0, index), ...state.label.slice(index + 1)] }
+			
+			if (action.data !== "") {
+				console.log(action.data);
+				if (state.label.includes(action.data)) {
+					var index = state.label.includes(action.data);
+					return { ...state, label: [...state.label.slice(0, index), ...state.label.slice(index + 1)] }
+				}
+				return { ...state, label: [...state.label, action.data] };
 			}
-			return { ...state, label: [...state.label, action.data] };
+			return { ...state };
+			break;
 		}
 		case VAR_RESET: {
 			return { ...action.data };
+			break;
 		}
 		default: {
-			return { ...state };
+			
 		}
 	}
 };
@@ -91,12 +102,15 @@ export default function HomePage() {
 
 
 	function HandeLabel(data) {
-		setLabelContextArray(prev => {
-			if (!prev.includes(data)) {
-				return [...prev, data]
-			}
-			return [...prev];
-		})
+		console.log("handle label", data);
+		if (!!data) {
+			setLabelContextArray(prev => {
+				if (!prev.includes(data)) {
+					return [...prev, data]
+				}
+				return [...prev];
+			})
+		}
 	}
 
 	useMemo(() => {
@@ -191,11 +205,12 @@ export default function HomePage() {
 	return (
 		<div className="home-page">
 			<FilterNotes notesdata={NotesArray} setnotesdate={SetNotesArray} />
+			{!noteDataSet?.length &&
 			<div>
 				<img src={preperation} className="holder" alt="singupimage" />
 			</div>
 
-
+			}
 
 			<div className="latest-notes-container">
 
@@ -223,14 +238,17 @@ export default function HomePage() {
 								}}>
 								<BiXCircle />
 							</div>
-							<input
-								className="note-title-input"
-								placeholder="Title note ...."
-								onChange={(e) => {
-									noteDispatch({ type: title, data: e.target.value });
-								}}
-								value={noteState.title}
-							/>
+							<div className="nl-flex">
+								<input
+									className="note-title-input"
+									placeholder="Title note ...."
+									onChange={(e) => {
+										noteDispatch({ type: title, data: e.target.value });
+									}}
+									value={noteState.title}
+									/>
+								<span onClick={() => setShowLabel(true)}><CreateButton props="Add Label" /></span>
+							</div>
 
 							<ReactQuill
 								theme="snow"
@@ -316,10 +334,33 @@ export default function HomePage() {
 									: <span onClick={() => updateNoteHandler()}>
 										<CreateButton props="Update " />
 									</span>}
-								<span onClick={()=>setShowLabel(true)}><CreateButton props="Add Label"/></span>
+								
 								{showLabel &&
 									<div className="label-list-container">
-									
+										<button onClick={()=>setShowLabel(false)} className="btn-close">Close</button>
+										<div className="label-list-add">
+											<input type="text"
+												placeholder="label"
+													value={newLabel}
+												className="full-input"
+												style={{backgroundColor :"white"}}
+												onChange={(e) => {
+													if (!!e.target.value) {
+														setNewLabel(e.target.value);
+													}
+												}} />
+											<span className="flex">
+												
+												<span onClick={() => {
+													// noteDispatch({ type: "label", data: newLabel });
+													setNewLabel("");
+													HandeLabel(newLabel);
+														// setShowLabel(false);
+													}}>
+														<CreateButton props="Create Label" />
+													</span>
+												</span>
+										</div>
 										<div className="label-list">
 											{LabelContextArray.map(i => (
 												<li>
@@ -329,28 +370,7 @@ export default function HomePage() {
 												</li>))
 											}
 										</div>
-									<div className="label-list-add">
-										<input type="text"
-											placeholder="label"
-												value={newLabel}
-												className="full-input"
-											onChange={(e) => {
-												if (!!e.target.value) {
-													setNewLabel(e.target.value);
-												}
-											}} />
-										<span className="flex">
-											<button onClick={()=>setShowLabel(false)} className="btn-close">Close</button>
-											<span onClick={() => {
-												// noteDispatch({ type: "label", data: newLabel });
-												setNewLabel("");
-												HandeLabel(newLabel);
-													// setShowLabel(false);
-												}}>
-													<CreateButton props="Create Label" />
-												</span>
-											</span>
-									</div>
+									
 								</div>}
 								
 							</div>

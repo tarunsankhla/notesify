@@ -72,7 +72,7 @@ function AsideNavbar() {
                                     console.log("login");
                                     setmodalToggle(true);
                                 }} className='create-btn' style={{ width: "100%" }}>
-                                <p className="title-hide-responsive">Login</p>
+                                <p >Login</p>
                                 <BiBoxArrowInLeft height="1.5em" width="1.5em" />
                             </span>
 
