@@ -35,26 +35,12 @@ Manage your daily tasks and workflow in a modern way and boost your efficiency w
 ![image](https://user-images.githubusercontent.com/47709623/169646754-059818f0-ce43-4e99-bb80-8c3dc24fbe6b.png)
 
 
-# Feature :
-Home Page,
-Note Management(create , updat , delete)
-Rich text Editor,
-Archive Managment,
-Labels Page,
-Trash Page,
-Search and Filter,
-Pin Notes,
-User Page,
-Login Page,
-Sign up Page
-
 
 Tech Stack used:
 React, Typescript, Javascript, React Toastify, Mockapi, CSS
 
 #Extra Features Added
 Responsive Site (Both Desktop and Mobile Responsive)
-G
 
 
 # Feature
@@ -107,7 +93,7 @@ G
  - logoutbutton Nav
 
 
- ## Demo
+# Demo
 
 <hr />
 
