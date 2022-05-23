@@ -89,9 +89,10 @@ Responsive Site (Both Desktop and Mobile Responsive)
 10. User Profile [ProfilePage](https://feetz.netlify.app/profile).
  - user profile with details containing this email Id, First Name and Last Name and Can edit and update
 
- 11. Logout
+11. Logout
  - logoutbutton Nav
 
+12. Landing Page
 
 # Demo
 
