@@ -30,21 +30,10 @@ You can check the Website on [Note Store Live App](https://notestore.netlify.app
 # About
 
 Manage your daily tasks and workflow in a modern way and boost your efficiency without any efforts.
+
+
 ![image](https://user-images.githubusercontent.com/47709623/169646754-059818f0-ce43-4e99-bb80-8c3dc24fbe6b.png)
 
-
-# Feature :
-Home Page,
-Note Management(create , updat , delete)
-Rich text Editor,
-Archive Managment,
-Labels Page,
-Trash Page,
-Search and Filter,
-Pin Notes,
-User Page,
-Login Page,
-Sign up Page
 
 
 Tech Stack used:
@@ -52,70 +41,60 @@ React, Typescript, Javascript, React Toastify, Mockapi, CSS
 
 #Extra Features Added
 Responsive Site (Both Desktop and Mobile Responsive)
-Persisting Dark / Light Mode
-CTAs on Footer in Mobile View
-Remembering Routing History - After Login it will redirect to the path where it was initiated
 
 
 # Feature
 
-1. Home Page  [HomePage](https://feetz.netlify.app/).
-  -  page with a list of few categories.
-  - If  click on any one of the categories I will be redirected to the product list page with the selected category.
-  - Also has Latest Arrival onclick to product list page.
 
-2. Product Listing Page [ProductListingPage](https://feetz.netlify.app/products).
- - All product are listed and can be filtered using section of filters.
- - Price( low to high & high to low.) / Category (various categorie) / Ratings
- -  clear filters to clear all the applied filters.
- - Add to Cart on product cards to add products and max of 4 and minimum 1 and can remove from cart oncart page.
- - Add to Wishlist and remove from wishlist 
+1. Home Page  [HomePage](https://notestore.netlify.app/home).
+  - Create note by clicking on float button
+  - Add a note
+  - Update a note and delete it
+  - change the card color 
+  - add a label or create a new label and even update
+  - pin or unpin a note
 
-3. Cart  Management  [CartPage](https://feetz.netlify.app/cart).
- - From navbar you can got to cart page
- -  addmore quantity to product and also remove from cart and can also add to wishlist
- -  on increasing quantity price is also calulated accordingly
- -  and Bill summary containg all product cost X quantity
+2. Archive Page [ArchivePage](https://notestore.netlify.app/archive).
+ - Archive a note 
+ - unarchive a note
 
-4. Wishlist Management  [WishListPage](https://feetz.netlify.app/wishlist).
- - Navigate from navbar
--  can remove items from wishlist and also move them to cart
+3. Label Page  [LabelPage](https://notestore.netlify.app/label).
+ - create a new label
+ - view all pages with label 
 
-5. Product Detail Page
-  - You ca click on product cards and navigate to product page and can see all details and even add to cart and add to wishlist , if product already exist then can increment and decrement quantity    
+4. Trash  [TrashPage](https://notestore.netlify.app/trash).
+ - Can delete note from trash 
+ - can retain a note from trash
+
+5. Filter & Sort by date, priority, tags
+    Filter by Labels - can filter notes by labels added to the note.
+    Filter by priority-  filter the notes by priority (low medium high)
+    Sort by date- can sort the notes by the date added/created.
   
- 
- 6. Loading & Alerts
-- Add item to the cart
-- Remove Item from the cart
-- Increase or Decrease item in the cart
- - Move an item from the cart to the wishlist
-- Add item to the wishlist
- - Remove Item from the wishlist
- - Move an item from wishlist to cart
+ 6. Search notes on Home page 
+ - search for an item from the note via the input textbox .
 
 
-7. User Profile [ProfilePage](https://feetz.netlify.app/profile).
+ 7. Login Page
+   - User can login using email and password
+   - Guest Login
+
+8. Signup Page
+   - Use can create a new account by using email, name and password
+
+ 9. Loading & Alerts
+  - implemented React Toastify
+
+
+10. User Profile [ProfilePage](https://feetz.netlify.app/profile).
  - user profile with details containing this email Id, First Name and Last Name and Can edit and update
 
-8. Search [Search](https://feetz.netlify.app/products/search?query=football).
--  search for an item from the list via the input textbox on the header navbar.
-
-9. Sign-up Page [SignUpPage](https://feetz.netlify.app/login)
-- email, first name, last name, password & confirm password.
--  hide-show icon button that shows or hides my password.
-
-  10. Login Page [LoginPage](https://feetz.netlify.app/login)
- - login email & password.
- - guest user
- 
- 11. Logout
+11. Logout
  - logoutbutton Nav
- 
- 12. Order Summary on  [CartPage](https://feetz.netlify.app/cart).
 
+12. Landing Page
 
- ## Demo
+# Demo
 
 <hr />
 
