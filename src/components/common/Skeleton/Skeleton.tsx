@@ -8,7 +8,7 @@ const Skeletons = (props: Props) => {
   return (
     <div className='notes-skeleton-container'>
       {
-        [...new Array(5)].map(() => (
+        [...new Array(6)].map(() => (
           <div className='notes-skeleton'>
             <Skeleton width={100} baseColor='#ebab34' duration={4} />
             <span style={{ margin: "0.5em 0" }}>
@@ -16,7 +16,7 @@ const Skeletons = (props: Props) => {
             </span>
             <div className='notes-skeleton-footer'>
               <Skeleton width={80} height="70%" baseColor='#ebab34' duration={4} />
-              <Skeleton width={100} height="90%" baseColor="#5294e0" borderRadius="1em" highlightColor='#96c7ff' duration={4} />
+              <Skeleton width={100} height="90%" baseColor="lightgray" borderRadius="1em" highlightColor='white' duration={4} />
             </div>
           </div>))
       }

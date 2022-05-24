@@ -144,7 +144,6 @@ export default function HomePage() {
 			})();
 		} catch (error) {
 			console.log("Product list page error", error);
-			// Alert("error", "Some error occured!! refresh page and try again");
 		}
 	}, []);
 
@@ -211,6 +210,9 @@ export default function HomePage() {
 			</div>
 
 			}
+			<button  onClick={(e) => { StopPropogation(e); setShowNote(true); }} style={{width:"fit-content"}} className="btn-landing cursive">
+				Create New Note
+			</button>
 
 			<div className="latest-notes-container">
 

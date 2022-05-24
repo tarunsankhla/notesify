@@ -15,7 +15,6 @@
 	justify-content: space-evenly;
 	align-items: center;
 	background-color: transparent;
-	/* width: 50vw; */
 	min-width: 40vw;
 	height: fit-content;
 	border-radius: var(--border-radius);
@@ -23,17 +22,14 @@
 	padding: 0;
 	gap: 1em;
 	border-radius: 2em;
-	/* box-shadow: 0 4px 2px 0 rgba(0, 0, 0, 0.02), 0 8px 16px 0 rgba(0, 0, 0, 0.03),
-		0 16px 10px 0 rgba(0, 0, 0, 0.04), 0 4px 4px 0 rgba(0, 0, 0, 0.02); */
 }
 
 .login-credential-container {
 	max-width: 90%;
 }
 .login-credential-container > input {
-
 	width: 100%;
-    padding: 10px;
+	padding: 10px;
 	margin: 10px;
 	border-radius: 0.5em;
 	border: 2px solid transparent !important;
@@ -48,18 +44,16 @@
 .login-rem-forgetpass-container {
 	display: flex;
 	justify-content: space-between;
-	/* width: 70%; */
 	font-size: 0.7em;
 	gap: 1em;
 }
 
 .login-action-btn {
-	/* flex-grow: 1; */
 	outline: none;
-    border: none;
-    color:white;
-    font-weight: 800;
-    padding: 10px 1.2em !important;
+	border: none;
+	color: white;
+	font-weight: 800;
+	padding: 10px 1.2em !important;
 	background-color: var(--primary-color) !important;
 }
 
@@ -68,13 +62,12 @@
 	display: flex;
 	margin: auto;
 	justify-content: space-between;
-    gap: 10px;
+	gap: 10px;
 }
 
 .title-header {
 	font-weight: 700;
 	width: 100%;
-	/* padding: 1em; */
 }
 
 .login-footer {

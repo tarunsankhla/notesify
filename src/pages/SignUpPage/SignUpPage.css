@@ -19,7 +19,6 @@
 	height: fit-content;
 	border-radius: var(--border-radius);
 	font-size: 1em;
-	/* padding: 2rem 0; */
 }
 
 input[type="checkbox"] {
@@ -54,8 +53,7 @@ input[type="radio"] {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-    /* gap: 1em; */
-    font-size: 10px;
+	font-size: 10px;
 }
 
 .signup-action-btn {
@@ -123,12 +121,11 @@ button:disabled {
 	}
 }
 
-
-@media screen and (max-width:480px){
-	.signup-container{
+@media screen and (max-width: 480px) {
+	.signup-container {
 		width: 90vw;
 	}
-	.signup-body-container{
+	.signup-body-container {
 		padding: 0;
 	}
 }

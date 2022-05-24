@@ -29,7 +29,7 @@ function LoginPage({ props: setlogin }) {
     let auth = useAuth();
     const navigate = useNavigate();
     location = useLocation();
-    from = location.state;  // .state?.from?.pathname || "/";
+    from = location.state;  
 
 
     function guestUserHandler() {
@@ -46,7 +46,6 @@ function LoginPage({ props: setlogin }) {
         e.preventDefault();
         // try {
         if (email.trim() === "" || password.trim() === "") {
-            // Alert("error", "Input cannot be blank");
             Toast("Input cannot be blank")
         } else {
             var object = {

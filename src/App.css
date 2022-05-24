@@ -43,13 +43,11 @@ html {
 	--secondary-color: #dedede;
 	--note-date-color: #751414;
 
-
-	--black-hl-p5:rgba(0, 0, 0, 0.05);
-	--white-hl-p3:rgba(255, 255, 255, 0.3);
+	--black-hl-p5: rgba(0, 0, 0, 0.05);
+	--white-hl-p3: rgba(255, 255, 255, 0.3);
 }
 
 .App-header {
-	/* background-color: #282c34; */
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
@@ -81,7 +79,7 @@ body::-webkit-scrollbar-track {
 	background-color: white;
 }
 body::-webkit-scrollbar-thumb {
-	background-color:var(--primary-color);
+	background-color: var(--primary-color);
 	border-radius: 1rem;
 	border: 3px solid white;
 }
@@ -96,7 +94,6 @@ body::-webkit-scrollbar-thumb {
 	width: 100%;
 	min-height: 100vh;
 }
-
 
 input {
 	font-size: 1em;
@@ -171,10 +168,9 @@ span:hover {
 .xxlg-txt {
 	font-size: 1.3em;
 }
-.big-txt{
+.big-txt {
 	font-size: 3em;
 }
-
 
 .fn-wg-800 {
 	font-weight: 800;
@@ -195,36 +191,34 @@ span:hover {
 	padding: 10px;
 }
 
-
 .gray-txt {
 	color: gray;
 }
 
-.cursive{
+.cursive {
 	font-family: cursive;
 }
-.underline{
+.underline {
 	text-decoration: underline;
 }
-
 
 .align-center {
 	align-items: center;
 }
 
-.align-start{
+.align-start {
 	align-items: flex-start;
 	text-align: start;
 }
 
-.flex-center{
+.flex-center {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	gap: 3px;
 }
 
-.flex-cln{
+.flex-cln {
 	display: flex;
 	flex-direction: column;
 }
@@ -238,7 +232,7 @@ span:hover {
 	gap: 5px;
 }
 
-.nl-flex{
+.nl-flex {
 	display: flex;
 	gap: 5px;
 }
@@ -264,19 +258,18 @@ span:hover {
 	width: 100%;
 }
 
-
-.btn-close{
+.btn-close {
 	border: 1px solid grey;
-    background-color: white;
-    color: grey;
-    font-weight: 700;
-    margin: 3px 5px;
-    border-radius: 10px;
+	background-color: white;
+	color: grey;
+	font-weight: 700;
+	margin: 3px 5px;
+	border-radius: 10px;
 	height: fit-content;
-    padding: 3px 7px;
+	padding: 3px 7px;
 	width: fit-content;
-    padding: 3px 7px;
-    margin-left: auto;
+	padding: 3px 7px;
+	margin-left: auto;
 }
 
 .card-body-channel {
@@ -310,9 +303,8 @@ button:hover {
 	cursor: pointer;
 }
 
-
-.flex{
+.flex {
 	display: flex;
 	justify-content: space-between;
-    align-items: center;
+	align-items: center;
 }

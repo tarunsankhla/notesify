@@ -1,7 +1,7 @@
 /* float button  start*/
 .float-add-btn {
 	height: 3em;
-    width: 3em;
+	width: 3em;
 	border-radius: 50%;
 	position: fixed;
 	bottom: 2rem;
@@ -15,7 +15,7 @@
 	aspect-ratio: 1;
 	cursor: pointer;
 	outline: none;
-    border: none;
+	border: none;
 	box-shadow: 0 4px 2px rgb(0 0 0 / 2%), 0 8px 16px rgb(0 0 0 / 3%),
 		0 16px 10px rgb(0 0 0 / 4%), 0 26px 18px rgb(0 0 0 / 5%);
 }
@@ -45,7 +45,7 @@
 	font-family: cursive;
 	font-size: 1.5rem;
 	outline: none;
-    border: none;
+	border: none;
 }
 
 .create-btn:hover {
@@ -53,17 +53,14 @@
 }
 /* Create Button End */
 
-@media screen and (max-width:720px) {
-	.float-add-btn{
+@media screen and (max-width: 720px) {
+	.float-add-btn {
 		width: 2.5em;
 		height: 2.5em;
 		bottom: 4em;
 	}
-	.create-btn{
-		/* padding: 5px 5px 0;
-		display: inline; */
+	.create-btn {
 		padding: 5px 5px 0;
-    /* display: inline; */
-    	width: fit-content !important;
+		width: fit-content !important;
 	}
 }

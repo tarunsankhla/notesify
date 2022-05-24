@@ -5,8 +5,8 @@ import 'react-toastify/dist/ReactToastify.css';
 
 type Props = {}
 
-export const Toast = (message) => { 
-    toast( message, {
+export const Toast = (message) => {
+    toast(message, {
         position: "bottom-right",
         autoClose: 3000,
         hideProgressBar: false,
@@ -14,5 +14,5 @@ export const Toast = (message) => {
         pauseOnHover: true,
         draggable: true,
         progress: undefined
-        });
+    });
 }

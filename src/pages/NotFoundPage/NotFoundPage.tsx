@@ -10,13 +10,13 @@ const NotFoundPage = (props: Props) => {
   const navigate = Navigate();
   return (
     <div className='notfoundpage-container'>
-        <p className='page-title'>Not Found</p>
-       <button className="btn-landing cursive"  onClick={() => { 
-            navigate(ROUTE_PATH_HOMEPAGE);
-          }}>
-            Go back Home
+      <p className='page-title'>Not Found</p>
+      <button className="btn-landing cursive" onClick={() => {
+        navigate(ROUTE_PATH_HOMEPAGE);
+      }}>
+        Go back Home
       </button>
-      <img src={Login2 } className="page-img"/>
+      <img src={Login2} className="page-img" />
     </div>
   )
 }

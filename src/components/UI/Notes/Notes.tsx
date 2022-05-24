@@ -119,7 +119,7 @@ const Notes = (data: any) => {
       <p className="color-schema" dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(props.content) }}></p>
       <div className='notes-footer'>
         <span className='notes-date'>
-          {getDate()}
+          {getDate()} {props?.priority}
         </span>
 
         <section className='notes-action' style={{ color: props.color || "black" }}>

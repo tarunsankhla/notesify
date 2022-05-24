@@ -10,9 +10,10 @@ function RequiredAuth({ children }: Props) {
     let auth = useAuth();
     const { modalToggle, setmodalToggle } = useModal();
     console.log(auth.user)
-    if (!auth.user) { 
+    if (!auth.user) {
         setmodalToggle(true);
-        return <Navigate to="/home" state={{from :location  }} replace/>    }
+        return <Navigate to="/home" state={{ from: location }} replace />
+    }
     return children;
 }
 
