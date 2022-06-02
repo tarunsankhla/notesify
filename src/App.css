@@ -259,17 +259,19 @@ span:hover {
 }
 
 .btn-close {
-	border: 1px solid grey;
+	/* border: 1px solid grey; */
 	background-color: white;
 	color: grey;
 	font-weight: 700;
-	margin: 3px 5px;
+	margin: 5px 5px;
 	border-radius: 10px;
 	height: fit-content;
-	padding: 3px 7px;
+	padding: 5px 5px 0;
 	width: fit-content;
-	padding: 3px 7px;
+	/* padding: 3px 7px; */
 	margin-left: auto;
+	outline: none;
+	border: none;
 }
 
 .card-body-channel {

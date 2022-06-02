@@ -7,7 +7,6 @@ import "../HomePage.css";
 type Props = { props }
 
 const AllNotes = (props: any) => {
-    console.log(props, props.notesdata);
     function ClickOnNoteHanlder(event) {
         event.stopPropagation();
     }

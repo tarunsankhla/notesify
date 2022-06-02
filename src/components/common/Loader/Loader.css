@@ -1,0 +1,31 @@
+@keyframes fancy-spin {
+	0% {
+		transform: rotate(0turn) scale(1);
+	}
+	25% {
+		transform: rotate(1turn) scale(1);
+	}
+	50% {
+		transform: rotate(1turn) scale(1.5);
+	}
+	75% {
+		transform: rotate(0turn) scale(1.5);
+	}
+	100% {
+		transform: rotate(0turn) scale(1);
+	}
+}
+
+.spinner {
+	animation: fancy-spin 2000ms;
+	animation-iteration-count: infinite;
+}
+.spinner {
+	display: block;
+	width: 32px;
+	height: 32px;
+    margin: 10em auto;
+    /* width: 100vw; */
+    background-color: var(--primary-color);
+    color:var(--primary-color);
+}

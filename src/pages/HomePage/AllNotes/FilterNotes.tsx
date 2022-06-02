@@ -48,7 +48,6 @@ const FilterNotes = (props: any) => {
     const [FilterTab, SetFilterTab] = useState(false);
     const [filterState, filterDispatch] = useReducer(FilterReducer, initialStateFilter)
     const [notesDateContext, SetNoteDataContext] = useNotes();
-    console.log(props.notesdata, props.setnotesdate);
 
     function HandleFilter() {
         let filteredArray = notesDateContext.filter(note => {
@@ -162,4 +161,4 @@ const FilterNotes = (props: any) => {
     )
 }
 
-export default FilterNotes
+export default React.memo(FilterNotes);

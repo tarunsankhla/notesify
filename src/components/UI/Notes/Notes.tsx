@@ -18,7 +18,6 @@ const Notes = (data: any) => {
   const { ArchiveContextArray, setArchiveContextArray } = useArchive();
   const { TrashContextArray, setTrashContextArray } = useTrash();
   const [noteDataSet, SetNoteDataSet] = useNotes();
-  console.log(data);
 
   var initialStateNote = {
     title: props.title,

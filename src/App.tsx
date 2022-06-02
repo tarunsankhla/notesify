@@ -8,6 +8,7 @@ import RequiredAuth from './components/common/PrivateRoutes/RequiredAuth';
 import Skeleton from './components/common/Skeleton/Skeleton';
 import LandingPage from './pages/LandingPage/LandingPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
+import Loader from "./components/common/Loader/Loader";
 
 const ProfilePage = React.lazy(() => import( './pages/ProfilePage/ProfilePage'));
 const HomePage = React.lazy(() => import('./pages/HomePage/HomePage'));
@@ -24,27 +25,27 @@ function App() {
         <Route element={<Main />}>
         
           <Route path={ROUTE_PATH_HOMEPAGE} element={
-            <Suspense fallback={<Skeleton />}>
+            <Suspense fallback={<Loader />}>
               <HomePage />
             </Suspense>}
           />
           <Route path={ROUTE_PATH_TRASHPAGE} element={
             <RequiredAuth>
-              <Suspense fallback={<Skeleton />}>
+              <Suspense fallback={<Loader />}>
                 <TrashPage />
               </Suspense>
             </RequiredAuth>}
           />
           <Route path={ROUTE_PATH_ARCHIVEPAGE} element={
             <RequiredAuth>
-              <Suspense fallback={<Skeleton />}>
+              <Suspense fallback={<Loader />}>
                 <ArchivePage />
               </Suspense>
             </RequiredAuth>}
           />
           <Route path={ROUTE_PATH_LABELPAGE} element={
             <RequiredAuth>
-              <Suspense fallback={<Skeleton />}>
+              <Suspense fallback={<Loader />}>
                 <LabelPage />
               </Suspense>
             </RequiredAuth>}

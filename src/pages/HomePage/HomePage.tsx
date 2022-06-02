@@ -66,7 +66,8 @@ const ContentDetail = (state, action) => {
 				console.log(action.data);
 				if (state.label.includes(action.data)) {
 					var index = state.label.includes(action.data);
-					return { ...state, label: [...state.label.slice(0, index), ...state.label.slice(index + 1)] }
+					// return { ...state, label: [...state.label.slice(0, index), ...state.label.slice(index + 1)] }
+					return { ...state, label: [...state.label.filter(i=> i !== action.data)] }
 				}
 				return { ...state, label: [...state.label, action.data] };
 			}
@@ -338,42 +339,51 @@ export default function HomePage() {
 									</span>}
 								
 								{showLabel &&
-									<div className="label-list-container">
-										<button onClick={()=>setShowLabel(false)} className="btn-close">Close</button>
-										<div className="label-list-add">
-											<input type="text"
-												placeholder="label"
-													value={newLabel}
-												className="full-input"
-												style={{backgroundColor :"white"}}
-												onChange={(e) => {
-													if (!!e.target.value) {
-														setNewLabel(e.target.value);
-													}
-												}} />
-											<span className="flex">
-												
-												<span onClick={() => {
-													// noteDispatch({ type: "label", data: newLabel });
-													setNewLabel("");
-													HandeLabel(newLabel);
-														// setShowLabel(false);
-													}}>
-														<CreateButton props="Create Label" />
+									<div className="label-fixed-container" onClick={(e) => { 
+										// e.preventDefault();
+										console.log((e.target as HTMLDivElement).className);
+										if ((e.target as HTMLDivElement).classList.contains("label-fixed-container")) { 
+											setShowLabel(false)
+										}
+									}}>
+										<div className="label-list-container">
+											<button onClick={()=>setShowLabel(false)} className="btn-close"><BiXCircle /></button>
+											<div className="label-list-add">
+												<input type="text"
+													placeholder="label"
+														value={newLabel}
+													className="full-input"
+													style={{backgroundColor :"white"}}
+													onChange={(e) => {
+														if (!!e.target.value) {
+															setNewLabel(e.target.value);
+														}
+													}} />
+												<span className="flex">
+													
+													<span onClick={() => {
+														// noteDispatch({ type: "label", data: newLabel });
+														setNewLabel("");
+														HandeLabel(newLabel);
+															// setShowLabel(false);
+														}}>
+															<CreateButton props="Create Label" />
+														</span>
 													</span>
-												</span>
-										</div>
-										<div className="label-list">
-											{LabelContextArray.map(i => (
-												<li>
-													<input type="checkbox" value={i} id="" checked={noteState.label.includes(i)}
-														onClick={() => { noteDispatch({ type: "label", data: i }); }} />
-													{i}
-												</li>))
-											}
-										</div>
-									
-								</div>}
+											</div>
+											<div className="label-list">
+												{LabelContextArray.map(i => (
+													<li>
+														<input type="checkbox" value={i} id="" checked={noteState.label.includes(i)}
+															onClick={() => { noteDispatch({ type: "label", data: i }); }} />
+														{i}
+													</li>))
+												}
+											</div>
+										
+											</div>
+									</div>
+								}
 								
 							</div>
 						</div>
