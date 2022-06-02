@@ -84,9 +84,6 @@ const ContentDetail = (state, action) => {
 	}
 };
 
-
-
-var inputvalue = "";
 export default function HomePage() {
 	const [showNote, setShowNote] = useState(false);
 	const [NotesArray, SetNotesArray] = useState([]);

@@ -8,9 +8,9 @@
 }
 
 .label-container {
-	border: 1px solid rgba(0, 0, 0, 0.2);
-	padding: 1em;
-	border-radius: 10px;
+    border: 1px solid var(--primary-color);
+    padding: 5px;
+    border-radius: 5px;
 	height: fit-content;
 }
 
@@ -19,4 +19,18 @@
 	flex-wrap: wrap;
 	gap: 1em;
 	flex-direction: column;
+}
+
+
+.label-name{
+	font-weight: 700;
+	font-size: 1em;
+}
+
+.allnotes-container {
+	display: flex;
+	justify-content: flex-start;
+	gap: 1em;
+	flex-wrap: wrap;
+	padding: 10px;
 }

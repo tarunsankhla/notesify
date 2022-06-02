@@ -16,6 +16,7 @@ import {
   updateNoteHandler,
 } from "./backend/controllers/NotesController";
 import { users } from "./backend/db/users";
+import { v4 as uuid } from "uuid";
 
 export function makeServer({ environment = "development" } = {}) {
   const server = new Server({
@@ -34,7 +35,58 @@ export function makeServer({ environment = "development" } = {}) {
       users.forEach((item) =>
         server.create("user", {
           ...item,
-          notes: [],
+          notes: [
+            {
+              _id: uuid(),
+              title: "note 1",
+              content: "dumy data for note 1",
+              color: "#bebdff",
+              createdOn: new Date().getMonth() + " " + new Date().toDateString(),
+              pin: "notpinned",
+              priority: "high",
+              label: ["label-1","label-2","label-3"],
+            },
+            {
+              _id: uuid(),
+              title: "note 2",
+              content: "dumy data for note 2",
+              color: "rgb(255 101 132)",
+              createdOn: new Date().getMonth() + " " + new Date().toDateString(),
+              pin: "pinned",
+              priority: "medium",
+              label: ["label-1","label-3"],
+            },
+            {
+              _id: uuid(),
+              title: "note 3",
+              content: "dumy data for note 3",
+              color: "rgb(251 172 12)",
+              createdOn: new Date().getMonth() + " " + new Date().toDateString(),
+              pin: "notpinned",
+              priority: "low",
+              label: ["label-3"],
+            },
+            {
+              _id: uuid(),
+              title: "note 4",
+              content: "dumy data for note 4",
+              color: "#539987",
+              createdOn: new Date().getMonth() + " " + new Date().toDateString(),
+              pin: "pinned",
+              priority: "high",
+              label: ["label-1","label-2"],
+            },
+            {
+              _id: uuid(),
+              title: "note 5",
+              content: "dumy data for note 5",
+              color: "#8c7aa9",
+              createdOn: new Date().getMonth() + " " + new Date().toDateString(),
+              pin: "notpinned",
+              priority: "medium",
+              label: ["label-2","label-3"],
+            }
+          ],
           archives: [],
         })
       );

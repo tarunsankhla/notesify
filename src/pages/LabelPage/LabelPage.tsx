@@ -18,9 +18,19 @@ function LabelPage() {
 
   const CreateLabelHandler = () => {
     if (!!input) {
-      setLabelContextArray(prev => [...prev, input]);
-      setInput("");
-      Toast(" Label created !!")
+      // setLabelContextArray(prev => [...prev, input]);
+      setLabelContextArray(prev => {
+        if (!prev.includes(input)) {
+          setInput("");
+          Toast(" Label created !!")
+          return [...prev, input];
+        }
+        setInput("");
+        Toast(" Label already exist !!")
+        return [...prev];
+        
+			})
+      
     }
   }
   return (
@@ -40,7 +50,7 @@ function LabelPage() {
             <div className='allnotes-container'>
               {LabelContextArray.map(i => (
                 <div className='label-container' key={i}>
-                  <h3>{i}</h3>
+                  <p className='label-name'>{i}</p>
                   <div className='label-list-container-ind'>
                     {noteDataSet.map(note => (
                       note.label.includes(i) &&

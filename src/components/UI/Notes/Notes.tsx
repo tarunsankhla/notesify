@@ -104,9 +104,11 @@ const Notes = (data: any) => {
       // Alert("error", "Some error occured!! refresh page and try again");
     }
   }
+
   const getDate = useCallback(() => {
     return ShowDate(props.createdOn);
-  }, [props.createdOn])
+  }, [props.createdOn]);
+  
   return (
     <div className='note-details-container' style={{ backgroundColor: props.color || "wheat" }}>
       <h3>{props.title}</h3>
