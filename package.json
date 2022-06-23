@@ -21,7 +21,7 @@
     "miragejs": "^0.1.43",
     "mockman": "^0.5.0",
     "mockman-js": "^1.1.5",
-    "react": "^17.0.0",
+    "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-loading-skeleton": "^3.1.0",
     "react-quill": "^0.0.2",
